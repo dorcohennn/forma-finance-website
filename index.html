@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פורמה פיננסים | CFO חיצוני לבעלי עסקים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #1A2A4A;
+      --navy-light: #243660;
+      --cream: #E8E2D0;
+      --cream-dim: rgba(232, 226, 208, 0.8);
+      --cream-faint: rgba(232, 226, 208, 0.15);
+      --white: #ffffff;
+      --off-white: #f7f7f7;
+      --dark: #0d0d0d;
+      --card-radius: 16px;
+      --btn-radius: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      direction: rtl;
+      background: var(--white);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+      background: transparent;
+    }
+
+    .navbar.scrolled {
+      background: var(--navy);
+      box-shadow: 0 2px 40px rgba(0,0,0,0.3);
+      padding: 14px 60px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cream);
+    }
+
+    .nav-cta {
+      background: var(--cream);
+      color: var(--navy) !important;
+      padding: 10px 22px;
+      border-radius: var(--btn-radius);
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--white) !important;
+      transform: translateY(-1px);
+      color: var(--navy) !important;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 30%, rgba(36, 54, 96, 0.8) 0%, transparent 70%),
+                  radial-gradient(ellipse at 20% 80%, rgba(232,226,208,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232, 226, 208, 0.12);
+      border: 1px solid rgba(232, 226, 208, 0.3);
+      color: var(--cream);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 6vw, 78px);
+      font-weight: 800;
+      letter-spacing: -2.5px;
+      line-height: 1.1;
+      max-width: 860px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, #ffffff 0%, var(--cream) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--cream-dim);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 44px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      background: var(--cream);
+      color: var(--navy);
+      padding: 16px 36px;
+      border-radius: var(--btn-radius);
+      font-family: 'Heebo', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 8px 30px rgba(232, 226, 208, 0.25);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(232, 226, 208, 0.35);
+      background: var(--white);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      padding: 16px 36px;
+      border-radius: var(--btn-radius);
+      font-family: 'Heebo', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      border: 1.5px solid rgba(232, 226, 208, 0.5);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cream);
+      background: rgba(232, 226, 208, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--cream);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(232, 226, 208, 0.6);
+      letter-spacing: 0.5px;
+    }
+
+    .stat-divider {
+      width: 1px;
+      background: rgba(232, 226, 208, 0.2);
+      align-self: stretch;
+    }
+
+    /* ===== SECTION SHARED ===== */
+    section {
+      padding: 100px 60px;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-title.dark {
+      color: var(--navy);
+    }
+
+    .section-title.light {
+      color: var(--white);
+      background: linear-gradient(135deg, #ffffff 0%, var(--cream) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-center {
+      text-align: center;
+    }
+
+    .section-sub {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 580px;
+    }
+
+    .section-sub.dark {
+      color: rgba(26, 42, 74, 0.7);
+    }
+
+    .section-sub.light {
+      color: var(--cream-dim);
+    }
+
+    /* ===== PAIN POINTS ===== */
+    .pain-section {
+      background: var(--white);
+    }
+
+    .pain-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pain-card {
+      background: var(--white);
+      border-radius: var(--card-radius);
+      padding: 36px 32px;
+      border: 1px solid rgba(26, 42, 74, 0.08);
+      border-right: 4px solid var(--navy);
+      box-shadow: 0 4px 20px rgba(26, 42, 74, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .pain-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 50px rgba(26, 42, 74, 0.14);
+    }
+
+    .pain-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .pain-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .pain-card p {
+      font-size: 15px;
+      color: rgba(26, 42, 74, 0.65);
+      line-height: 1.7;
+    }
+
+    /* ===== SOLUTION ===== */
+    .solution-section {
+      background: var(--navy);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(232,226,208,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .solution-accent-line {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cream), transparent);
+      margin: 0 auto 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .solution-section .section-title {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 20px;
+    }
+
+    .solution-section .section-sub {
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== SERVICES ===== */
+    .services-section {
+      background: var(--white);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--card-radius);
+      padding: 40px 36px;
+      border: 1px solid rgba(26, 42, 74, 0.08);
+      box-shadow: 0 4px 20px rgba(26, 42, 74, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,42,74,0.03) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(26, 42, 74, 0.14);
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: rgba(26, 42, 74, 0.65);
+      line-height: 1.75;
+    }
+
+    /* ===== VALUE ANCHORING ===== */
+    .value-section {
+      background: var(--off-white);
+      text-align: center;
+    }
+
+    .value-comparison {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      margin: 52px auto;
+      max-width: 800px;
+      flex-wrap: wrap;
+    }
+
+    .value-old {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      color: rgba(26, 42, 74, 0.3);
+      text-decoration: line-through;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+
+    .value-arrow {
+      font-size: 32px;
+      color: var(--navy);
+      opacity: 0.4;
+    }
+
+    .value-new {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--navy) 0%, #2d4a8a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding: 16px 32px;
+      background-color: rgba(26,42,74,0.06);
+      border-radius: var(--card-radius);
+      background-image: linear-gradient(135deg, var(--navy) 0%, #2d4a8a 100%);
+    }
+
+    .value-new-wrapper {
+      background: rgba(26,42,74,0.06);
+      border-radius: var(--card-radius);
+      padding: 20px 36px;
+      border: 1.5px solid rgba(26,42,74,0.12);
+    }
+
+    .value-new-text {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      background: linear-gradient(135deg, var(--navy) 0%, #2d4a8a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .value-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(26,42,74,0.5);
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    .value-sub {
+      font-size: 18px;
+      color: rgba(26, 42, 74, 0.65);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ===== TEAM ===== */
+    .team-section {
+      background: var(--white);
+    }
+
+    .team-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--card-radius);
+      padding: 40px 32px;
+      border: 1px solid rgba(26, 42, 74, 0.08);
+      border-top: 4px solid var(--navy);
+      box-shadow: 0 4px 20px rgba(26, 42, 74, 0.06);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 50px rgba(26, 42, 74, 0.12);
+    }
+
+    .team-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e0e0e0 0%, #c8c8c8 100%);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: #999;
+    }
+
+    .team-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .team-role {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(26,42,74,0.5);
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .team-bio {
+      font-size: 15px;
+      color: rgba(26, 42, 74, 0.65);
+      line-height: 1.7;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-section {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(232,226,208,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(232, 226, 208, 0.2);
+      border-radius: var(--card-radius);
+      padding: 36px 30px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .testimonial-quote {
+      font-size: 40px;
+      color: var(--cream);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-text {
+      font-size: 16px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cream);
+      opacity: 0.7;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-section {
+      background: var(--white);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .faq-list {
+      max-width: 740px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(26, 42, 74, 0.1);
+      overflow: hidden;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid rgba(26, 42, 74, 0.1);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      text-align: right;
+      font-family: 'Heebo', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: rgba(26,42,74,0.75);
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(26,42,74,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.3s;
+      color: var(--navy);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+    }
+
+    .faq-answer-inner {
+      padding-bottom: 24px;
+      padding-right: 0;
+      font-size: 16px;
+      color: rgba(26, 42, 74, 0.65);
+      line-height: 1.75;
+      border-right: 3px solid var(--cream);
+      padding-right: 20px;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta-section {
+      background: var(--navy);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(232,226,208,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 20%, rgba(36,54,96,0.8) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .final-cta-section .section-title {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(40px, 5vw, 64px);
+      margin-bottom: 20px;
+    }
+
+    .final-cta-sub {
+      font-size: 18px;
+      color: rgba(232, 226, 208, 0.75);
+      margin-bottom: 44px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta-btn {
+      background: var(--cream);
+      color: var(--navy);
+      padding: 20px 52px;
+      border-radius: var(--btn-radius);
+      font-family: 'Heebo', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 10px 40px rgba(232, 226, 208, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.3px;
+    }
+
+    .final-cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 60px rgba(232, 226, 208, 0.4);
+      background: var(--white);
+    }
+
+    .urgency-note {
+      margin-top: 24px;
+      font-size: 14px;
+      color: rgba(232, 226, 208, 0.5);
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--dark);
+      padding: 48px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-copy {
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .footer-email {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-email:hover {
+      color: var(--cream);
+    }
+
+    /* ===== DECORATIVE GRADIENT LINE ===== */
+    .accent-line {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), rgba(26,42,74,0.2));
+      margin: 0 auto 20px 0;
+    }
+
+    .accent-line.center {
+      margin: 0 auto 24px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      section {
+        padding: 72px 32px;
+      }
+
+      .navbar, .navbar.scrolled {
+        padding: 16px 24px;
+      }
+
+      .hero {
+        padding: 110px 24px 72px;
+      }
+
+      .cards-row,
+      .services-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .hero-stats {
+        gap: 32px;
+      }
+
+      .stat-divider {
+        display: none;
+      }
+
+      .footer {
+        padding: 36px 24px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .nav-links li:not(:last-child) {
+        display: none;
+      }
+
+      .value-comparison {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .value-arrow {
+        transform: rotate(90deg);
+        display: inline-block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+      }
+    }
+
+    /* ===== COUNTER ANIMATION ===== */
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stat-number {
+      animation: countUp 0.8s ease forwards;
+    }
+
+    .stat-item:nth-child(1) .stat-number { animation-delay: 0.1s; }
+    .stat-item:nth-child(3) .stat-number { animation-delay: 0.3s; }
+    .stat-item:nth-child(5) .stat-number { animation-delay: 0.5s; }
+
+    /* Smooth reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="180" height="52">
+        <rect width="280" height="80" fill="#1A2A4A" rx="4"/>
+        <rect x="8" y="8" width="54" height="64" fill="none" stroke="#E8E2D0" stroke-width="3" rx="2"/>
+        <rect x="18" y="18" width="36" height="5" fill="#E8E2D0"/>
+        <rect x="18" y="18" width="5" height="44" fill="#E8E2D0"/>
+        <rect x="18" y="37" width="28" height="5" fill="#E8E2D0"/>
+        <text x="74" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#E8E2D0" letter-spacing="3">FORMA</text>
+        <text x="255" y="62" font-family="Arial,sans-serif" font-size="13" fill="#E8E2D0" text-anchor="end">פיננסים</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">שירותים</a></li>
+      <li><a href="#team">מי אנחנו</a></li>
+      <li><a href="#testimonials">לקוחות</a></li>
+      <li><a href="#contact" class="nav-cta">קבע שיחת אבחון</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <span class="hero-badge">CFO חיצוני לבעלי עסקים</span>
+    <h1>אתה מנהל עסק מצליח — אבל מי מנהל את הכסף שלך?</h1>
+    <p class="hero-sub">פורמה פיננסים מספקת לך CFO מקצועי לפי שעה, בלי המשכורת המלאה. ניהול פיננסי אסטרטגי שמאפשר לך לצמוח בביטחון.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">קבע שיחת אבחון חינמית</a>
+      <a href="#services" class="btn-secondary">גלה עוד</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">לקוחות מרוצים</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">מיליוני ₪</div>
+        <div class="stat-label">תחת ניהול</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">30 ימים</div>
+        <div class="stat-label">לתוצאות ראשונות</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="pain-section" id="pain">
+    <div class="pain-header reveal">
+      <h2 class="section-title dark">בעלי עסקים מגיעים אלינו כי...</h2>
+    </div>
+    <div class="cards-row">
+      <div class="pain-card reveal">
+        <div class="pain-icon">💸</div>
+        <h3>תזרים המזומנים מפתיע אותך</h3>
+        <p>מגלה בסוף החודש שאין כסף, מבלי להבין איך זה קרה.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">📊</div>
+        <h3>הדוחות לא מספרים לך כלום</h3>
+        <p>המספרים קיימים — אבל אתה לא יודע מה לעשות איתם.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🎯</div>
+        <h3>מחליט בלי גיבוי מספרתי</h3>
+        <p>גיוס, השקעה, הרחבה — כל החלטה גדולה מתקבלת מהבטן.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution-section" id="solution">
+    <div class="solution-accent-line"></div>
+    <h2 class="section-title light reveal">הCFO שלך, ללא המחיר המלא</h2>
+    <p class="section-sub light reveal" style="margin: 0 auto;">פורמה פיננסים היא השותפה הפיננסית האסטרטגית שלך — בדיוק כמו CFO штатный, רק בשבריר העלות.</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="services-header reveal">
+      <h2 class="section-title dark">מה אנחנו עושים בשבילך</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">📈</span>
+        <h3>ניהול תזרים מזומנים</h3>
+        <p>תכנון, ניטור, ושליטה מלאה על הכסף שנכנס ויוצא.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">📋</span>
+        <h3>דוחות פיננסיים שמספרים סיפור</h3>
+        <p>דוחות ברורים שאפשר לפעול לפיהם.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🗓️</span>
+        <h3>תכנון ותקצוב שנתי</h3>
+        <p>בניית תקציב שנתי ותחזיות לצמיחה.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🤝</span>
+        <h3>ייעוץ אסטרטגי לצמיחה</h3>
+        <p>שותף פיננסי שמלווה כל החלטה עסקית גדולה.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE ANCHORING -->
+  <section class="value-section">
+    <h2 class="section-title dark reveal" style="margin-bottom: 8px;">החישוב הפשוט</h2>
+    <div class="value-comparison reveal">
+      <div style="text-align: center;">
+        <div class="value-old">35,000–60,000 ₪/חודש</div>
+        <div class="value-label">CFO штатный</div>
+      </div>
+      <div class="value-arrow">←</div>
+      <div class="value-new-wrapper">
+        <div class="value-new-text">פורמה: שבריר מהמחיר</div>
+        <div class="value-label" style="color: var(--navy); opacity: 0.7;">אותה מומחיות</div>
+      </div>
+    </div>
+    <p class="value-sub reveal">אותה מומחיות. אותה מחויבות. רק עבור מה שאתה צריך, מתי שאתה צריך.</p>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section" id="team">
+    <div class="team-header reveal">
+      <h2 class="section-title dark">מי עומד מאחורי פורמה</h2>
+      <p class="section-sub dark" style="margin: 16px auto 0; max-width: 520px; text-align: center;">שני אנשים עם תשוקה אחת — לגרום לבעלי עסקים להצליח כלכלית</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">👤</div>
+        <div class="team-name">דור כהן</div>
+        <div class="team-role">מייסד שותף</div>
+        <p class="team-bio">מומחה פיננסי עם ניסיון רב בליווי עסקים לצמיחה. [בריף יוחלף בקרוב]</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar">👤</div>
+        <div class="team-name">אורי</div>
+        <div class="team-role">מייסד שותף</div>
+        <p class="team-bio">אסטרטג עסקי עם הבנה פיננסית עמוקה. [בריף יוחלף בקרוב]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="testimonials-header reveal">
+      <h2 class="section-title light">מה אומרים הלקוחות שלנו</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">עבדתי עם פורמה כבר חצי שנה. סוף סוף אני מבין לאן הכסף שלי הולך ומסוגל לתכנן קדימה.</p>
+        <div class="testimonial-author">— אבי מ., תל אביב</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">הדוחות שהם מכינים לי ממש כלי עבודה, לא רק מספרים שיושבים במגירה.</p>
+        <div class="testimonial-author">— שירה כ., ירושלים</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">קיבלתי את אותה איכות של CFO штатный בפחות מחמישית המחיר.</p>
+        <div class="testimonial-author">— יוסף ל., יזם טכנולוגיה</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="faq-header reveal">
+      <h2 class="section-title dark">שאלות נפוצות</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>לאיזה גודל עסק מתאים השירות?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">עסקים בין 1 ל-50 עובדים עם מחזור מעל מיליון ₪ לשנה.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>האם צריך ידע פיננסי מוקדם?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">ממש לא. אנחנו מתרגמים מספרים להחלטות בשפה שלך.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>כמה זמן לוקח לראות תוצאות?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">רוב הלקוחות מדווחים על שיפור ממשי תוך 30 הימים הראשונים.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>מה ההבדל בינכם לרואה חשבון?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">רואה חשבון מסתכל לאחור. אנחנו מסתכלים קדימה.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-section" id="contact">
+    <h2 class="section-title light">מוכן לקחת שליטה על הכספים שלך?</h2>
+    <p class="final-cta-sub">שיחת אבחון חינמית של 30 דקות · ללא התחייבות · ללא כרטיס אשראי</p>
+    <a href="mailto:dorc@formafinance.co.il" class="final-cta-btn">אני רוצה שיחה חינמית</a>
+    <p class="urgency-note">כ-10 מקומות פנויים בחודש הקרוב</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="140" height="40">
+      <rect width="280" height="80" fill="#0d0d0d" rx="4"/>
+      <rect x="8" y="8" width="54" height="64" fill="none" stroke="#E8E2D0" stroke-width="3" rx="2"/>
+      <rect x="18" y="18" width="36" height="5" fill="#E8E2D0"/>
+      <rect x="18" y="18" width="5" height="44" fill="#E8E2D0"/>
+      <rect x="18" y="37" width="28" height="5" fill="#E8E2D0"/>
+      <text x="74" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#E8E2D0" letter-spacing="3">FORMA</text>
+      <text x="255" y="62" font-family="Arial,sans-serif" font-size="13" fill="#E8E2D0" text-anchor="end">פיננסים</text>
+    </svg>
+    <span class="footer-copy">פורמה פיננסים © 2025</span>
+    <a href="mailto:dorc@formafinance.co.il" class="footer-email">dorc@formafinance.co.il</a>
+  </footer>
+
+  <script>
+    // Navbar scroll behavior
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+<a href="https://wa.me/972500000000?text=שלום%2C%20אני%20מעוניין%20לשמוע%20עוד%20על%20שירותי%20פורמה%20פיננסים" class="whatsapp-float" target="_blank" rel="noopener" aria-label="צור קשר בWhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<style>.whatsapp-float{position:fixed;bottom:24px;left:24px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:9999;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;}.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.55);}</style>
+</body>
+</html>
