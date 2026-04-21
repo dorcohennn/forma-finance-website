@@ -202,16 +202,20 @@
 
     .pain-card {
       background: var(--white); border-radius: var(--card-radius);
-      padding: 36px 28px;
+      overflow: hidden;
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 2px 16px rgba(0,0,0,0.05);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .pain-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(0,0,0,0.1); }
-    .pain-icon { font-size: 32px; margin-bottom: 14px; }
-    .pain-card h3 { font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 8px; letter-spacing: -0.4px; }
-    .pain-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+    .pain-img { width: 100%; aspect-ratio: 3/2; overflow: hidden; }
+    .pain-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+    .pain-card:hover .pain-img img { transform: scale(1.05); }
+    .pain-body { padding: 26px 26px 28px; }
+    .pain-icon { margin-bottom: 14px; }
+    .pain-card h3 { font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 8px; letter-spacing: -0.4px; }
+    .pain-card p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
 
     /* ===== SERVICES PREVIEW ===== */
     .services-preview { background: var(--dark2); padding: 100px 60px; }
@@ -224,22 +228,33 @@
     }
 
     .service-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px; padding: 32px 24px;
-      transition: background 0.3s, transform 0.3s, border-color 0.3s;
+      border-radius: 20px; overflow: hidden;
+      transition: transform 0.35s, box-shadow 0.35s;
+      position: relative; background: #111;
     }
+    .service-card:hover { transform: translateY(-7px); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
 
-    .service-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(200,169,110,0.3);
-      transform: translateY(-5px);
+    .service-card-img {
+      width: 100%; aspect-ratio: 3/4; overflow: hidden; position: relative;
     }
-
-    .service-num { font-size: 38px; font-weight: 900; color: rgba(200,169,110,0.15); letter-spacing: -2px; line-height: 1; margin-bottom: 16px; }
-    .service-icon { font-size: 26px; margin-bottom: 12px; display: block; }
-    .service-card h3 { font-size: 17px; font-weight: 700; color: var(--white); letter-spacing: -0.3px; margin-bottom: 8px; }
-    .service-card p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+    .service-card-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s ease;
+      filter: brightness(0.55);
+    }
+    .service-card:hover .service-card-img img { transform: scale(1.06); filter: brightness(0.65); }
+    .service-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,14,20,0.92) 0%, rgba(10,14,20,0.3) 55%, transparent 100%);
+    }
+    .service-card-body {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 20px;
+    }
+    .service-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+    .service-icon { display: none; }
+    .service-card h3 { font-size: 16px; font-weight: 800; color: var(--white); letter-spacing: -0.3px; margin-bottom: 6px; }
+    .service-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; }
 
     /* ===== MISSION QUOTE ===== */
     .mission { background: var(--white); padding: 120px 60px; position: relative; overflow: hidden; }
@@ -428,25 +443,38 @@
     }
     .product-card {
       background: var(--white); border-radius: 20px;
-      padding: 40px 32px; position: relative;
+      overflow: hidden; position: relative;
       transition: transform 0.3s, box-shadow 0.3s;
       display: flex; flex-direction: column;
     }
-    .product-card:hover { transform: translateY(-8px); box-shadow: 0 28px 64px rgba(0,0,0,0.18); }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 28px 64px rgba(0,0,0,0.2); }
+    .product-img {
+      width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative;
+    }
+    .product-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-img img { transform: scale(1.05); }
+    .product-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(10,14,20,0.6) 100%);
+    }
+    .product-content { padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1; }
     .product-num {
-      font-size: 56px; font-weight: 900; letter-spacing: -3px;
-      color: rgba(26,42,74,0.06); line-height: 1; margin-bottom: 12px;
+      font-size: 48px; font-weight: 900; letter-spacing: -3px;
+      color: rgba(26,42,74,0.06); line-height: 1; margin-bottom: 10px;
     }
-    .product-bar { width: 32px; height: 3px; background: var(--gold); border-radius: 2px; margin-bottom: 20px; }
+    .product-bar { width: 28px; height: 3px; background: var(--gold); border-radius: 2px; margin-bottom: 16px; }
     .product-card h3 {
-      font-size: 22px; font-weight: 800; color: var(--navy);
-      letter-spacing: -0.5px; margin-bottom: 14px; line-height: 1.2;
+      font-size: 20px; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.4px; margin-bottom: 12px; line-height: 1.25;
     }
-    .product-card p { font-size: 15px; color: var(--text-muted); line-height: 1.75; flex: 1; }
+    .product-card p { font-size: 14px; color: var(--text-muted); line-height: 1.75; flex: 1; }
     .product-arrow {
       display: inline-flex; align-items: center; gap: 6px;
       color: var(--gold); font-size: 13px; font-weight: 700;
-      margin-top: 24px; text-decoration: none; letter-spacing: 0.3px;
+      margin-top: 20px; text-decoration: none; letter-spacing: 0.3px;
       transition: gap 0.2s;
     }
     .product-arrow:hover { gap: 10px; }
@@ -551,6 +579,7 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-card-img { aspect-ratio: 4/3; }
     }
     @media (max-width: 900px) {
       .products-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
@@ -598,7 +627,7 @@
     <ul class="nav-links">
       <li><a href="index.html" class="active">בית</a></li>
       <li><a href="about.html">אודותינו</a></li>
-      <li><a href="services.html">ליווים</a></li>
+      <li><a href="services.html">שירותים</a></li>
       <li><a href="guides.html">מדריכים</a></li>
       <li><a href="testimonials.html">המלצות</a></li>
       <li><a href="index.html#contact" class="nav-cta">קבע שיחה</a></li>
@@ -648,12 +677,12 @@
         <div class="stat-lbl">לקוחות מרוצים</div>
       </div>
       <div class="stat-block reveal">
-        <div class="stat-num">מיליונים</div>
-        <div class="stat-lbl">תחת ניהול</div>
+        <div class="stat-num">247m+</div>
+        <div class="stat-lbl">כספים שמנוהלים עבור לקוחותינו</div>
       </div>
       <div class="stat-block reveal">
-        <div class="stat-num">30 יום</div>
-        <div class="stat-lbl">לתוצאות ראשונות</div>
+        <div class="stat-num">20%+</div>
+        <div class="stat-lbl">יותר רווח בכיס בסוף החודש</div>
       </div>
     </div>
   </div>
@@ -667,27 +696,45 @@
     <div class="products-grid">
 
       <div class="product-card reveal">
-        <div class="product-num">01</div>
-        <div class="product-bar"></div>
-        <h3>ליווי פיננסי לעסקים</h3>
-        <p>חברתנו מתמחה בייעוץ פיננסי אישי ללקוחות, שמטרתו לשפר את כלל התהליכים הפיננסיים בעסק. בעבודתנו המשותפת תקבלו כלים לניהול הפיננסים בעסק שלכם, תכניות יועץ, ניהול תזרים מזומנים, להגדלת רווחיות, ניהול חברים מזומנים בצורה נכונה ואופטימיזציה של הוצאות והכנסות.</p>
-        <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="ליווי פיננסי לעסקים" loading="lazy">
+          <div class="product-img-overlay"></div>
+        </div>
+        <div class="product-content">
+          <div class="product-num">01</div>
+          <div class="product-bar"></div>
+          <h3>ליווי פיננסי לעסקים</h3>
+          <p>CFO חיצוני שמלווה אותך מכל ההיבטים הפיננסיים - תזרים, דוחות, תכנון שנתי ואסטרטגיה - בדיוק כמו CFO штатный אבל בשבריר מהעלות.</p>
+          <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
 
       <div class="product-card reveal">
-        <div class="product-num">02</div>
-        <div class="product-bar"></div>
-        <h3>ניהול כספים - CFO חיצוני</h3>
-        <p>כנראה שאתם עומדים במקום מסוים מבחינה כלכלית. אתם מספרים לעצמכם שזה בגלל שאתם לא חושבים טוב בכסף, תואר או תעודה כדי להבין טוב בכסף. לשמחתכם אנו יכולים לבשר לכם שניתן לשנות את המצב הפיננסי שלכם.</p>
-        <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="ניהול כספים CFO חיצוני" loading="lazy">
+          <div class="product-img-overlay"></div>
+        </div>
+        <div class="product-content">
+          <div class="product-num">02</div>
+          <div class="product-bar"></div>
+          <h3>ניהול כספים - CFO חיצוני</h3>
+          <p>ניהול פיננסי שוטף של העסק שלך: תכנון תקציב, בקרת הוצאות, ניתוח רווחיות והכנת תחזיות - כל זה תחת קורת גג אחת, בזמינות מלאה.</p>
+          <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
 
       <div class="product-card reveal">
-        <div class="product-num">03</div>
-        <div class="product-bar"></div>
-        <h3>הרצאות לארגונים</h3>
-        <p>חברתנו מארגנת הרצאות לארגונים במגזון נושאים כמו: שוק ההון, מטבעות דיגיטליים, כלכלה, סיפורי הצלחה, סיפורי הזדמנויות, קבלת החלטות, הגשמת חלומות, הרצאות מוטיבציה ועוד.</p>
-        <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="הרצאות לארגונים" loading="lazy">
+          <div class="product-img-overlay"></div>
+        </div>
+        <div class="product-content">
+          <div class="product-num">03</div>
+          <div class="product-bar"></div>
+          <h3>סדנת רווח מעל הכל</h3>
+          <p>סדנה מעשית לבעלי עסקים וארגונים - לומדים לחשוב כלכלית, לזהות הזדמנויות ולקבל החלטות שמגדילות את הרווח בפועל.</p>
+          <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
 
     </div>
@@ -771,25 +818,28 @@
     </div>
     <div class="pain-grid">
       <div class="pain-card reveal">
-        <div class="pain-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v2m0 8v2"/><path d="M9 10h4a2 2 0 0 1 0 4H9v-4z"/></svg>
+        <div class="pain-img"><img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=700&q=80" alt="תזרים" loading="lazy"></div>
+        <div class="pain-body">
+          <div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v2m0 8v2"/><path d="M9 10h4a2 2 0 0 1 0 4H9v-4z"/></svg></div>
+          <h3>תזרים מפתיע אותך</h3>
+          <p>מגלה בסוף החודש שאין כסף, מבלי להבין איך קרה.</p>
         </div>
-        <h3>תזרים מפתיע אותך</h3>
-        <p>מגלה בסוף החודש שאין כסף, מבלי להבין איך קרה.</p>
       </div>
       <div class="pain-card reveal">
-        <div class="pain-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        <div class="pain-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80" alt="דוחות" loading="lazy"></div>
+        <div class="pain-body">
+          <div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+          <h3>מספרים בלי משמעות</h3>
+          <p>הדוחות קיימים, אבל אתה לא יודע מה לעשות איתם.</p>
         </div>
-        <h3>מספרים בלי משמעות</h3>
-        <p>הדוחות קיימים, אבל אתה לא יודע מה לעשות איתם.</p>
       </div>
       <div class="pain-card reveal">
-        <div class="pain-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <div class="pain-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80" alt="החלטות" loading="lazy"></div>
+        <div class="pain-body">
+          <div class="pain-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <h3>החלטות מהבטן</h3>
+          <p>גיוס, השקעה, הרחבה - בלי גיבוי מספרתי.</p>
         </div>
-        <h3>החלטות מהבטן</h3>
-        <p>גיוס, השקעה, הרחבה - בלי גיבוי מספרתי.</p>
       </div>
     </div>
   </section>
@@ -802,28 +852,48 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-num">01</div>
-        <div class="service-icon-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <h3>ניהול תזרים מזומנים</h3>
-        <p>שליטה מלאה על הכסף שנכנס ויוצא - תמיד.</p>
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&q=80&fit=crop" alt="ניהול תזרים" loading="lazy">
+          <div class="service-card-overlay"></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-num">01</div>
+          <h3>ניהול תזרים מזומנים</h3>
+          <p>שליטה מלאה על הכסף שנכנס ויוצא - תמיד.</p>
+        </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">02</div>
-        <div class="service-icon-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-        <h3>דוחות שמספרים סיפור</h3>
-        <p>דוחות ברורים שפועלים לפיהם, לא מחביאים בגירסה.</p>
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&fit=crop" alt="דוחות פיננסיים" loading="lazy">
+          <div class="service-card-overlay"></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-num">02</div>
+          <h3>דוחות שמספרים סיפור</h3>
+          <p>דוחות ברורים שפועלים לפיהם, לא מחביאים בגירסה.</p>
+        </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">03</div>
-        <div class="service-icon-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <h3>תכנון ותקצוב שנתי</h3>
-        <p>תקציב ריאלי עם תחזיות צמיחה ובסיס להחלטות.</p>
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&fit=crop" alt="תכנון ותקצוב" loading="lazy">
+          <div class="service-card-overlay"></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-num">03</div>
+          <h3>תכנון ותקצוב שנתי</h3>
+          <p>תקציב ריאלי עם תחזיות צמיחה ובסיס להחלטות.</p>
+        </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">04</div>
-        <div class="service-icon-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>ייעוץ אסטרטגי</h3>
-        <p>שותף פיננסי לצד כל החלטה עסקית גדולה.</p>
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80&fit=crop" alt="ייעוץ אסטרטגי" loading="lazy">
+          <div class="service-card-overlay"></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-num">04</div>
+          <h3>ייעוץ אסטרטגי</h3>
+          <p>שותף פיננסי לצד כל החלטה עסקית גדולה.</p>
+        </div>
       </div>
     </div>
     <div style="text-align:center;">
@@ -835,7 +905,6 @@
   <section class="mission">
     <div class="mission-watermark">FORMA</div>
     <div class="mission-inner reveal">
-      <span class="mission-mark">"</span>
       <p class="mission-text">
         עסק ללא CFO חזק הוא כמו מטוס ללא טייס -<br>
         <em>עשוי לעוף, אבל לא לאן שצריך.</em>
@@ -982,7 +1051,7 @@
         <ul class="footer-links">
           <li><a href="index.html">עמוד הבית</a></li>
           <li><a href="about.html">אודותינו</a></li>
-          <li><a href="services.html">ליווים</a></li>
+          <li><a href="services.html">שירותים</a></li>
           <li><a href="guides.html">מדריכים</a></li>
           <li><a href="testimonials.html">המלצות</a></li>
         </ul>

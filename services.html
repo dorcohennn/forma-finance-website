@@ -3,67 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ליווים | פורמה פיננסים</title>
+  <title>שירותים | פורמה פיננסים</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ===== NUMBERED SERVICES ===== */
-    .services-section { background: var(--white); }
-    .services-header { text-align: center; margin-bottom: 72px; }
+    /* ===== PRODUCT SECTIONS ===== */
+    .product-section {
+      padding: 100px 60px;
+      background: var(--white);
+    }
+    .product-section:nth-child(even) {
+      background: var(--light-bg);
+    }
 
-    .service-block {
-      max-width: 1100px; margin: 0 auto 80px;
+    .product-inner {
+      max-width: 1160px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 80px; align-items: center;
     }
-
-    .service-block:last-child { margin-bottom: 0; }
-    .service-block.reverse { direction: ltr; }
-    .service-block.reverse > * { direction: rtl; }
-
-    .service-block-image {
-      border-radius: 32px; overflow: hidden;
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #111827 0%, #0d1520 100%);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; position: relative;
+    .product-inner.reverse {
+      direction: ltr;
     }
-    .service-block-image::before {
+    .product-inner.reverse > * {
+      direction: rtl;
+    }
+
+    .product-img-block {
+      position: relative; border-radius: 32px;
+      overflow: hidden; aspect-ratio: 4/3;
+    }
+    .product-img-block img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .product-img-block:hover img { transform: scale(1.04); }
+    .product-img-block::after {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 40%, rgba(200,169,110,0.07) 0%, transparent 65%);
+      background: linear-gradient(135deg, rgba(26,42,74,0.15) 0%, transparent 60%);
+      pointer-events: none;
     }
-    .service-block-image svg { position: relative; z-index: 1; }
-    .service-block.alt .service-block-image {
-      background: linear-gradient(135deg, #0d1a2a 0%, #0a1118 100%);
+    .product-img-badge {
+      position: absolute; bottom: 22px; right: 22px;
+      background: rgba(10,14,20,0.82); backdrop-filter: blur(12px);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 14px; padding: 14px 20px;
+      z-index: 2;
+    }
+    .product-img-badge-num {
+      font-size: 36px; font-weight: 900;
+      color: rgba(200,169,110,0.35); letter-spacing: -2px;
+      line-height: 1;
+    }
+    .product-img-badge-label {
+      font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.55); letter-spacing: 1px;
+      text-transform: uppercase; margin-top: 4px;
     }
 
-    .service-block-text {}
-    .service-block-num {
-      font-size: 64px; font-weight: 900;
-      color: rgba(200,169,110,0.2); letter-spacing: -3px; line-height: 1;
-      margin-bottom: 8px;
+    .product-text {}
+    .product-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
     }
-    .service-block-text .section-eyebrow { margin-bottom: 10px; }
-    .service-block-title {
-      font-size: clamp(26px, 3.5vw, 42px); font-weight: 900;
-      letter-spacing: -1.5px; line-height: 1.1; color: var(--navy); margin-bottom: 16px;
+    .product-title {
+      font-size: clamp(28px, 3.5vw, 46px); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.1; color: var(--navy);
+      margin-bottom: 16px;
     }
-    .service-block-desc { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; }
+    .product-desc {
+      font-size: 16px; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 28px;
+    }
 
-    .service-checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-    .service-checklist li {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 15px; color: var(--navy); font-weight: 500;
+    .product-checklist {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 10px; margin-bottom: 32px;
     }
-    .service-checklist li::before {
-      content: '✓'; color: var(--gold); font-weight: 900;
-      font-size: 16px; flex-shrink: 0; margin-top: 1px;
+    .product-checklist li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; color: var(--navy); font-weight: 500; line-height: 1.5;
+    }
+    .product-checklist li .check-icon {
+      flex-shrink: 0; width: 20px; height: 20px;
+      background: rgba(200,169,110,0.12); border-radius: 50%;
+      border: 1.5px solid rgba(200,169,110,0.4);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .product-checklist li .check-icon svg { display: block; }
+
+    .product-cta-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .product-note {
+      font-size: 13px; color: var(--text-muted);
+    }
+
+    /* ===== PAGE HERO ===== */
+    .svc-hero {
+      background: var(--dark2); padding: 160px 60px 80px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .svc-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.08) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     /* ===== PACKAGES ===== */
-    .packages-section { background: var(--dark2); }
+    .packages-section { background: var(--dark2); padding: 100px 60px; }
     .packages-header { text-align: center; margin-bottom: 64px; }
 
     .packages-grid {
@@ -78,20 +126,17 @@
       transition: background 0.3s, border-color 0.3s, transform 0.3s;
       position: relative;
     }
-
     .package-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(200,169,110,0.2); transform: translateY(-5px); }
     .package-card.featured {
       background: rgba(200,169,110,0.08);
       border-color: rgba(200,169,110,0.35);
     }
-
     .package-badge {
       position: absolute; top: -12px; right: 24px;
       background: var(--gold); color: var(--navy);
       font-size: 11px; font-weight: 800; letter-spacing: 1px;
       padding: 5px 14px; border-radius: var(--btn-radius);
     }
-
     .package-name { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
     .package-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
     .package-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
@@ -99,19 +144,15 @@
       display: flex; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.7);
     }
     .package-features li::before { content: '✓'; color: var(--gold); font-weight: 900; flex-shrink: 0; }
-
     .package-cta { display: block; text-align: center; }
-    .package-cta .btn-gold { width: 100%; }
-    .package-cta .btn-outline { width: 100%; }
 
     /* ===== FAQ ===== */
-    .faq-section { background: var(--white); }
+    .faq-section { background: var(--white); padding: 100px 60px; }
     .faq-header { text-align: center; margin-bottom: 64px; }
 
     .faq-list { max-width: 740px; margin: 0 auto; }
     .faq-item { border-bottom: 1px solid rgba(26,42,74,0.1); overflow: hidden; }
     .faq-item:first-child { border-top: 1px solid rgba(26,42,74,0.1); }
-
     .faq-question {
       width: 100%; background: none; border: none;
       padding: 22px 0; text-align: right;
@@ -121,7 +162,6 @@
       transition: color 0.2s;
     }
     .faq-question:hover { color: rgba(26,42,74,0.7); }
-
     .faq-icon {
       width: 28px; height: 28px; border-radius: 50%;
       background: rgba(26,42,74,0.07);
@@ -129,7 +169,6 @@
       font-size: 18px; flex-shrink: 0;
       transition: background 0.2s, transform 0.3s;
     }
-
     .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold); color: var(--navy); }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
     .faq-item.open .faq-answer { max-height: 200px; }
@@ -139,7 +178,7 @@
       border-right: 3px solid var(--gold);
     }
 
-    /* ===== CTA ===== */
+    /* ===== CTA BAR ===== */
     .cta-bar {
       background: var(--navy); padding: 80px 60px;
       text-align: center; position: relative; overflow: hidden;
@@ -153,14 +192,17 @@
     .cta-bar .btn-gold { position:relative; z-index:1; }
 
     @media (max-width: 900px) {
-      .service-block { grid-template-columns: 1fr; gap: 40px; }
-      .service-block.reverse { direction: rtl; }
+      .product-section { padding: 72px 20px; }
+      .product-inner { grid-template-columns: 1fr; gap: 40px; }
+      .product-inner.reverse { direction: rtl; }
+      .packages-section { padding: 72px 20px; }
       .packages-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-      .service-img { max-height: 260px; }
+      .faq-section { padding: 72px 20px; }
+      .cta-bar { padding: 64px 20px; }
+      .svc-hero { padding: 120px 20px 60px; }
     }
     @media (max-width: 600px) {
       .packages-grid { max-width: 100%; }
-      .pkg-card { padding: 32px 24px; }
     }
   </style>
 </head>
@@ -174,7 +216,7 @@
     <ul class="nav-links">
       <li><a href="index.html">בית</a></li>
       <li><a href="about.html">אודותינו</a></li>
-      <li><a href="services.html" class="active">ליווים</a></li>
+      <li><a href="services.html" class="active">שירותים</a></li>
       <li><a href="guides.html">מדריכים</a></li>
       <li><a href="testimonials.html">המלצות</a></li>
       <li><a href="index.html#contact" class="nav-cta">קבע שיחה</a></li>
@@ -191,85 +233,141 @@
   </nav>
 
   <!-- PAGE HERO -->
-  <div class="page-hero">
-    <div class="page-hero-eyebrow">תוכניות ליווי</div>
-    <h1 class="page-hero-title">ליווי פיננסי שמביא תוצאות</h1>
-    <p class="page-hero-sub">בחר את מסגרת הליווי שמתאימה לך - ותתחיל לנהל את העסק שלך עם ביטחון.</p>
+  <div class="svc-hero">
+    <div class="page-hero-eyebrow">השירותים שלנו</div>
+    <h1 class="page-hero-title">שלושה שירותים. תוצאה אחת.</h1>
+    <p class="page-hero-sub">ניהול פיננסי חכם שמחזיר לך שליטה, רווחיות, וזמן לדברים שחשובים.</p>
   </div>
 
-  <!-- SERVICES BLOCKS -->
-  <section class="services-section">
-    <div class="services-header reveal">
-      <div class="section-eyebrow section-center">מה כולל הליווי</div>
-      <h2 class="section-title section-center">4 תחומי ליבה שאנחנו מטפלים בהם</h2>
-    </div>
-
-    <div class="service-block reveal">
-      <div class="service-block-image"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.6)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-      <div class="service-block-text">
-        <div class="service-block-num">01</div>
-        <div class="section-eyebrow">ניהול תזרים</div>
-        <h3 class="service-block-title">שליטה מלאה על הכסף שלך</h3>
-        <p class="service-block-desc">תזרים מזומנים הוא חמצן לעסק. אנחנו בונים יחד מנגנון שמאפשר לך לדעת תמיד מה יש, מה יגיע, ומה צפוי.</p>
-        <ul class="service-checklist">
-          <li>תחזיות תזרים שבועיות וחודשיות</li>
-          <li>זיהוי מוקדם של בעיות נזילות</li>
-          <li>ייעוץ לניהול חוב ואשראי</li>
-          <li>דשבורד פיננסי עדכני בזמן אמת</li>
+  <!-- PRODUCT 1: ניהול כספים במיקור חוץ -->
+  <section class="product-section">
+    <div class="product-inner reveal">
+      <div class="product-img-block">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80&fit=crop" alt="ניהול כספים במיקור חוץ" loading="lazy">
+        <div class="product-img-badge">
+          <div class="product-img-badge-num">01</div>
+          <div class="product-img-badge-label">CFO חיצוני</div>
+        </div>
+      </div>
+      <div class="product-text">
+        <div class="product-eyebrow">ניהול כספים במיקור חוץ</div>
+        <h2 class="product-title">CFO חיצוני שעובד בשבילך במשרה מלאה - בלי עלות משרה מלאה</h2>
+        <p class="product-desc">תקבל CFO מנוסה שמכיר את הספרות שלך לעומק, מייצר דוחות ברורים, מנהל תזרים ומשמש כיד ימין פיננסית בכל החלטה - מבלי לשלם על ביטוח, הטבות סוציאליות ושכר עובד בכיר.</p>
+        <ul class="product-checklist">
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            ניהול תזרים שבועי ואזהרות מוקדמות
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            דוחות רווח והפסד חודשיים ברמה ניהולית
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            עבודה שוטפת מול רואה החשבון והבנק
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            דשבורד פיננסי מותאם אישית
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            ייעוץ לפני כל החלטה פיננסית גדולה
+          </li>
         </ul>
-        <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
+        <div class="product-cta-row">
+          <a href="index.html#contact" class="btn-gold">קבע שיחה חינמית</a>
+          <span class="product-note">ללא התחייבות</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="service-block reverse reveal">
-      <div class="service-block-text">
-        <div class="service-block-num">02</div>
-        <div class="section-eyebrow">דוחות פיננסיים</div>
-        <h3 class="service-block-title">מספרים שמספרים לך סיפור</h3>
-        <p class="service-block-desc">הדוחות שלנו לא מיועדים לרואה החשבון בלבד. הם כלי עבודה יומיומי שאתה מבין, פועל לפיו, ומסתמך עליהם לכל החלטה.</p>
-        <ul class="service-checklist">
-          <li>דוח רווח והפסד חודשי ברור</li>
-          <li>ניתוח הוצאות לפי קטגוריות</li>
-          <li>זיהוי "מאיפה הכסף הולך"</li>
-          <li>השוואה לתקציב ולחודש מקביל</li>
+  <!-- PRODUCT 2: ליווי פיננסי לבעלי עסקים -->
+  <section class="product-section">
+    <div class="product-inner reverse reveal">
+      <div class="product-text">
+        <div class="product-eyebrow">ליווי פיננסי לבעלי עסקים</div>
+        <h2 class="product-title">מנטור פיננסי צמוד שמלמד אותך לקרוא את הכסף שלך</h2>
+        <p class="product-desc">לא רק לנהל בשבילך - אלא לבנות יחד איתך את הכלים, ההרגלים, ודרך החשיבה שמאפשרים לך לנהל את העסק שלך עם ראש פיננסי. תוך 90 יום תדע בדיוק מה קורה בכסף שלך.</p>
+        <ul class="product-checklist">
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            פגישות ליווי שבועיות 1:1
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            בניית תוכנית פיננסית אישית לעסק
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            הבנת הדוחות הפיננסיים שלך
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            בניית תקציב ויעדי רווחיות
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            תמיכה שוטפת בוואטסאפ בין הפגישות
+          </li>
         </ul>
-        <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
+        <div class="product-cta-row">
+          <a href="index.html#contact" class="btn-gold">קבע שיחה חינמית</a>
+          <span class="product-note">ללא התחייבות</span>
+        </div>
       </div>
-      <div class="service-block-image alt"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.6)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+      <div class="product-img-block">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&fit=crop" alt="ליווי פיננסי לבעלי עסקים" loading="lazy">
+        <div class="product-img-badge">
+          <div class="product-img-badge-num">02</div>
+          <div class="product-img-badge-label">ליווי אישי</div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="service-block reveal">
-      <div class="service-block-image"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.6)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <div class="service-block-text">
-        <div class="service-block-num">03</div>
-        <div class="section-eyebrow">תכנון ותקצוב</div>
-        <h3 class="service-block-title">תוכנית שנתית שמגיעה ליעד</h3>
-        <p class="service-block-desc">תקציב שנתי ריאלי עם תחזיות צמיחה שמניחות בסיס להחלטות. כי אתה לא יכול לנהל עסק בלי לדעת לאן אתה הולך.</p>
-        <ul class="service-checklist">
-          <li>בניית תקציב שנתי עם יעדים</li>
-          <li>תחזיות רבעוניות ושנתיות</li>
-          <li>תכנון כוח אדם ומשאבים</li>
-          <li>תכנון מס שנתי לחיסכון מקסימלי</li>
-        </ul>
-        <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
+  <!-- PRODUCT 3: סדנת רווח מעל הכל -->
+  <section class="product-section">
+    <div class="product-inner reveal">
+      <div class="product-img-block">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80&fit=crop" alt="סדנת רווח מעל הכל" loading="lazy">
+        <div class="product-img-badge">
+          <div class="product-img-badge-num">03</div>
+          <div class="product-img-badge-label">סדנה</div>
+        </div>
       </div>
-    </div>
-
-    <div class="service-block reverse reveal">
-      <div class="service-block-text">
-        <div class="service-block-num">04</div>
-        <div class="section-eyebrow">ייעוץ אסטרטגי</div>
-        <h3 class="service-block-title">שותף פיננסי לכל החלטה גדולה</h3>
-        <p class="service-block-desc">גיוס, השקעה, הרחבה, כניסה לשוק חדש - כל החלטה אסטרטגית מגיעה עם ניתוח פיננסי שמגבה אותה.</p>
-        <ul class="service-checklist">
-          <li>ניתוח כדאיות להחלטות השקעה</li>
-          <li>הכנה לפגישות עם בנקים ומשקיעים</li>
-          <li>ליווי שוטף בפגישות הנהלה</li>
-          <li>תמחור ואסטרטגיית מחירים</li>
+      <div class="product-text">
+        <div class="product-eyebrow">סדנת רווח מעל הכל</div>
+        <h2 class="product-title">יום אחד שמשנה את הדרך שבה אתה מנהל כסף - לתמיד</h2>
+        <p class="product-desc">סדנה אינטנסיבית ומעשית לבעלי עסקים שרוצים לעצור, להבין, ולבנות מחדש את הבסיס הפיננסי של העסק. לא תיאוריה - כלים שתיקח הביתה ותשתמש בהם מחר בבוקר.</p>
+        <ul class="product-checklist">
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            ניתוח מלא של מבנה הרווחיות שלך
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            גילוי "דולפי הכסף" הנסתרים בעסק
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            בניית מנגנון תמחור נכון לפי עלויות
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            תוכנית פעולה אישית ל-90 הימים הבאים
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            גישה לחומרים ולכלים לאחר הסדנה
+          </li>
         </ul>
-        <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
+        <div class="product-cta-row">
+          <a href="index.html#contact" class="btn-gold">הרשמה לסדנה</a>
+          <span class="product-note">מקומות מוגבלים</span>
+        </div>
       </div>
-      <div class="service-block-image alt"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.6)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
     </div>
   </section>
 
@@ -330,7 +428,7 @@
   <section class="faq-section">
     <div class="faq-header reveal">
       <div class="section-eyebrow section-center">שאלות נפוצות</div>
-      <h2 class="section-title section-center">שאלות על הליווי</h2>
+      <h2 class="section-title section-center">שאלות על השירותים</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
@@ -365,6 +463,14 @@
           <div class="faq-answer-inner">נתחיל עם התאמה ל-3 חודשים ראשונים כדי לבנות בסיס משותף. לאחר מכן הליווי גמיש ומותאם לצרכים שלך.</div>
         </div>
       </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>מה ההבדל בין ניהול כספים במיקור חוץ לליווי פיננסי?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">ניהול כספים במיקור חוץ הוא שירות מלא בו אנחנו מנהלים את הצד הפיננסי עבורך. ליווי פיננסי הוא תהליך שבו אנחנו לומדים אותך לנהל את הכסף שלך בעצמך עם ליווי צמוד.</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -387,7 +493,7 @@
         <ul class="footer-links">
           <li><a href="index.html">עמוד הבית</a></li>
           <li><a href="about.html">אודותינו</a></li>
-          <li><a href="services.html">ליווים</a></li>
+          <li><a href="services.html">שירותים</a></li>
           <li><a href="guides.html">מדריכים</a></li>
           <li><a href="testimonials.html">המלצות</a></li>
         </ul>
