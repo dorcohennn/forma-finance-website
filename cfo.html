@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CFO חיצוני | פורמה פיננסים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== CFO HERO ===== */
+    .cfo-hero {
+      min-height: 100vh;
+      background: var(--dark2);
+      display: flex; align-items: center;
+      padding: 140px 60px 80px;
+      position: relative; overflow: hidden;
+    }
+    .cfo-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 20%, rgba(200,169,110,0.10) 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 80%, rgba(26,42,74,0.5) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cfo-hero-inner {
+      max-width: 1160px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; position: relative; z-index: 1;
+    }
+    .cfo-hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .cfo-hero-title {
+      font-size: clamp(38px, 5.5vw, 72px); font-weight: 900;
+      letter-spacing: -2.5px; line-height: 1.05; color: var(--white);
+      margin-bottom: 20px;
+    }
+    .cfo-hero-title span { color: var(--gold); }
+    .cfo-hero-sub {
+      font-size: 18px; color: rgba(255,255,255,0.65);
+      line-height: 1.75; margin-bottom: 36px; max-width: 480px;
+    }
+    .cfo-hero-bullets {
+      list-style: none; display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 40px;
+    }
+    .cfo-hero-bullets li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.5;
+    }
+    .cfo-hero-bullets li svg { flex-shrink: 0; margin-top: 2px; }
+    .cfo-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ===== HERO FORM PANEL ===== */
+    .cfo-hero-form-wrap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 40px 36px;
+      backdrop-filter: blur(16px);
+    }
+    .hero-form-title {
+      font-size: 22px; font-weight: 800; color: var(--white);
+      letter-spacing: -0.5px; margin-bottom: 6px;
+    }
+    .hero-form-sub {
+      font-size: 14px; color: rgba(255,255,255,0.45);
+      margin-bottom: 28px; line-height: 1.6;
+    }
+    .cfo-form-field { margin-bottom: 14px; }
+    .cfo-form-field label {
+      display: block; font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.5); letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .cfo-form-field input,
+    .cfo-form-field select {
+      width: 100%; padding: 13px 16px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; color: var(--white);
+      font-family: 'Heebo', sans-serif; font-size: 15px;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+    .cfo-form-field input::placeholder { color: rgba(255,255,255,0.3); }
+    .cfo-form-field input:focus,
+    .cfo-form-field select:focus {
+      border-color: rgba(200,169,110,0.5);
+      background: rgba(255,255,255,0.1);
+    }
+    .cfo-form-field select {
+      cursor: pointer;
+      -webkit-appearance: none;
+    }
+    .cfo-form-field select option { background: #1a1f2e; color: var(--white); }
+    .cfo-form-submit {
+      width: 100%; padding: 15px;
+      background: var(--gold); color: var(--navy);
+      font-family: 'Heebo', sans-serif; font-size: 16px; font-weight: 800;
+      border: none; border-radius: var(--btn-radius); cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cfo-form-submit:hover { background: var(--gold-hover); transform: translateY(-1px); }
+    .cfo-form-note {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      text-align: center; margin-top: 10px;
+    }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: var(--dark);
+      padding: 28px 60px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .trust-bar-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .trust-stat {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 2px;
+    }
+    .trust-stat-num {
+      font-size: 32px; font-weight: 900;
+      color: var(--gold); letter-spacing: -1.5px; line-height: 1;
+    }
+    .trust-stat-label {
+      font-size: 13px; color: rgba(255,255,255,0.45); white-space: nowrap;
+    }
+    .trust-divider {
+      width: 1px; height: 40px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ===== WHAT IS CFO SECTION ===== */
+    .what-cfo {
+      background: var(--white);
+      padding: 100px 60px;
+    }
+    .what-cfo-inner {
+      max-width: 1160px; margin: 0 auto;
+    }
+    .what-cfo-header {
+      max-width: 620px; margin-bottom: 64px;
+    }
+    .what-cfo-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .what-card {
+      background: var(--light-bg);
+      border-radius: 20px; padding: 32px 28px;
+      border: 1px solid rgba(26,42,74,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .what-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(26,42,74,0.1);
+    }
+    .what-card-icon {
+      width: 52px; height: 52px;
+      background: var(--gold-faint);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); margin-bottom: 20px;
+    }
+    .what-card-title {
+      font-size: 18px; font-weight: 800;
+      color: var(--navy); letter-spacing: -0.3px;
+      margin-bottom: 10px; line-height: 1.3;
+    }
+    .what-card-desc {
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+    }
+
+    /* ===== VS SECTION ===== */
+    .vs-section {
+      background: var(--light-bg);
+      padding: 100px 60px;
+    }
+    .vs-inner {
+      max-width: 960px; margin: 0 auto;
+    }
+    .vs-header { text-align: center; margin-bottom: 56px; }
+    .vs-table {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .vs-col {
+      border-radius: 24px; padding: 36px 32px;
+      border: 1px solid transparent;
+    }
+    .vs-col.no {
+      background: rgba(26,42,74,0.04);
+      border-color: rgba(26,42,74,0.08);
+    }
+    .vs-col.yes {
+      background: var(--dark2);
+      border-color: rgba(200,169,110,0.2);
+    }
+    .vs-col-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .vs-col.no .vs-col-label { color: var(--text-muted); }
+    .vs-col.yes .vs-col-label { color: var(--gold); }
+    .vs-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .vs-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; line-height: 1.5;
+    }
+    .vs-col.no .vs-list li { color: var(--text-muted); }
+    .vs-col.yes .vs-list li { color: rgba(255,255,255,0.8); }
+    .vs-list li svg { flex-shrink: 0; margin-top: 2px; }
+
+    /* ===== STEPS SECTION ===== */
+    .steps-section {
+      background: var(--white);
+      padding: 100px 60px;
+    }
+    .steps-inner {
+      max-width: 1160px; margin: 0 auto;
+    }
+    .steps-header { margin-bottom: 72px; max-width: 560px; }
+    .step-block {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      margin-bottom: 100px;
+    }
+    .step-block:last-child { margin-bottom: 0; }
+    .step-block.reverse { direction: ltr; }
+    .step-block.reverse > * { direction: rtl; }
+    .step-img-wrap {
+      border-radius: 28px; overflow: hidden;
+      aspect-ratio: 4/3; position: relative;
+    }
+    .step-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .step-block:hover .step-img-wrap img { transform: scale(1.04); }
+    .step-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,42,74,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .step-num {
+      font-size: 80px; font-weight: 900; letter-spacing: -4px;
+      color: rgba(200,169,110,0.15); line-height: 1;
+      margin-bottom: -12px;
+    }
+    .step-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .step-title {
+      font-size: clamp(24px, 3vw, 38px); font-weight: 900;
+      letter-spacing: -1px; line-height: 1.15; color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .step-desc {
+      font-size: 15px; color: var(--text-muted); line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .step-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .step-tag {
+      font-size: 12px; font-weight: 600;
+      background: var(--gold-faint);
+      border: 1px solid rgba(200,169,110,0.3);
+      color: var(--gold); border-radius: 100px;
+      padding: 5px 14px;
+    }
+
+    /* ===== RESULTS STRIP ===== */
+    .results-strip {
+      background: var(--navy);
+      padding: 80px 60px;
+    }
+    .results-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+    }
+    .result-item { text-align: center; }
+    .result-num {
+      font-size: 52px; font-weight: 900; color: var(--gold);
+      letter-spacing: -2.5px; line-height: 1;
+    }
+    .result-num span { font-size: 28px; }
+    .result-label {
+      font-size: 14px; color: rgba(255,255,255,0.5);
+      margin-top: 8px; line-height: 1.5;
+    }
+
+    /* ===== WHO IS IT FOR ===== */
+    .who-section {
+      background: var(--light-bg);
+      padding: 100px 60px;
+    }
+    .who-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .who-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+    .who-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 16px; color: var(--navy); line-height: 1.5;
+      background: var(--white); border-radius: 14px;
+      padding: 18px 20px;
+      border: 1px solid rgba(26,42,74,0.07);
+    }
+    .who-list li svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); }
+    .who-img-col {
+      position: relative; border-radius: 32px;
+      overflow: hidden; aspect-ratio: 3/4;
+    }
+    .who-img-col img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.9);
+    }
+    .who-img-badge {
+      position: absolute; bottom: 24px; right: 24px;
+      background: rgba(10,14,20,0.85); backdrop-filter: blur(12px);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 16px; padding: 16px 22px;
+    }
+    .who-badge-title {
+      font-size: 24px; font-weight: 900; color: var(--gold);
+      letter-spacing: -1px; line-height: 1;
+    }
+    .who-badge-sub {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      margin-top: 4px; letter-spacing: 0.5px;
+    }
+
+    /* ===== FAQ ===== */
+    .cfo-faq {
+      background: var(--white);
+      padding: 100px 60px;
+    }
+    .cfo-faq-inner {
+      max-width: 760px; margin: 0 auto;
+    }
+    .cfo-faq-header { text-align: center; margin-bottom: 52px; }
+    .faq-item {
+      border-bottom: 1px solid rgba(26,42,74,0.1);
+    }
+    .faq-item:first-of-type { border-top: 1px solid rgba(26,42,74,0.1); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0; cursor: pointer; gap: 16px;
+      font-family: 'Heebo', sans-serif;
+    }
+    .faq-q-text {
+      font-size: 17px; font-weight: 700;
+      color: var(--navy); text-align: right; line-height: 1.4;
+    }
+    .faq-arrow {
+      flex-shrink: 0; color: var(--gold);
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      font-size: 15px; color: var(--text-muted);
+      line-height: 1.85; padding-bottom: 22px;
+      display: none;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== BOTTOM CTA ===== */
+    .cfo-cta {
+      background: var(--dark2);
+      padding: 100px 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cfo-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cfo-cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .cfo-cta-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .cfo-cta-title {
+      font-size: clamp(32px, 5vw, 58px); font-weight: 900;
+      letter-spacing: -2px; line-height: 1.1; color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cfo-cta-sub {
+      font-size: 17px; color: rgba(255,255,255,0.55);
+      line-height: 1.75; margin-bottom: 40px;
+    }
+    .cfo-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .cfo-hero { padding: 120px 20px 60px; min-height: auto; }
+      .cfo-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .cfo-hero-form-wrap { padding: 28px 24px; }
+      .trust-bar { padding: 24px 20px; }
+      .trust-bar-inner { justify-content: center; gap: 20px; }
+      .trust-divider { display: none; }
+      .what-cfo, .vs-section, .steps-section, .who-section, .cfo-faq, .cfo-cta { padding: 72px 20px; }
+      .what-cfo-grid { grid-template-columns: 1fr; gap: 16px; }
+      .vs-table { grid-template-columns: 1fr; }
+      .step-block { grid-template-columns: 1fr; gap: 40px; direction: rtl !important; }
+      .step-block.reverse > * { direction: rtl; }
+      .step-img-wrap { aspect-ratio: 16/9; }
+      .results-inner { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .who-inner { grid-template-columns: 1fr; gap: 40px; }
+      .who-img-col { display: none; }
+    }
+    @media (max-width: 600px) {
+      .cfo-hero, .what-cfo, .vs-section, .steps-section, .who-section, .cfo-faq, .cfo-cta { padding: 60px 16px; }
+      .trust-bar { padding: 20px 16px; }
+      .cfo-hero-title { letter-spacing: -1.5px; }
+      .results-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .result-num { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-wrap">
+        <div class="nav-logo-text">FORMA<span>.</span></div>
+        <div class="nav-logo-sub">Finance</div>
+      </div>
+    </a>
+    <button class="nav-burger" id="navBurger" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">בית</a></li>
+      <li><a href="services.html" class="active">שירותים</a></li>
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="guides.html">מדריכים</a></li>
+      <li><a href="testimonials.html">לקוחות</a></li>
+      <li><a href="index.html#contact" class="nav-cta">קבע שיחה חינמית</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="tel:+972500000000" class="nav-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.56 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        050-000-0000
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="cfo-hero">
+    <div class="cfo-hero-inner">
+      <div class="cfo-hero-content reveal">
+        <div class="cfo-hero-eyebrow">CFO חיצוני לעסקים</div>
+        <h1 class="cfo-hero-title">
+          ניהול כספים<br>ברמת <span>תאגיד</span> -<br>במחיר עסק קטן
+        </h1>
+        <p class="cfo-hero-sub">
+          CFO חיצוני מביא לעסק שלך את כל הידע והכלים של מנהל כספים בכיר, בלי הסכר של משרה מלאה.
+        </p>
+        <ul class="cfo-hero-bullets">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            אבחון פיננסי מקיף ומיפוי מצב עסקי
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            ניהול תזרים מזומנים ותכנון תקציבי
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            דוחות ניהוליים ולוח מחוונים בזמן אמת
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            תמחור נכון, ניהול רווחיות וקבלת החלטות
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            ליווי מול בנקים, רואי חשבון ומשקיעים
+          </li>
+        </ul>
+        <div class="cfo-hero-ctas">
+          <a href="index.html#contact" class="btn-gold">לפגישת ייעוץ ללא עלות</a>
+          <a href="#what-cfo" class="btn-outline">מה זה בדיוק CFO חיצוני?</a>
+        </div>
+      </div>
+      <div class="cfo-hero-form-wrap reveal" style="transition-delay:0.15s">
+        <div class="hero-form-title">השאר פרטים ונחזור אליך</div>
+        <div class="hero-form-sub">ייעוץ ראשוני ללא עלות וללא התחייבות</div>
+        <form onsubmit="handleHeroForm(event)">
+          <div class="cfo-form-field">
+            <label>שם מלא</label>
+            <input type="text" placeholder="ישראל ישראלי" required>
+          </div>
+          <div class="cfo-form-field">
+            <label>טלפון</label>
+            <input type="tel" placeholder="05X-XXX-XXXX" required>
+          </div>
+          <div class="cfo-form-field">
+            <label>אימייל</label>
+            <input type="email" placeholder="you@example.com">
+          </div>
+          <div class="cfo-form-field">
+            <label>גודל עסק (מחזור שנתי)</label>
+            <select>
+              <option value="">בחר...</option>
+              <option>עד 1 מיליון ₪</option>
+              <option>1-5 מיליון ₪</option>
+              <option>5-20 מיליון ₪</option>
+              <option>מעל 20 מיליון ₪</option>
+            </select>
+          </div>
+          <button type="submit" class="cfo-form-submit">שלח - קבע ייעוץ חינמי</button>
+          <div class="cfo-form-note">ללא ספאם. המידע שלך מאובטח ומוגן.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-stat reveal">
+        <div class="trust-stat-num">+150</div>
+        <div class="trust-stat-label">עסקים שליווינו</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-stat reveal" style="transition-delay:0.1s">
+        <div class="trust-stat-num">12%</div>
+        <div class="trust-stat-label">עלייה ממוצעת ברווחיות</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-stat reveal" style="transition-delay:0.2s">
+        <div class="trust-stat-num">8+</div>
+        <div class="trust-stat-label">שנות ניסיון</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-stat reveal" style="transition-delay:0.3s">
+        <div class="trust-stat-num">4.9</div>
+        <div class="trust-stat-label">דירוג ממוצע גוגל</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-stat reveal" style="transition-delay:0.4s">
+        <div class="trust-stat-num">90%</div>
+        <div class="trust-stat-label">לקוחות ממליצים</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WHAT IS CFO ===== -->
+  <section class="what-cfo" id="what-cfo">
+    <div class="what-cfo-inner">
+      <div class="what-cfo-header reveal">
+        <div class="section-eyebrow">מה זה CFO חיצוני?</div>
+        <h2 class="section-title">מנהל הכספים שעסק שלך תמיד היה צריך</h2>
+        <p class="section-sub">
+          CFO (Chief Financial Officer) חיצוני הוא מנהל כספים מקצועי שמשרת עסקים בין פרויקטים, בין חצי משרה לרבע משרה - בדיוק לפי הצורך. הוא לא רואה חשבון. הוא שותף אסטרטגי לצמיחה.
+        </p>
+      </div>
+      <div class="what-cfo-grid">
+        <div class="what-card reveal">
+          <div class="what-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="what-card-title">אסטרטגיה פיננסית</div>
+          <div class="what-card-desc">בונה תוכנית עסקית-פיננסית ריאלית, מגדיר יעדים מדידים ועוזר לך להגיע אליהם עם נתונים ולא ניחושים.</div>
+        </div>
+        <div class="what-card reveal" style="transition-delay:0.1s">
+          <div class="what-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="what-card-title">דוחות ניהוליים</div>
+          <div class="what-card-desc">לוח מחוונים שמראה לך בדיוק איפה הכסף, מה הרווח האמיתי ואיפה מדממים. קבלת החלטות בטוחה.</div>
+        </div>
+        <div class="what-card reveal" style="transition-delay:0.2s">
+          <div class="what-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="what-card-title">ניהול סיכונים</div>
+          <div class="what-card-desc">מזהה מראש חורים בתזרים, עלויות נסתרות וחשיפות מיותרות - לפני שהן הופכות לבעיה.</div>
+        </div>
+        <div class="what-card reveal" style="transition-delay:0.3s">
+          <div class="what-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="what-card-title">תמחור ורווחיות</div>
+          <div class="what-card-desc">מחשב את עלות האמת של כל מוצר ושירות, בונה מודל תמחור שמבטיח רווח - לא רק מחזור.</div>
+        </div>
+        <div class="what-card reveal" style="transition-delay:0.4s">
+          <div class="what-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="what-card-title">ייצוג מול גורמים חיצוניים</div>
+          <div class="what-card-desc">מלווה אותך מול בנקים, מחפשי מימון, רואי חשבון, רשויות מס ומשקיעים פוטנציאליים.</div>
+        </div>
+        <div class="what-card reveal" style="transition-delay:0.5s">
+          <div class="what-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="what-card-title">חיסכון בזמן ועלות</div>
+          <div class="what-card-desc">במקום CFO שכיר בשכר 40,000+ לחודש, אתה מקבל את אותה המיומנות במחיר מותאם לעסק קטן-בינוני.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VS SECTION ===== -->
+  <section class="vs-section">
+    <div class="vs-inner">
+      <div class="vs-header reveal">
+        <div class="section-eyebrow">השוואה</div>
+        <h2 class="section-title">CFO חיצוני לעומת ניהול עצמאי</h2>
+        <p class="section-sub" style="margin: 14px auto 0; max-width: 500px;">
+          רוב בעלי העסקים מנהלים כספים לבד - וזה בסדר בהתחלה. בשלב מסוים, זה עולה להם ביוקר.
+        </p>
+      </div>
+      <div class="vs-table reveal">
+        <div class="vs-col no">
+          <div class="vs-col-label">ניהול עצמאי</div>
+          <ul class="vs-list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              מחליטים לפי תחושת בטן, בלי מספרים
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              תזרים מפתיע ומלחיץ בסוף חודש
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              לא יודעים מה הרווח האמיתי
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              תמחור לא מדויק - מרוויחים פחות ממה שחושבים
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              מול הבנק - ללא הכנה מקצועית
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              הצמיחה תקועה כי הבסיס הפיננסי לא יציב
+            </li>
+          </ul>
+        </div>
+        <div class="vs-col yes">
+          <div class="vs-col-label">עם CFO חיצוני - פורמה</div>
+          <ul class="vs-list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              החלטות עסקיות מבוססות נתונים בזמן אמת
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              תחזית תזרים ל-3 חודשים קדימה תמיד
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              דוח רווח ריאלי - כולל עלויות נסתרות
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              מודל תמחור מדויק שמבטיח שולי רווח
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              מצגת ומסמכים מקצועיים לבנקים ומשקיעים
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              צמיחה מתוכננת ומבוקרת על בסיס יציב
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STEPS ===== -->
+  <section class="steps-section">
+    <div class="steps-inner">
+      <div class="steps-header reveal">
+        <div class="section-eyebrow">איך מתקדמים מכאן?</div>
+        <h2 class="section-title">4 שלבים לניהול כספים שעובד</h2>
+        <p class="section-sub">
+          תהליך ברור, מהיר ומותאם לעסק שלך - מאבחון ועד ניהול שוטף.
+        </p>
+      </div>
+
+      <div class="step-block">
+        <div class="step-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&q=80&fit=crop" alt="שיחת היכרות">
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="step-num">01</div>
+          <div class="step-eyebrow">שלב ראשון</div>
+          <h3 class="step-title">שיחת היכרות חינמית</h3>
+          <p class="step-desc">
+            פגישה של 45 דקות בה נלמד על העסק, האתגרים הפיננסיים שלך והיעדים שהצבת לעצמך. אנחנו מגיעים מוכנים עם שאלות חכמות, ואתה יוצא עם תובנות שימושיות - גם אם לא תמשיך איתנו.
+          </p>
+          <div class="step-tags">
+            <span class="step-tag">45 דקות</span>
+            <span class="step-tag">ללא עלות</span>
+            <span class="step-tag">ללא התחייבות</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block reverse">
+        <div class="step-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&fit=crop" alt="אבחון פיננסי">
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="step-num">02</div>
+          <div class="step-eyebrow">שלב שני</div>
+          <h3 class="step-title">אבחון פיננסי מקיף</h3>
+          <p class="step-desc">
+            בודקים לעומק: מאזן, תזרים, עלויות, תמחור, ממשקים עם רואה חשבון וספקים. מגישים דוח אבחון מפורט עם ממצאים, עדיפויות ותוכנית פעולה ברורה לשיפור מיידי.
+          </p>
+          <div class="step-tags">
+            <span class="step-tag">שבוע עד שבועיים</span>
+            <span class="step-tag">דוח כתוב</span>
+            <span class="step-tag">המלצות מיידיות</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=80&fit=crop" alt="בניית מערכת">
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="step-num">03</div>
+          <div class="step-eyebrow">שלב שלישי</div>
+          <h3 class="step-title">בניית מערכת ניהולית</h3>
+          <p class="step-desc">
+            מקימים יחד לוח מחוונים פיננסי, נהלי דיווח ובקרה, תחזיות תזרים ומודל תמחור. תוך חודש אחד יש לך תמונה ברורה ומלאה של המצב הפיננסי בכל עת.
+          </p>
+          <div class="step-tags">
+            <span class="step-tag">לוח מחוונים</span>
+            <span class="step-tag">תחזית תזרים</span>
+            <span class="step-tag">מודל תמחור</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block reverse">
+        <div class="step-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=900&q=80&fit=crop" alt="ניהול שוטף">
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="step-num">04</div>
+          <div class="step-eyebrow">שלב רביעי</div>
+          <h3 class="step-title">ניהול שוטף וצמיחה</h3>
+          <p class="step-desc">
+            פגישות חודשיות לבחינת ביצועים, התאמות ובקרה. אנחנו שותפים אקטיביים לכל החלטה פיננסית משמעותית - גיוס עובדים, השקעות, הרחבה לשווקים חדשים.
+          </p>
+          <div class="step-tags">
+            <span class="step-tag">פגישה חודשית</span>
+            <span class="step-tag">זמינות שוטפת</span>
+            <span class="step-tag">ליווי אסטרטגי</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== RESULTS STRIP ===== -->
+  <div class="results-strip">
+    <div class="results-inner">
+      <div class="result-item reveal">
+        <div class="result-num">+12<span>%</span></div>
+        <div class="result-label">עלייה ממוצעת ברווחיות<br>תוך 6 חודשים</div>
+      </div>
+      <div class="result-item reveal" style="transition-delay:0.1s">
+        <div class="result-num">3<span>x</span></div>
+        <div class="result-label">שיפור בניהול<br>תזרים המזומנים</div>
+      </div>
+      <div class="result-item reveal" style="transition-delay:0.2s">
+        <div class="result-num">150<span>+</span></div>
+        <div class="result-label">עסקים שקיבלו<br>כלים פיננסיים אמיתיים</div>
+      </div>
+      <div class="result-item reveal" style="transition-delay:0.3s">
+        <div class="result-num">24<span>h</span></div>
+        <div class="result-label">זמן מענה מקסימלי<br>לכל שאלה דחופה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WHO IS IT FOR ===== -->
+  <section class="who-section">
+    <div class="who-inner">
+      <div>
+        <div class="reveal">
+          <div class="section-eyebrow">למי זה מתאים?</div>
+          <h2 class="section-title">CFO חיצוני מתאים לך אם...</h2>
+        </div>
+        <ul class="who-list">
+          <li class="reveal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            העסק שלך צומח אבל אתה לא בטוח לאן הכסף הולך
+          </li>
+          <li class="reveal" style="transition-delay:0.05s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            תזרים מלחיץ אותך גם כשיש הכנסות טובות
+          </li>
+          <li class="reveal" style="transition-delay:0.1s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            מחזור מעל 1 מיליון ₪ בשנה ועדיין אין לך דוחות ניהוליים
+          </li>
+          <li class="reveal" style="transition-delay:0.15s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            אתה מתכנן לגייס עובדים, פתוח סניף, או להיכנס לשוק חדש
+          </li>
+          <li class="reveal" style="transition-delay:0.2s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            אתה רוצה לגשת לאשראי עסקי או מימון חיצוני
+          </li>
+        </ul>
+      </div>
+      <div class="who-img-col reveal">
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=80&fit=crop" alt="ייעוץ עסקי">
+        <div class="who-img-badge">
+          <div class="who-badge-title">CFO</div>
+          <div class="who-badge-sub">Chief Financial Officer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="cfo-faq">
+    <div class="cfo-faq-inner">
+      <div class="cfo-faq-header reveal">
+        <div class="section-eyebrow">שאלות נפוצות</div>
+        <h2 class="section-title">שאלות על CFO חיצוני</h2>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">מה ההבדל בין CFO חיצוני לרואה חשבון?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          רואה חשבון מטפל בעבר - דיווחים, תשלומי מס, ניהול ספרים. CFO חיצוני מטפל בהווה ובעתיד - תזרים, תחזיות, אסטרטגיה פיננסית וקבלת החלטות. שניהם נחוצים, אך ממלאים תפקידים שונים לחלוטין. רוב העסקים צריכים את שניהם.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">כמה עולה CFO חיצוני בהשוואה לשכיר?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          CFO שכיר בישראל עולה 40,000-70,000 ₪ בחודש (כולל עלויות מעסיק). CFO חיצוני דרך פורמה עולה שבריר מזה, לפי היקף הפעילות הנדרשת. עבור רוב העסקים שלנו, החיסכון ברווחיות שמניב הליווי מכסה את עלותו תוך 2-3 חודשים.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">מתי אפשר לראות תוצאות ראשונות?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          תוך שבועיים - חודש כבר יש לך תמונה ברורה של המצב הפיננסי ו-3 עד 5 פעולות מיידיות לשיפור. שינויים מהותיים ברווחיות מורגשים בדרך כלל תוך רבעון ראשון - תלוי במצב ההתחלתי ובמהירות יישום ההמלצות.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">כמה זמן מוקדש לעסק שלי בכל חודש?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          זה תלוי בחבילה שתבחר ובצרכים העסקיים שלך. בדרך כלל: פגישה חודשית של שעה עד שעה וחצי, ניתוח שוטף של נתונים, מענה לשאלות בתוך 24 שעות, ובנקודות קריטיות (גיוס, משא ומתן, גידול) - כמה שצריך.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">האם נדרשת התחייבות לתקופה מינימלית?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          ליווי CFO חיצוני הוא מערכת יחסים של שיתוף פעולה, ולכן אנחנו עובדים בדרך כלל בהסכמים רבעוניים שמתחדשים. שלב האבחון הוא חד-פעמי ומיידי - לא מחייב המשך. ברוב המקרים, לאחר חודשיים עבודה, לקוחות לא רוצים לסיים.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">איזה מידע צריך לשתף עם CFO חיצוני?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          גישה לחשבונות בנק (לצפייה בלבד), דוחות רואה חשבון, רשימת לקוחות וספקים עיקריים, ומידע על עלויות ועובדים. הכל מתנהל תחת הסכם סודיות מלא. ה-CFO שלנו הוא שותף מהימן לחלוטין.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <section class="cfo-cta">
+    <div class="cfo-cta-inner">
+      <div class="cfo-cta-eyebrow reveal">מוכן להתחיל?</div>
+      <h2 class="cfo-cta-title reveal">הכסף שלך מחכה<br>לניהול נכון</h2>
+      <p class="cfo-cta-sub reveal">
+        שיחת ייעוץ ראשונה ללא עלות וללא התחייבות. תוך 45 דקות תצא עם 3 תובנות שיפרו את הרווחיות שלך - גם אם לא תמשיך איתנו.
+      </p>
+      <div class="cfo-cta-btns reveal">
+        <a href="index.html#contact" class="btn-gold">לפגישת ייעוץ חינמית</a>
+        <a href="services.html" class="btn-outline">לכל השירותים</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo-text">FORMA<span style="color:var(--gold)">.</span></div>
+        <p class="footer-desc">CFO חיצוני וליווי פיננסי לעסקים שרוצים לצמוח נכון.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/972500000000" aria-label="WhatsApp">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">ניווט</div>
+        <ul class="footer-links">
+          <li><a href="index.html">בית</a></li>
+          <li><a href="services.html">שירותים</a></li>
+          <li><a href="cfo.html">CFO חיצוני</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="guides.html">מדריכים</a></li>
+          <li><a href="testimonials.html">לקוחות</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">יצירת קשר</div>
+        <ul class="footer-links">
+          <li><a href="mailto:dorc@formafinance.co.il">dorc@formafinance.co.il</a></li>
+          <li><a href="tel:+972500000000">050-000-0000</a></li>
+          <li><a href="index.html#contact">השאר פרטים</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">2025 פורמה פיננסים. כל הזכויות שמורות.</span>
+      <a href="mailto:dorc@formafinance.co.il" class="footer-email">dorc@formafinance.co.il</a>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/972500000000" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile burger
+    const burger = document.getElementById('navBurger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      navbar.classList.toggle('menu-open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navbar.classList.remove('menu-open'));
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Hero form submit
+    function handleHeroForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.cfo-form-submit');
+      btn.textContent = 'נשלח! נחזור אליך בקרוב';
+      btn.style.background = '#4caf50';
+      btn.style.color = '#fff';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
