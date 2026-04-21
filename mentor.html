@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מנטור פיננסי צמוד | פורמה פיננסים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== MENTOR HERO ===== */
+    .mentor-hero {
+      min-height: 100vh;
+      background: var(--dark2);
+      display: flex; align-items: center;
+      padding: 140px 60px 80px;
+      position: relative; overflow: hidden;
+    }
+    .mentor-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(200,169,110,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(26,42,74,0.45) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .mentor-hero-inner {
+      max-width: 1160px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; position: relative; z-index: 1;
+    }
+    .mentor-hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .mentor-hero-title {
+      font-size: clamp(36px, 5vw, 68px); font-weight: 900;
+      letter-spacing: -2.5px; line-height: 1.05; color: var(--white);
+      margin-bottom: 20px;
+    }
+    .mentor-hero-title span { color: var(--gold); }
+    .mentor-hero-sub {
+      font-size: 18px; color: rgba(255,255,255,0.65);
+      line-height: 1.75; margin-bottom: 36px; max-width: 480px;
+    }
+    .mentor-hero-bullets {
+      list-style: none; display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 40px;
+    }
+    .mentor-hero-bullets li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.5;
+    }
+    .mentor-hero-bullets li svg { flex-shrink: 0; margin-top: 2px; }
+    .mentor-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ===== HERO IMAGE PANEL ===== */
+    .mentor-hero-img-panel {
+      position: relative;
+      border-radius: 28px; overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .mentor-hero-img-panel img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.85);
+    }
+    .mentor-hero-img-panel::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(10,14,20,0.7) 100%);
+      pointer-events: none;
+    }
+    .mentor-img-badge {
+      position: absolute; bottom: 24px; right: 24px;
+      background: rgba(10,14,20,0.88); backdrop-filter: blur(14px);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 16px; padding: 18px 22px; z-index: 2;
+    }
+    .mentor-img-badge-num {
+      font-size: 38px; font-weight: 900; color: rgba(200,169,110,0.4);
+      letter-spacing: -2px; line-height: 1;
+    }
+    .mentor-img-badge-label {
+      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5);
+      letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;
+    }
+    .mentor-img-stat {
+      position: absolute; top: 24px; left: 24px;
+      background: rgba(10,14,20,0.88); backdrop-filter: blur(14px);
+      border: 1px solid rgba(200,169,110,0.2);
+      border-radius: 14px; padding: 14px 18px; z-index: 2;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .mentor-img-stat-num {
+      font-size: 26px; font-weight: 900; color: var(--gold);
+      letter-spacing: -1px; line-height: 1;
+    }
+    .mentor-img-stat-label {
+      font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4;
+    }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: var(--dark);
+      padding: 28px 60px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .trust-bar-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .trust-stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .trust-stat-num { font-size: 32px; font-weight: 900; color: var(--gold); letter-spacing: -1.5px; line-height: 1; }
+    .trust-stat-label { font-size: 13px; color: rgba(255,255,255,0.45); white-space: nowrap; }
+    .trust-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); }
+
+    /* ===== WHAT IS MENTOR ===== */
+    .what-mentor {
+      background: var(--white);
+      padding: 100px 60px;
+    }
+    .what-mentor-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .what-mentor-text {}
+    .what-mentor-visual {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .what-mini-card {
+      background: var(--light-bg);
+      border-radius: 18px; padding: 24px 20px;
+      border: 1px solid rgba(26,42,74,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .what-mini-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(26,42,74,0.09); }
+    .what-mini-card:first-child { grid-column: 1 / -1; background: var(--navy); border-color: transparent; }
+    .what-mini-card:first-child .what-mini-title { color: var(--white); }
+    .what-mini-card:first-child .what-mini-desc { color: rgba(255,255,255,0.55); }
+    .what-mini-icon { color: var(--gold); margin-bottom: 14px; }
+    .what-mini-title { font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+    .what-mini-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ===== PROGRAM SECTION ===== */
+    .program-section {
+      background: var(--light-bg);
+      padding: 100px 60px;
+    }
+    .program-inner { max-width: 1160px; margin: 0 auto; }
+    .program-header { text-align: center; margin-bottom: 64px; }
+    .program-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .program-month {
+      background: var(--white);
+      border-radius: 24px; padding: 36px 28px;
+      border: 1px solid rgba(26,42,74,0.08);
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .program-month:hover { transform: translateY(-5px); box-shadow: 0 20px 56px rgba(26,42,74,0.1); }
+    .program-month.featured {
+      background: var(--navy); border-color: rgba(200,169,110,0.3);
+    }
+    .program-month-num {
+      font-size: 72px; font-weight: 900; letter-spacing: -3px;
+      color: rgba(200,169,110,0.12); line-height: 1;
+      position: absolute; top: 16px; left: 20px;
+    }
+    .program-month.featured .program-month-num { color: rgba(200,169,110,0.2); }
+    .program-month-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 12px; position: relative; z-index: 1;
+    }
+    .program-month-title {
+      font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
+      color: var(--navy); margin-bottom: 12px; line-height: 1.3;
+      position: relative; z-index: 1;
+    }
+    .program-month.featured .program-month-title { color: var(--white); }
+    .program-month-desc {
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+      margin-bottom: 20px; position: relative; z-index: 1;
+    }
+    .program-month.featured .program-month-desc { color: rgba(255,255,255,0.55); }
+    .program-items {
+      list-style: none; display: flex; flex-direction: column; gap: 9px;
+      position: relative; z-index: 1;
+    }
+    .program-items li {
+      display: flex; align-items: flex-start; gap: 9px;
+      font-size: 13px; line-height: 1.5;
+    }
+    .program-items li.navy { color: var(--text-muted); }
+    .program-items li.featured-li { color: rgba(255,255,255,0.75); }
+    .program-items li svg { flex-shrink: 0; margin-top: 2px; }
+
+    /* ===== STEPS SECTION ===== */
+    .steps-section {
+      background: var(--white);
+      padding: 100px 60px;
+    }
+    .steps-inner { max-width: 1160px; margin: 0 auto; }
+    .steps-header { margin-bottom: 72px; max-width: 560px; }
+    .step-block {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      margin-bottom: 100px;
+    }
+    .step-block:last-child { margin-bottom: 0; }
+    .step-block.reverse { direction: ltr; }
+    .step-block.reverse > * { direction: rtl; }
+    .step-img-wrap {
+      border-radius: 28px; overflow: hidden;
+      aspect-ratio: 4/3; position: relative;
+    }
+    .step-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .step-block:hover .step-img-wrap img { transform: scale(1.04); }
+    .step-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,42,74,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .step-num { font-size: 80px; font-weight: 900; letter-spacing: -4px; color: rgba(200,169,110,0.15); line-height: 1; margin-bottom: -12px; }
+    .step-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .step-title { font-size: clamp(22px, 2.8vw, 36px); font-weight: 900; letter-spacing: -1px; line-height: 1.15; color: var(--navy); margin-bottom: 16px; }
+    .step-desc { font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; }
+    .step-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .step-tag { font-size: 12px; font-weight: 600; background: var(--gold-faint); border: 1px solid rgba(200,169,110,0.3); color: var(--gold); border-radius: 100px; padding: 5px 14px; }
+
+    /* ===== QUOTE STRIP ===== */
+    .quote-strip {
+      background: var(--navy);
+      padding: 80px 60px;
+      text-align: center;
+    }
+    .quote-strip-inner { max-width: 760px; margin: 0 auto; }
+    .quote-mark { font-size: 80px; color: rgba(200,169,110,0.2); line-height: 0.5; margin-bottom: 24px; font-family: Georgia, serif; }
+    .quote-text {
+      font-size: clamp(20px, 3vw, 32px); font-weight: 800;
+      color: var(--white); letter-spacing: -0.5px; line-height: 1.4;
+      margin-bottom: 28px;
+    }
+    .quote-text span { color: var(--gold); }
+    .quote-author { font-size: 14px; color: rgba(255,255,255,0.4); letter-spacing: 0.5px; }
+
+    /* ===== WHO SECTION ===== */
+    .who-section {
+      background: var(--light-bg);
+      padding: 100px 60px;
+    }
+    .who-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .who-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+    .who-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 16px; color: var(--navy); line-height: 1.5;
+      background: var(--white); border-radius: 14px;
+      padding: 18px 20px; border: 1px solid rgba(26,42,74,0.07);
+    }
+    .who-list li svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); }
+    .who-img-col { position: relative; border-radius: 32px; overflow: hidden; aspect-ratio: 3/4; }
+    .who-img-col img { width: 100%; height: 100%; object-fit: cover; }
+    .who-img-badge {
+      position: absolute; bottom: 24px; right: 24px;
+      background: rgba(10,14,20,0.85); backdrop-filter: blur(12px);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 16px; padding: 16px 22px;
+    }
+    .who-badge-title { font-size: 22px; font-weight: 900; color: var(--gold); letter-spacing: -1px; line-height: 1; }
+    .who-badge-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.5px; }
+
+    /* ===== RESULTS STRIP ===== */
+    .results-strip {
+      background: var(--dark2);
+      padding: 80px 60px;
+    }
+    .results-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; }
+    .result-item { text-align: center; }
+    .result-num { font-size: 52px; font-weight: 900; color: var(--gold); letter-spacing: -2.5px; line-height: 1; }
+    .result-num span { font-size: 28px; }
+    .result-label { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.5; }
+
+    /* ===== FAQ ===== */
+    .mentor-faq { background: var(--white); padding: 100px 60px; }
+    .mentor-faq-inner { max-width: 760px; margin: 0 auto; }
+    .mentor-faq-header { text-align: center; margin-bottom: 52px; }
+    .faq-item { border-bottom: 1px solid rgba(26,42,74,0.1); }
+    .faq-item:first-of-type { border-top: 1px solid rgba(26,42,74,0.1); }
+    .faq-q { width: 100%; background: none; border: none; display: flex; align-items: center; justify-content: space-between; padding: 22px 0; cursor: pointer; gap: 16px; font-family: 'Heebo', sans-serif; }
+    .faq-q-text { font-size: 17px; font-weight: 700; color: var(--navy); text-align: right; line-height: 1.4; }
+    .faq-arrow { flex-shrink: 0; color: var(--gold); transition: transform 0.3s ease; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { font-size: 15px; color: var(--text-muted); line-height: 1.85; padding-bottom: 22px; display: none; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== BOTTOM CTA ===== */
+    .mentor-cta {
+      background: var(--dark2);
+      padding: 100px 60px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .mentor-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .mentor-cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .mentor-cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .mentor-cta-title { font-size: clamp(30px, 4.5vw, 56px); font-weight: 900; letter-spacing: -2px; line-height: 1.1; color: var(--white); margin-bottom: 16px; }
+    .mentor-cta-sub { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 40px; }
+    .mentor-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .mentor-hero { padding: 120px 20px 60px; min-height: auto; }
+      .mentor-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .mentor-hero-img-panel { aspect-ratio: 16/9; }
+      .trust-bar { padding: 24px 20px; }
+      .trust-bar-inner { justify-content: center; gap: 20px; }
+      .trust-divider { display: none; }
+      .what-mentor, .program-section, .steps-section, .who-section, .mentor-faq, .mentor-cta { padding: 72px 20px; }
+      .what-mentor-inner { grid-template-columns: 1fr; gap: 48px; }
+      .what-mentor-visual { grid-template-columns: 1fr 1fr; }
+      .program-grid { grid-template-columns: 1fr; }
+      .step-block { grid-template-columns: 1fr; gap: 36px; direction: rtl !important; }
+      .step-block.reverse > * { direction: rtl; }
+      .step-img-wrap { aspect-ratio: 16/9; }
+      .results-inner { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .who-inner { grid-template-columns: 1fr; gap: 40px; }
+      .who-img-col { display: none; }
+      .quote-strip { padding: 60px 20px; }
+    }
+    @media (max-width: 600px) {
+      .mentor-hero, .what-mentor, .program-section, .steps-section, .who-section, .mentor-faq, .mentor-cta, .results-strip { padding: 60px 16px; }
+      .trust-bar { padding: 20px 16px; }
+      .what-mentor-visual { grid-template-columns: 1fr; }
+      .result-num { font-size: 40px; }
+      .results-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-wrap">
+        <div class="nav-logo-text">FORMA<span>.</span></div>
+        <div class="nav-logo-sub">Finance</div>
+      </div>
+    </a>
+    <button class="nav-burger" id="navBurger" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">בית</a></li>
+      <li><a href="services.html" class="active">שירותים</a></li>
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="guides.html">מדריכים</a></li>
+      <li><a href="testimonials.html">לקוחות</a></li>
+      <li><a href="index.html#contact" class="nav-cta">קבע שיחה חינמית</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="tel:+972500000000" class="nav-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.56 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        050-000-0000
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="mentor-hero">
+    <div class="mentor-hero-inner">
+      <div class="reveal">
+        <div class="mentor-hero-eyebrow">ליווי פיננסי לבעלי עסקים</div>
+        <h1 class="mentor-hero-title">
+          ללמוד לקרוא<br>את הכסף שלך -<br>בעצמך, <span>לתמיד</span>
+        </h1>
+        <p class="mentor-hero-sub">
+          מנטור פיננסי צמוד שלא רק פותר לך בעיות - אלא מלמד אותך לחשוב כלכלית. תוך 90 יום תקבל ראש פיננסי שיישאר איתך לכל החיים.
+        </p>
+        <ul class="mentor-hero-bullets">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            פגישות 1:1 שבועיות מותאמות לעסק שלך
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            בניית תוכנית פיננסית אישית עם יעדים מדידים
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            הבנת הדוחות הפיננסיים שלך - בלי מונחים מסובכים
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            בניית תקציב ריאלי ויעדי רווחיות להשגה
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            תמיכה שוטפת בוואטסאפ בין הפגישות
+          </li>
+        </ul>
+        <div class="mentor-hero-ctas">
+          <a href="index.html#contact" class="btn-gold">לפגישת ייעוץ ראשונה חינם</a>
+          <a href="#what-mentor" class="btn-outline">איך זה עובד?</a>
+        </div>
+      </div>
+      <div class="mentor-hero-img-panel reveal" style="transition-delay:0.15s">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&fit=crop" alt="מנטור פיננסי צמוד">
+        <div class="mentor-img-stat">
+          <div class="mentor-img-stat-num">90</div>
+          <div class="mentor-img-stat-label">יום לתוצאות<br>ראשונות</div>
+        </div>
+        <div class="mentor-img-badge">
+          <div class="mentor-img-badge-num">02</div>
+          <div class="mentor-img-badge-label">ליווי אישי</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-stat reveal">
+        <div class="trust-stat-num">+80</div>
+        <div class="trust-stat-label">עסקים בליווי אישי</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-stat reveal" style="transition-delay:0.1s">
+        <div class="trust-stat-num">90</div>
+        <div class="trust-stat-label">יום לתוצאות ראשונות</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-stat reveal" style="transition-delay:0.2s">
+        <div class="trust-stat-num">4.9</div>
+        <div class="trust-stat-label">דירוג ממוצע גוגל</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-stat reveal" style="transition-delay:0.3s">
+        <div class="trust-stat-num">1:1</div>
+        <div class="trust-stat-label">פגישות אישיות שבועיות</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-stat reveal" style="transition-delay:0.4s">
+        <div class="trust-stat-num">95%</div>
+        <div class="trust-stat-label">לקוחות ממשיכים<br>מעבר לחודש הראשון</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WHAT IS MENTOR ===== -->
+  <section class="what-mentor" id="what-mentor">
+    <div class="what-mentor-inner">
+      <div class="reveal">
+        <div class="section-eyebrow">מה זה ליווי פיננסי אישי?</div>
+        <h2 class="section-title">לא יועץ. שותף שמלמד אותך.</h2>
+        <p class="section-sub">
+          רוב בעלי העסקים מרגישים שהם "מנהלים בעיוורון" - יש הכנסות, יש הוצאות, אבל אין תמונה ברורה. המנטור הפיננסי שלנו לא רק מסדר את המספרים - הוא מלמד אותך לקרוא אותם, להבין אותם, ולקבל החלטות עסקיות נכונות לבד.
+        </p>
+        <p class="section-sub" style="margin-top: 16px;">
+          זה לא ניהול כספים במיקור חוץ. זה קורס מואץ ומותאם אישית בניהול פיננסי - תוך כדי ניהול עסק אמיתי.
+        </p>
+      </div>
+      <div class="what-mentor-visual reveal" style="transition-delay:0.15s">
+        <div class="what-mini-card">
+          <div class="what-mini-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="what-mini-title">ליווי אישי 100%</div>
+          <div class="what-mini-desc">לא קבוצה, לא קורס מוקלט. מנטור אחד שמכיר את העסק שלך לעומק ומלווה אותך צעד אחרי צעד.</div>
+        </div>
+        <div class="what-mini-card">
+          <div class="what-mini-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="what-mini-title">תוצאות מדידות</div>
+          <div class="what-mini-desc">יעדים ברורים בתחילת כל חודש ובדיקה בסוף. אתה יודע בדיוק מה השגת.</div>
+        </div>
+        <div class="what-mini-card">
+          <div class="what-mini-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="what-mini-title">כלים שנשארים איתך</div>
+          <div class="what-mini-desc">לא תלוי בנו לנצח. אחרי 90 יום יש לך כלים ומנטליות שתוכל להשתמש בהם לבד.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAM SECTION ===== -->
+  <section class="program-section">
+    <div class="program-inner">
+      <div class="program-header reveal">
+        <div class="section-eyebrow">תוכנית הליווי</div>
+        <h2 class="section-title">3 חודשים. 3 שלבים. שינוי אמיתי.</h2>
+        <p class="section-sub" style="margin: 14px auto 0; max-width: 500px;">
+          כל חודש מתמקד בנושא אחד ומוביל לתוצאה ברורה. לא תיאוריה - עשייה מותאמת לעסק שלך.
+        </p>
+      </div>
+      <div class="program-grid">
+        <div class="program-month reveal">
+          <div class="program-month-num">01</div>
+          <div class="program-month-label">חודש ראשון</div>
+          <div class="program-month-title">אבחון ומיפוי - להבין את הכסף שלך</div>
+          <div class="program-month-desc">נבנה יחד תמונה מלאה של המצב הפיננסי האמיתי. מאיפה מגיעים הכסף ולאיפה הוא הולך.</div>
+          <ul class="program-items">
+            <li class="navy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              מיפוי הכנסות, הוצאות ורווח אמיתי
+            </li>
+            <li class="navy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              זיהוי דולפי כסף ועלויות נסתרות
+            </li>
+            <li class="navy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              הקמת לוח מחוונים בסיסי
+            </li>
+            <li class="navy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              בניית תקציב ראשון לעסק
+            </li>
+          </ul>
+        </div>
+        <div class="program-month featured reveal" style="transition-delay:0.1s">
+          <div class="program-month-num">02</div>
+          <div class="program-month-label">חודש שני</div>
+          <div class="program-month-title">בנייה ותמחור - לגרום לכסף לעבוד</div>
+          <div class="program-month-desc">מתקנים את מה שלא עובד ובונים מערכת שמייצרת רווח אמיתי בכל מכירה.</div>
+          <ul class="program-items">
+            <li class="featured-li">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              בניית מודל תמחור נכון לפי עלויות
+            </li>
+            <li class="featured-li">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              הגדרת שולי רווח מינימליים לכל מוצר
+            </li>
+            <li class="featured-li">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              תחזית תזרים ל-3 חודשים קדימה
+            </li>
+            <li class="featured-li">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              חיסכון בעלויות ללא פגיעה באיכות
+            </li>
+          </ul>
+        </div>
+        <div class="program-month reveal" style="transition-delay:0.2s">
+          <div class="program-month-num">03</div>
+          <div class="program-month-label">חודש שלישי</div>
+          <div class="program-month-title">צמיחה ועצמאות - לנהל לבד</div>
+          <div class="program-month-desc">מגבשים את הידע לכלים שיישארו איתך גם אחרי שהליווי מסתיים.</div>
+          <ul class="program-items">
+            <li class="navy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              תוכנית צמיחה פיננסית לשנה הבאה
+            </li>
+            <li class="navy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              נהלי דיווח עצמאי חודשי
+            </li>
+            <li class="navy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              יעדים פיננסיים ל-12 חודשים
+            </li>
+            <li class="navy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              גישה מתמשכת לכל חומרי הליווי
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STEPS ===== -->
+  <section class="steps-section">
+    <div class="steps-inner">
+      <div class="steps-header reveal">
+        <div class="section-eyebrow">איך מתחילים?</div>
+        <h2 class="section-title">4 צעדים מהרשמה לתוצאה</h2>
+        <p class="section-sub">פשוט, מהיר, ומותאם לך - מהשיחה הראשונה ועד לניהול פיננסי עצמאי.</p>
+      </div>
+
+      <div class="step-block">
+        <div class="step-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&q=80&fit=crop" alt="שיחת היכרות">
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="step-num">01</div>
+          <div class="step-eyebrow">שלב ראשון</div>
+          <h3 class="step-title">שיחת היכרות חינמית</h3>
+          <p class="step-desc">45 דקות שבהן מבינים יחד מה אתה צריך, מה האתגר הפיננסי המרכזי, ואיך הליווי יכול לעזור. אתה יוצא עם לפחות 2-3 תובנות שימושיות - גם אם תחליט שלא להמשיך.</p>
+          <div class="step-tags">
+            <span class="step-tag">45 דקות</span>
+            <span class="step-tag">ללא עלות</span>
+            <span class="step-tag">אונליין או פגישה</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block reverse">
+        <div class="step-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1484981138541-3d074aa97716?w=900&q=80&fit=crop" alt="בניית תוכנית">
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="step-num">02</div>
+          <div class="step-eyebrow">שלב שני</div>
+          <h3 class="step-title">בניית תוכנית אישית</h3>
+          <p class="step-desc">מבנה הליווי מותאם בדיוק לעסק ולאתגרים שלך. לא "חבילה סטנדרטית" - תוכנית שמכוונת ישר לפערים הספציפיים שזיהינו בשיחת ההיכרות.</p>
+          <div class="step-tags">
+            <span class="step-tag">תוכנית מותאמת</span>
+            <span class="step-tag">יעדים מדידים</span>
+            <span class="step-tag">לוח זמנים ברור</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=80&fit=crop" alt="פגישות שבועיות">
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="step-num">03</div>
+          <div class="step-eyebrow">שלב שלישי</div>
+          <h3 class="step-title">פגישות שבועיות 1:1</h3>
+          <p class="step-desc">כל שבוע - פגישה ממוקדת של שעה. עוברים על המספרים, מבינים מה קרה, מחליטים על הצעד הבא. בין הפגישות - זמינות בוואטסאפ לכל שאלה דחופה.</p>
+          <div class="step-tags">
+            <span class="step-tag">שעה בשבוע</span>
+            <span class="step-tag">וואטסאפ שוטף</span>
+            <span class="step-tag">סיכום כתוב</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block reverse">
+        <div class="step-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?w=900&q=80&fit=crop" alt="עצמאות פיננסית">
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="step-num">04</div>
+          <div class="step-eyebrow">שלב רביעי</div>
+          <h3 class="step-title">עצמאות פיננסית אמיתית</h3>
+          <p class="step-desc">אחרי 90 יום - יש לך ראש פיננסי. אתה יודע לקרוא את הדוחות, לנהל תזרים, לתמחר נכון, ולקבל החלטות מבוססות מספרים. חלק מהלקוחות בוחרים להמשיך - אבל זה כבר הבחירה שלך.</p>
+          <div class="step-tags">
+            <span class="step-tag">עצמאות מלאה</span>
+            <span class="step-tag">כלים לכל החיים</span>
+            <span class="step-tag">אופציה להמשיך</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE STRIP ===== -->
+  <div class="quote-strip">
+    <div class="quote-strip-inner reveal">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">
+        אחרי 3 חודשים הרגשתי לראשונה שאני <span>מנהל את הכסף</span> - ולא שהכסף מנהל אותי.
+      </div>
+      <div class="quote-author">לקוח ליווי פיננסי, עסק בתחום השירותים - תל אביב</div>
+    </div>
+  </div>
+
+  <!-- ===== WHO IS IT FOR ===== -->
+  <section class="who-section">
+    <div class="who-inner">
+      <div>
+        <div class="reveal">
+          <div class="section-eyebrow">למי זה מתאים?</div>
+          <h2 class="section-title">ליווי פיננסי אישי בשבילך אם...</h2>
+        </div>
+        <ul class="who-list">
+          <li class="reveal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            אתה מרגיש שאתה "מנחש" בניהול הכספי שלך
+          </li>
+          <li class="reveal" style="transition-delay:0.05s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            יש הכנסות אבל לא ברור לך למה לא נשאר כסף
+          </li>
+          <li class="reveal" style="transition-delay:0.1s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            אתה מעדיף ללמוד ולהבין מאשר שינהלו עבורך
+          </li>
+          <li class="reveal" style="transition-delay:0.15s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            העסק שלך מחזור שנתי של 300K-5M ₪
+          </li>
+          <li class="reveal" style="transition-delay:0.2s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            אתה מוכן להשקיע שעה בשבוע בלמידה אמיתית
+          </li>
+        </ul>
+      </div>
+      <div class="who-img-col reveal">
+        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=900&q=80&fit=crop" alt="ליווי פיננסי אישי">
+        <div class="who-img-badge">
+          <div class="who-badge-title">1:1</div>
+          <div class="who-badge-sub">ליווי אישי צמוד</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULTS STRIP ===== -->
+  <div class="results-strip">
+    <div class="results-inner">
+      <div class="result-item reveal">
+        <div class="result-num">90<span> יום</span></div>
+        <div class="result-label">לשינוי מדיד<br>בניהול הכספי</div>
+      </div>
+      <div class="result-item reveal" style="transition-delay:0.1s">
+        <div class="result-num">+15<span>%</span></div>
+        <div class="result-label">עלייה ממוצעת<br>ברווחיות הנקיה</div>
+      </div>
+      <div class="result-item reveal" style="transition-delay:0.2s">
+        <div class="result-num">4<span>x</span></div>
+        <div class="result-label">שיפור בהבנת<br>הדוחות הפיננסיים</div>
+      </div>
+      <div class="result-item reveal" style="transition-delay:0.3s">
+        <div class="result-num">95<span>%</span></div>
+        <div class="result-label">מלקוחות ממשיכים<br>מעבר לחודש הראשון</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FAQ ===== -->
+  <section class="mentor-faq">
+    <div class="mentor-faq-inner">
+      <div class="mentor-faq-header reveal">
+        <div class="section-eyebrow">שאלות נפוצות</div>
+        <h2 class="section-title">שאלות על ליווי פיננסי אישי</h2>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">מה ההבדל בין ליווי פיננסי לבין CFO חיצוני?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          CFO חיצוני מנהל את הכספים עבורך - הוא עושה את העבודה. הליווי הפיננסי האישי מלמד אותך לעשות את העבודה בעצמך. אם אתה רוצה ללמוד ולהבין את הצד הפיננסי של העסק - הליווי הוא בשבילך. אם אתה רוצה שמישהו ינהל ויבקר - CFO חיצוני הוא התשובה.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">כמה זמן נדרש ממני בשבוע?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          פגישה שבועית של שעה + בין 30 דקות לשעה של "שיעורי בית" - יישום של מה שלמדנו. סה"כ כ-2 שעות בשבוע. ניתן לקיים פגישות בוידאו או פנים אל פנים, לפי הנוחות שלך.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">צריך ידע מוקדם בחשבונאות?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          בכלל לא. אחד המשובים הכי נפוצים שאנחנו מקבלים: "לא ידעתי שזה יכול להיות כל כך מובן". אנחנו מדברים בשפה שלך, עם הדוגמאות של העסק שלך, בלי ז'רגון מיותר.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">מה קורה אם אני לא מצליח ליישם בין הפגישות?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          חלק טבעי מהתהליך. אם לא הצלחת ליישם - מבינים יחד למה, ומתאימים את הגישה. הליווי שלנו גמיש ומותאם לקצב שלך, לא לתוכנית קשיחה. אין "כישלון" - יש תהליך.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">האם הליווי מתאים גם לעסק שפותח לאחרונה?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          כן - ולמעשה זה הזמן הטוב ביותר. לבנות הרגלים פיננסיים נכונים בתחילת הדרך קל הרבה יותר מלתקן אחרי שנים של ניהול לא מסודר. לעסקים חדשים יש לנו מסלול ייעודי שמתחיל מהבסיס.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">מה קורה אחרי 3 חודשים?</span>
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          אפשרויות: לסיים ולהמשיך לבד עם כל הכלים שרכשת, לעבור לפגישה חודשית לצורך בקרה ועדכון, או לעלות לרמת CFO חיצוני אם העסק גדל לנקודה שמצדיקה ניהול פיננסי מלא. הבחירה שלך לחלוטין.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <section class="mentor-cta">
+    <div class="mentor-cta-inner">
+      <div class="mentor-cta-eyebrow reveal">מוכן להתחיל?</div>
+      <h2 class="mentor-cta-title reveal">תוך 90 יום תדע<br>בדיוק מה קורה<br>עם הכסף שלך</h2>
+      <p class="mentor-cta-sub reveal">שיחת היכרות ראשונה ללא עלות. 45 דקות שיכולות לשנות את הדרך שבה אתה מנהל את העסק שלך.</p>
+      <div class="mentor-cta-btns reveal">
+        <a href="index.html#contact" class="btn-gold">לשיחת היכרות חינמית</a>
+        <a href="services.html" class="btn-outline">לכל השירותים</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo-text">FORMA<span style="color:var(--gold)">.</span></div>
+        <p class="footer-desc">CFO חיצוני וליווי פיננסי לעסקים שרוצים לצמוח נכון.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/972500000000" aria-label="WhatsApp">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">ניווט</div>
+        <ul class="footer-links">
+          <li><a href="index.html">בית</a></li>
+          <li><a href="services.html">שירותים</a></li>
+          <li><a href="cfo.html">CFO חיצוני</a></li>
+          <li><a href="mentor.html">מנטור פיננסי</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="testimonials.html">לקוחות</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">יצירת קשר</div>
+        <ul class="footer-links">
+          <li><a href="mailto:dorc@formafinance.co.il">dorc@formafinance.co.il</a></li>
+          <li><a href="tel:+972500000000">050-000-0000</a></li>
+          <li><a href="index.html#contact">השאר פרטים</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">2025 פורמה פיננסים. כל הזכויות שמורות.</span>
+      <a href="mailto:dorc@formafinance.co.il" class="footer-email">dorc@formafinance.co.il</a>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/972500000000" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const burger = document.getElementById('navBurger');
+    burger.addEventListener('click', () => navbar.classList.toggle('menu-open'));
+    document.getElementById('navLinks').querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navbar.classList.remove('menu-open'));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
