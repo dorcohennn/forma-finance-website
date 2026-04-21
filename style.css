@@ -162,6 +162,39 @@ section { padding: 100px 60px; }
 .footer-email { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
 .footer-email:hover { color: var(--gold); }
 
+/* ===== NAV PHONE ===== */
+.nav-phone {
+  display: flex; align-items: center; gap: 7px;
+  color: rgba(255,255,255,0.7); text-decoration: none;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+  padding: 8px 14px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  margin-left: 8px;
+}
+.nav-phone:hover { color: var(--gold); border-color: rgba(200,169,110,0.4); background: rgba(200,169,110,0.06); }
+
+/* ===== PAIN ICON (SVG) ===== */
+.pain-icon {
+  width: 56px; height: 56px;
+  border: 1.5px solid rgba(200,169,110,0.35);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); margin-bottom: 20px;
+  background: rgba(200,169,110,0.06);
+  transition: background 0.2s, border-color 0.2s;
+}
+.pain-card:hover .pain-icon { background: rgba(200,169,110,0.12); border-color: rgba(200,169,110,0.6); }
+
+/* ===== SERVICE ICON (SVG) ===== */
+.service-icon-svg {
+  color: var(--gold); margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+/* ===== TESTI STARS SVG ===== */
+.testi-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+
 /* ===== WHATSAPP FLOAT ===== */
 .whatsapp-float {
   position: fixed; bottom: 24px; left: 24px;
