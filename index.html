@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>פורמה פיננסים | CFO חיצוני לבעלי עסקים</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -574,7 +577,9 @@
       border-radius: 24px; overflow: hidden; aspect-ratio: 4/3;
       background: linear-gradient(135deg, #111827 0%, #0d1520 100%);
     }
-    .wwd-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .wwd-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: none; position: absolute; top: 0; left: 0; }
+    .wwd-img-wrap { position: relative; }
+    .wwd-img-wrap .wwd-img-active { display: block; }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
@@ -677,8 +682,8 @@
         <div class="stat-lbl">לקוחות מרוצים</div>
       </div>
       <div class="stat-block reveal">
-        <div class="stat-num">21%</div>
-        <div class="stat-lbl">כספים מנוהלים</div>
+        <div class="stat-num">238m+</div>
+        <div class="stat-lbl">לקוחות שלנו</div>
       </div>
       <div class="stat-block reveal">
         <div class="stat-num">21%</div>
@@ -785,7 +790,7 @@
           </div>
           <div class="wwd-card-body">חושב להקים עסק ולא יודע איך להתחיל? בעל עסק ולא מתקל בקשיים כלכליים? מרגיש שאפשר למקסם את העסק אבל זה פשוט לא קורה? בוא נתחיל בנקודה - שאתה לא לבד. יזמים, בעלי עסקים ובעלי חברות נתקלים יום יום באתגרים רבים.</div>
         </div>
-        <div class="wwd-card reveal" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80">
+        <div class="wwd-card reveal" data-img="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80&fit=crop">
           <div class="wwd-card-header">
             <span class="wwd-card-num">02</span>
             <span class="wwd-card-title">ניהול כספים - CFO חיצוני</span>
@@ -804,7 +809,9 @@
       </div>
       <div class="wwd-image-side reveal">
         <div class="wwd-img-wrap">
-          <img id="wwdImg" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="ליווי פיננסי">
+          <img class="wwd-img-item wwd-img-active" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="ליווי פיננסי לעסקים">
+          <img class="wwd-img-item" src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80&fit=crop" alt="ניהול כספים CFO חיצוני">
+          <img class="wwd-img-item" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="הרצאות לארגונים">
         </div>
       </div>
     </div>
@@ -1107,12 +1114,14 @@
     }
 
     // What we do accordion
-    document.querySelectorAll('.wwd-card').forEach(card => {
+    const wwdCards = document.querySelectorAll('.wwd-card');
+    const wwdImgs = document.querySelectorAll('.wwd-img-item');
+    wwdCards.forEach((card, idx) => {
       card.addEventListener('click', () => {
-        document.querySelectorAll('.wwd-card').forEach(c => c.classList.remove('active'));
+        wwdCards.forEach(c => c.classList.remove('active'));
         card.classList.add('active');
-        const img = document.getElementById('wwdImg');
-        if (img) { img.src = card.dataset.img; }
+        wwdImgs.forEach(img => img.classList.remove('wwd-img-active'));
+        if (wwdImgs[idx]) wwdImgs[idx].classList.add('wwd-img-active');
       });
     });
 
