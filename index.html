@@ -416,11 +416,152 @@
 
     .contact-item-value:hover { color: var(--gold); }
 
+    /* ===== PRODUCTS CARDS ===== */
+    .products-section {
+      background: var(--dark);
+      padding: 80px 60px 100px;
+    }
+    .products-header { text-align: center; margin-bottom: 52px; }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; max-width: 1100px; margin: 0 auto;
+    }
+    .product-card {
+      background: var(--white); border-radius: 20px;
+      padding: 40px 32px; position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 28px 64px rgba(0,0,0,0.18); }
+    .product-num {
+      font-size: 56px; font-weight: 900; letter-spacing: -3px;
+      color: rgba(26,42,74,0.06); line-height: 1; margin-bottom: 12px;
+    }
+    .product-bar { width: 32px; height: 3px; background: var(--gold); border-radius: 2px; margin-bottom: 20px; }
+    .product-card h3 {
+      font-size: 22px; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.5px; margin-bottom: 14px; line-height: 1.2;
+    }
+    .product-card p { font-size: 15px; color: var(--text-muted); line-height: 1.75; flex: 1; }
+    .product-arrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--gold); font-size: 13px; font-weight: 700;
+      margin-top: 24px; text-decoration: none; letter-spacing: 0.3px;
+      transition: gap 0.2s;
+    }
+    .product-arrow:hover { gap: 10px; }
+
+    /* ===== FOUNDERS INTRO ===== */
+    .founders-intro {
+      background: var(--dark2);
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 620px;
+    }
+    .founders-intro-panel {
+      background: var(--white);
+      padding: 72px 56px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .founders-intro-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+    }
+    .founders-intro-title {
+      font-size: clamp(24px, 3vw, 38px); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.15; color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .founders-intro-title em { font-style: normal; color: var(--gold); }
+    .founders-intro-desc {
+      font-size: 15px; color: var(--text-muted); line-height: 1.8;
+      margin-bottom: 36px; max-width: 480px;
+    }
+    .founders-features {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-bottom: 40px;
+    }
+    .founders-feat {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 13px; font-weight: 600; color: var(--navy);
+    }
+    .founders-feat-dot {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(200,169,110,0.12);
+      border: 1px solid rgba(200,169,110,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+    }
+    .founders-photos-side {
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+    .founders-photos-side img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block;
+    }
+
+    /* ===== WHAT WE DO ===== */
+    .wwd-section {
+      background: var(--light-bg);
+      padding: 100px 60px;
+    }
+    .wwd-header { text-align: center; margin-bottom: 64px; }
+    .wwd-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; max-width: 1100px; margin: 0 auto;
+      align-items: start;
+    }
+    .wwd-cards { display: flex; flex-direction: column; gap: 14px; }
+    .wwd-card {
+      background: var(--white); border-radius: 16px;
+      padding: 28px 28px; cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+    .wwd-card.active {
+      border-color: rgba(200,169,110,0.35);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    }
+    .wwd-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .wwd-card-num { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
+    .wwd-card-title {
+      font-size: 17px; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.3px; flex: 1;
+    }
+    .wwd-card-chevron {
+      color: var(--gold); transition: transform 0.25s; flex-shrink: 0;
+    }
+    .wwd-card.active .wwd-card-chevron { transform: rotate(180deg); }
+    .wwd-card-body {
+      font-size: 14px; color: var(--text-muted); line-height: 1.8;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, margin-top 0.25s;
+    }
+    .wwd-card.active .wwd-card-body { max-height: 200px; margin-top: 14px; }
+    .wwd-image-side { position: sticky; top: 100px; }
+    .wwd-img-wrap {
+      border-radius: 24px; overflow: hidden; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #111827 0%, #0d1520 100%);
+    }
+    .wwd-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 900px) {
+      .products-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .products-section { padding: 60px 20px 80px; }
+      .founders-intro { grid-template-columns: 1fr; }
+      .founders-intro-panel { padding: 56px 24px; }
+      .founders-photos-side { height: 340px; }
+      .founders-features { grid-template-columns: repeat(2, 1fr); }
+      .wwd-inner { grid-template-columns: 1fr; }
+      .wwd-image-side { display: none; }
+      .wwd-section { padding: 72px 20px; }
       .pain-grid, .testi-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .stats-inner { flex-direction: column; }
       .stat-block { border-left: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
@@ -516,6 +657,111 @@
       </div>
     </div>
   </div>
+
+  <!-- PRODUCTS -->
+  <section class="products-section">
+    <div class="products-header reveal">
+      <div class="section-eyebrow section-center" style="color:var(--gold);">מה אנחנו מציעים</div>
+      <h2 class="section-title light section-center">שלושה מוצרים. תוצאה אחת.</h2>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="product-num">01</div>
+        <div class="product-bar"></div>
+        <h3>ליווי פיננסי לעסקים</h3>
+        <p>חברתנו מתמחה בייעוץ פיננסי אישי ללקוחות, שמטרתו לשפר את כלל התהליכים הפיננסיים בעסק. בעבודתנו המשותפת תקבלו כלים לניהול הפיננסים בעסק שלכם, תכניות יועץ, ניהול תזרים מזומנים, להגדלת רווחיות, ניהול חברים מזומנים בצורה נכונה ואופטימיזציה של הוצאות והכנסות.</p>
+        <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-num">02</div>
+        <div class="product-bar"></div>
+        <h3>ניהול כספים - CFO חיצוני</h3>
+        <p>כנראה שאתם עומדים במקום מסוים מבחינה כלכלית. אתם מספרים לעצמכם שזה בגלל שאתם לא חושבים טוב בכסף, תואר או תעודה כדי להבין טוב בכסף. לשמחתכם אנו יכולים לבשר לכם שניתן לשנות את המצב הפיננסי שלכם.</p>
+        <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-num">03</div>
+        <div class="product-bar"></div>
+        <h3>הרצאות לארגונים</h3>
+        <p>חברתנו מארגנת הרצאות לארגונים במגזון נושאים כמו: שוק ההון, מטבעות דיגיטליים, כלכלה, סיפורי הצלחה, סיפורי הזדמנויות, קבלת החלטות, הגשמת חלומות, הרצאות מוטיבציה ועוד.</p>
+        <a href="services.html" class="product-arrow">לפרטים נוספים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOUNDERS INTRO -->
+  <div class="founders-intro">
+    <div class="founders-intro-panel reveal">
+      <div class="founders-intro-eyebrow">נעים מאוד</div>
+      <h2 class="founders-intro-title">
+        אנחנו <em>דור כהן</em> ו<em>אורי אבו</em>,<br>מייסדי פורמה פיננסים
+      </h2>
+      <p class="founders-intro-desc">
+        אנחנו מאמינים שכל בעל עסק ראוי לקבל את אותה רמת ניהול פיננסי שמקבלות החברות הגדולות. שנים של עבודה עם בעלי עסקים לימדו אותנו שהבעיה אף פעם אינה המוצר - היא הניהול הפיננסי. אנחנו כאן לשנות את זה.
+      </p>
+      <div class="founders-features">
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>ניהול תזרים</div>
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>בקרה תקציבית</div>
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>דוחות פיננסיים</div>
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>ייעוץ אסטרטגי</div>
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>תכנון מס</div>
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>ניתוח רווחיות</div>
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>גיוס הון</div>
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>ליווי הנהלה</div>
+        <div class="founders-feat"><div class="founders-feat-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>הרצאות עסקיות</div>
+      </div>
+      <a href="about.html" class="btn-gold" style="align-self:flex-start;">בואו להכיר אותנו</a>
+    </div>
+    <div class="founders-photos-side">
+      <img src="images/dor-cohen.jpg" alt="דור כהן">
+      <img src="images/uri-partner.jpg" alt="אורי אבו">
+    </div>
+  </div>
+
+  <!-- WHAT WE DO -->
+  <section class="wwd-section">
+    <div class="wwd-header reveal">
+      <div class="section-eyebrow section-center">השירותים שלנו</div>
+      <h2 class="section-title section-center">מה אנחנו עושים?</h2>
+    </div>
+    <div class="wwd-inner">
+      <div class="wwd-cards">
+        <div class="wwd-card active reveal" data-img="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80">
+          <div class="wwd-card-header">
+            <span class="wwd-card-num">01</span>
+            <span class="wwd-card-title">ליווי פיננסי לעסקים</span>
+            <svg class="wwd-card-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="wwd-card-body">חושב להקים עסק ולא יודע איך להתחיל? בעל עסק ולא מתקל בקשיים כלכליים? מרגיש שאפשר למקסם את העסק אבל זה פשוט לא קורה? בוא נתחיל בנקודה - שאתה לא לבד. יזמים, בעלי עסקים ובעלי חברות נתקלים יום יום באתגרים רבים.</div>
+        </div>
+        <div class="wwd-card reveal" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80">
+          <div class="wwd-card-header">
+            <span class="wwd-card-num">02</span>
+            <span class="wwd-card-title">ניהול כספים - CFO חיצוני</span>
+            <svg class="wwd-card-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="wwd-card-body">בחברתנו, אנו מתמחים בשיפור התהליכים בארגון ובהגשמת המטרות העסקיות שלך. אנו עובדים בשיתוף פעולה מלא על מנת להבטיח שהתהליך יתבצע בצורה הטובה ביותר ויספק לך תוצאות מניבות ביותר.</div>
+        </div>
+        <div class="wwd-card reveal" data-img="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80">
+          <div class="wwd-card-header">
+            <span class="wwd-card-num">03</span>
+            <span class="wwd-card-title">הרצאות לארגונים</span>
+            <svg class="wwd-card-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="wwd-card-body">חברתנו מארגנת הרצאות מקצועיות לארגונים בנושאים פיננסיים ועסקיים. ההרצאות שלנו מותאמות לצרכי הארגון ומועברות על ידי מומחים מנוסים שמביאים ידע מעשי ותובנות מהשטח.</div>
+        </div>
+      </div>
+      <div class="wwd-image-side reveal">
+        <div class="wwd-img-wrap">
+          <img id="wwdImg" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="ליווי פיננסי">
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- PAIN POINTS -->
   <section class="pain-section">
@@ -790,6 +1036,16 @@
       window.location.href = 'mailto:office@formafinance.co.il?subject=' + subject + '&body=' + body;
       form.reset();
     }
+
+    // What we do accordion
+    document.querySelectorAll('.wwd-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.wwd-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        const img = document.getElementById('wwdImg');
+        if (img) { img.src = card.dataset.img; }
+      });
+    });
 
     document.getElementById('navBurger').addEventListener('click', () => {
       document.getElementById('navbar').classList.toggle('menu-open');
