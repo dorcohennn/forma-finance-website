@@ -41,25 +41,12 @@
       color: rgba(255,255,255,0.7); margin-bottom: 28px;
     }
 
-    .hero-logo-main {
-      font-size: clamp(72px, 11vw, 140px);
-      font-weight: 900;
-      letter-spacing: 14px;
-      color: var(--white);
-      line-height: 1;
-      text-shadow: 0 4px 40px rgba(0,0,0,0.5);
-    }
-
-    .hero-logo-main span { color: var(--gold); }
-
-    .hero-logo-sub {
-      font-size: clamp(16px, 2.5vw, 26px);
-      font-weight: 600;
-      letter-spacing: 8px;
-      color: var(--gold);
-      margin-top: 10px;
-      margin-bottom: 40px;
-      text-transform: uppercase;
+    .hero-logo-img-large {
+      height: clamp(120px, 18vw, 200px);
+      width: auto;
+      border-radius: 16px;
+      margin-bottom: 36px;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));
     }
 
     .hero-tagline {
@@ -447,9 +434,8 @@
   <div class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
+      <img src="images/logo.png" alt="פורמה פיננסים" class="hero-logo-img-large">
       <div class="hero-eyebrow">CFO חיצוני לבעלי עסקים</div>
-      <div class="hero-logo-main">F<span>O</span>RMA</div>
-      <div class="hero-logo-sub">פיננסים</div>
       <p class="hero-tagline">הצלחה פיננסית מתחילה כאן -<br>כי עסק שמנוהל נכון לא רק שורד, הוא מנצח.</p>
       <div class="hero-btns">
         <a href="index.html#contact" class="btn-gold">קבע שיחת אבחון חינמית</a>
