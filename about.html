@@ -9,154 +9,190 @@
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ===== STORY ===== */
-    .story-section { background: var(--white); }
 
-    .story-inner {
+    /* ===== STATS BAR ===== */
+    .about-stats {
+      background: var(--dark2);
+      padding: 0 60px;
+    }
+    .about-stats-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex;
+    }
+    .about-stat {
+      flex: 1; text-align: center; padding: 36px 20px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .about-stat:last-child { border-left: none; }
+    .about-stat-num { font-size: 38px; font-weight: 900; color: var(--gold); letter-spacing: -2px; line-height: 1; margin-bottom: 6px; }
+    .about-stat-lbl { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 500; }
+
+    /* ===== FOUNDER SECTION ===== */
+    .founder-section { background: var(--white); padding: 100px 60px; }
+    .founder-inner {
       max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1.2fr;
       gap: 80px; align-items: center;
     }
+    .founder-photo {
+      border-radius: 32px; overflow: hidden;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #e8e4da 0%, #d0cabb 100%);
+      position: relative;
+    }
+    .founder-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .founder-photo-badge {
+      position: absolute; bottom: 20px; right: 20px;
+      background: var(--navy); border: 1px solid rgba(200,169,110,0.3);
+      border-radius: 12px; padding: 12px 18px;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .founder-photo-badge strong { font-size: 15px; font-weight: 800; color: var(--white); }
+    .founder-photo-badge span { font-size: 11px; color: var(--gold); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
 
-    .story-text .section-title { margin-bottom: 20px; }
-    .story-text p {
+    .founder-text { display: flex; flex-direction: column; gap: 0; }
+    .founder-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .founder-headline {
+      font-size: clamp(28px, 3.5vw, 46px); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.1; color: var(--navy);
+      margin-bottom: 28px;
+    }
+    .founder-headline em { font-style: normal; color: var(--gold); }
+    .founder-body p {
       font-size: 16px; color: var(--text-muted); line-height: 1.85;
       margin-bottom: 18px;
     }
-    .story-text strong { color: var(--navy); font-weight: 700; }
+    .founder-body strong { color: var(--navy); font-weight: 700; }
+    .founder-sig {
+      margin-top: 32px; display: flex; align-items: center; gap: 16px;
+    }
+    .founder-sig-line { width: 40px; height: 2px; background: var(--gold); border-radius: 2px; }
+    .founder-sig-name { font-size: 16px; font-weight: 800; color: var(--navy); }
+    .founder-sig-role { font-size: 13px; color: var(--text-muted); }
 
-    .story-image {
-      border-radius: 32px; overflow: hidden;
-      aspect-ratio: 4/5;
-      background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 80px; position: relative;
+    /* ===== VISION BLOCK ===== */
+    .vision-block {
+      background: var(--navy); padding: 100px 60px;
+      text-align: center; position: relative; overflow: hidden;
     }
-    .story-image img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    .vision-block::before {
+      content: 'FORMA';
+      position: absolute; font-size: clamp(100px, 18vw, 240px);
+      font-weight: 900; color: rgba(255,255,255,0.025);
+      letter-spacing: -8px; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none; white-space: nowrap;
     }
+    .vision-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+    .vision-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .vision-headline {
+      font-size: clamp(26px, 4vw, 52px); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.15; color: var(--white);
+      margin-bottom: 28px;
+    }
+    .vision-headline em { font-style: normal; color: var(--gold); }
+    .vision-sub { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75; max-width: 580px; margin: 0 auto 40px; }
 
-    .story-image-label {
-      position: absolute; bottom: 20px; right: 20px;
-      background: rgba(200,169,110,0.15);
-      border: 1px solid rgba(200,169,110,0.35);
-      border-radius: 10px; padding: 10px 16px;
-      font-size: 13px; font-weight: 600; color: var(--navy);
+    /* ===== WHY US ===== */
+    .why-section { background: var(--light-bg); padding: 100px 60px; }
+    .why-header { text-align: center; margin-bottom: 72px; }
+    .why-list { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 80px; }
+
+    .why-item {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
     }
+    .why-item.flip { direction: ltr; }
+    .why-item.flip > * { direction: rtl; }
+
+    .why-img {
+      border-radius: 28px; overflow: hidden; aspect-ratio: 4/3;
+      background: #ddd;
+    }
+    .why-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .why-text {}
+    .why-check {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--navy); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; flex-shrink: 0;
+    }
+    .why-check svg { color: var(--gold); }
+    .why-text h3 {
+      font-size: clamp(22px, 3vw, 34px); font-weight: 900;
+      letter-spacing: -1px; line-height: 1.15; color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .why-text p { font-size: 16px; color: var(--text-muted); line-height: 1.8; }
 
     /* ===== VALUES ===== */
-    .values-section { background: var(--light-bg); }
+    .values-section { background: var(--white); padding: 100px 60px; }
     .values-header { text-align: center; margin-bottom: 64px; }
-
     .values-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 22px; max-width: 1060px; margin: 0 auto;
     }
-
     .value-card {
-      background: var(--white); border-radius: var(--card-radius);
-      padding: 40px 32px;
+      background: var(--light-bg); border-radius: var(--card-radius);
+      padding: 36px 30px;
       border-top: 3px solid var(--gold);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .value-card:hover { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(0,0,0,0.1); }
-    .value-icon { font-size: 36px; margin-bottom: 16px; }
-    .value-card h3 { font-size: 20px; font-weight: 800; color: var(--navy); letter-spacing: -0.5px; margin-bottom: 10px; }
-    .value-card p { font-size: 15px; color: var(--text-muted); line-height: 1.75; }
-
-    /* ===== TEAM ===== */
-    .team-section { background: var(--dark2); }
-    .team-header { text-align: center; margin-bottom: 64px; }
-
-    .team-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 28px; max-width: 720px; margin: 0 auto;
-    }
-
-    .team-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--card-radius); padding: 44px 36px;
-      text-align: center;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .team-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-5px); }
-
-    .team-avatar {
-      width: 130px; height: 130px; border-radius: 50%;
-      background: linear-gradient(135deg, #2a3550 0%, #1e2a42 100%);
-      border: 3px solid rgba(200,169,110,0.5);
-      margin: 0 auto 22px;
+    .value-card:hover { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(0,0,0,0.08); }
+    .value-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(200,169,110,0.12);
       display: flex; align-items: center; justify-content: center;
-      font-size: 44px; overflow: hidden;
-      box-shadow: 0 0 0 6px rgba(200,169,110,0.1);
+      font-size: 26px; margin-bottom: 18px;
     }
-    .team-avatar img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    .value-card h3 { font-size: 18px; font-weight: 800; color: var(--navy); letter-spacing: -0.3px; margin-bottom: 8px; }
+    .value-card p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+
+    /* ===== SOCIAL PROOF STRIP ===== */
+    .proof-strip {
+      background: var(--dark2); padding: 64px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px; flex-wrap: wrap;
     }
-
-    .team-name { font-size: 24px; font-weight: 900; color: var(--white); letter-spacing: -0.5px; margin-bottom: 5px; }
-    .team-role { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .team-bio { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; }
-
-    /* ===== FEATURES GRID ===== */
-    .features-section { background: var(--white); }
-    .features-header { text-align: center; margin-bottom: 64px; }
-
-    .features-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 22px; max-width: 1060px; margin: 0 auto 52px;
+    .proof-left { display: flex; align-items: center; gap: 24px; }
+    .proof-rating-num { font-size: 72px; font-weight: 900; color: var(--white); letter-spacing: -3px; line-height: 1; }
+    .proof-stars { font-size: 26px; letter-spacing: 3px; margin-bottom: 4px; }
+    .proof-label { font-size: 14px; color: rgba(255,255,255,0.45); }
+    .proof-count { font-size: 20px; font-weight: 800; color: var(--white); margin-top: 4px; }
+    .proof-right { max-width: 460px; }
+    .proof-quote {
+      font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.75);
+      line-height: 1.7; font-style: italic; margin-bottom: 20px;
     }
-
-    .feature-item {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 24px; border-radius: 16px;
-      border: 1px solid rgba(26,42,74,0.08);
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .feature-item:hover { border-color: var(--gold); background: rgba(200,169,110,0.04); }
-
-    .feature-icon-wrap {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: rgba(200,169,110,0.1); flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-    }
-
-    .feature-item h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.3px; }
-    .feature-item p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .proof-author { font-size: 14px; color: var(--gold); font-weight: 700; }
 
     /* ===== CTA ===== */
-    .cta-bar {
-      background: var(--navy); padding: 80px 60px;
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-bar::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.06) 0%, transparent 70%);
-    }
-    .cta-bar h2 {
-      font-size: clamp(28px, 4.5vw, 52px); font-weight: 900;
-      letter-spacing: -2px; color: var(--white);
-      margin-bottom: 14px; position: relative; z-index: 1;
-    }
-    .cta-bar p {
-      font-size: 17px; color: rgba(255,255,255,0.6);
-      margin-bottom: 36px; position: relative; z-index: 1;
-    }
-    .cta-bar .btn-gold { position: relative; z-index: 1; }
+    .cta-bar { background: var(--navy); padding: 80px 60px; text-align: center; position: relative; overflow: hidden; }
+    .cta-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.06) 0%, transparent 70%); }
+    .cta-bar h2 { font-size: clamp(28px,4.5vw,52px); font-weight:900; letter-spacing:-2px; color:var(--white); margin-bottom:14px; position:relative; z-index:1; }
+    .cta-bar p { font-size:17px; color:rgba(255,255,255,0.6); margin-bottom:36px; position:relative; z-index:1; }
+    .cta-bar .btn-gold { position:relative; z-index:1; }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      .story-inner { grid-template-columns: 1fr; }
-      .values-grid, .features-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
-      .team-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
+      .founder-inner { grid-template-columns: 1fr; gap: 48px; }
+      .founder-photo { max-width: 420px; margin: 0 auto; aspect-ratio: 1/1; }
+      .why-item, .why-item.flip { grid-template-columns: 1fr; gap: 32px; direction: rtl; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-stats { padding: 0 20px; }
+      .about-stats-inner { flex-direction: column; }
+      .about-stat { border-left: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 28px 20px; }
+      .about-stat:last-child { border-bottom: none; }
+      .proof-strip { flex-direction: column; text-align: center; padding: 60px 24px; }
+      .proof-left { flex-direction: column; gap: 8px; }
+      .founder-section, .vision-block, .why-section, .values-section { padding: 72px 20px; }
     }
     @media (max-width: 600px) {
-      .values-grid, .features-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .values-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .founder-headline { letter-spacing: -0.8px; }
     }
   </style>
 </head>
@@ -202,129 +238,185 @@
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-eyebrow">אודות פורמה פיננסים</div>
-    <h1 class="page-hero-title">אנחנו לא רואי חשבון -<br>אנחנו שותפים לצמיחה שלך</h1>
-    <p class="page-hero-sub">פורמה פיננסים נוסדה מתוך אמונה שכל בעל עסק ישראלי ראוי לניהול פיננסי ברמת חברות הגדולות.</p>
+    <h1 class="page-hero-title">מחזירים לבעלי עסקים<br>את השליטה בכסף שלהם</h1>
+    <p class="page-hero-sub">פורמה פיננסים נוסדה מתוך אמונה פשוטה - כל בעל עסק ישראלי ראוי לניהול פיננסי ברמת החברות הגדולות.</p>
   </div>
 
-  <!-- STORY -->
-  <section class="story-section">
-    <div class="story-inner">
-      <div class="story-text reveal">
-        <div class="section-eyebrow">הסיפור שלנו</div>
-        <h2 class="section-title">למה הקמנו את פורמה?</h2>
-        <p>ראינו שוב ושוב את אותה תבנית - <strong>בעלי עסקים מוכשרים</strong>, עם מוצר מצוין ולקוחות מרוצים, שנאבקים עם תזרים, מפסידים כסף על מס, ומקבלים החלטות גדולות מהבטן.</p>
-        <p>לרוב היה להם רואה חשבון. אבל <strong>רואה חשבון מסתכל לאחור</strong>. מה שחסר היה מישהו שיסתכל קדימה - שיגיד לך מה הולך לקרות, לא מה כבר קרה.</p>
-        <p>פורמה פיננסים נוסדה כדי לתת לעסקים בינוניים וקטנים את מה שהיה שמור לחברות הגדולות: <strong>CFO אסטרטגי שיודע לתרגם מספרים להחלטות.</strong></p>
+  <!-- STATS BAR -->
+  <div class="about-stats">
+    <div class="about-stats-inner">
+      <div class="about-stat reveal">
+        <div class="about-stat-num">350+</div>
+        <div class="about-stat-lbl">בעלי עסקים שבחרו בנו</div>
       </div>
-      <div class="story-image reveal">
-        <img src="images/dor-cohen.jpg" alt="דור כהן, מייסד פורמה פיננסים">
-        <div class="story-image-label">דור כהן - מייסד פורמה פיננסים</div>
+      <div class="about-stat reveal">
+        <div class="about-stat-num">מיליונים</div>
+        <div class="about-stat-lbl">כספים שמנוהלים עבור לקוחותינו</div>
       </div>
+      <div class="about-stat reveal">
+        <div class="about-stat-num">30 יום</div>
+        <div class="about-stat-lbl">לתוצאות ראשונות מוחשיות</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDER SECTION -->
+  <section class="founder-section">
+    <div class="founder-inner">
+      <div class="founder-photo reveal">
+        <img src="images/dor-cohen.jpg" alt="דור כהן מייסד פורמה פיננסים">
+        <div class="founder-photo-badge">
+          <strong>דור כהן</strong>
+          <span>מייסד ומנכ"ל</span>
+        </div>
+      </div>
+      <div class="founder-text reveal">
+        <div class="founder-eyebrow">דבר המייסד</div>
+        <h2 class="founder-headline">
+          שמחתי לגלות שבעלי עסקים לא צריכים לבחור בין <em>לצמוח</em> לבין <em>להבין מה קורה עם הכסף</em>
+        </h2>
+        <div class="founder-body">
+          <p>הקמתי את פורמה אחרי שראיתי שוב ושוב את אותה תבנית - בעלי עסקים מוכשרים, עם מוצר מצוין ולקוחות מרוצים, שמוצאים את עצמם בסוף החודש תוהים לאן הכסף הלך.</p>
+          <p>לרוב היה להם רואה חשבון. אבל <strong>רואה חשבון מסתכל לאחור.</strong> מה שחסר היה מישהו שיסתכל קדימה - שיגיד לך מה הולך לקרות, לא מה כבר קרה.</p>
+          <p>בחרתי להפוך את הידע הזה לנגיש לכל בעל עסק. <strong>לא רק לחברות הגדולות.</strong> כי CFO טוב לא עושה ניירת - הוא בונה עתיד.</p>
+        </div>
+        <div class="founder-sig">
+          <div class="founder-sig-line"></div>
+          <div>
+            <div class="founder-sig-name">דור כהן</div>
+            <div class="founder-sig-role">מייסד ומנכ"ל, פורמה פיננסים</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION BLOCK -->
+  <section class="vision-block">
+    <div class="vision-inner reveal">
+      <div class="vision-eyebrow">החזון שלנו</div>
+      <h2 class="vision-headline">
+        ללוות כל לקוח אל עבר עתיד כלכלי <em>יציב ומשגשג</em>,<br>
+        תוך שיפור מתמיד של הרווחיות ורמת החיים.
+      </h2>
+      <p class="vision-sub">אנחנו לא רק מנהלים כסף - אנחנו בונים אסטרטגיות שיוצרות הזדמנויות חדשות לצמיחה.</p>
+      <a href="index.html#contact" class="btn-gold">קבע שיחת אבחון חינמית</a>
+    </div>
+  </section>
+
+  <!-- WHY FORMA -->
+  <section class="why-section">
+    <div class="why-header reveal">
+      <div class="section-eyebrow section-center">למה לבחור בנו</div>
+      <h2 class="section-title section-center">פורמה, השותפים שהעסק שלך צריך</h2>
+    </div>
+    <div class="why-list">
+
+      <div class="why-item reveal">
+        <div class="why-img">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="ניתוח פיננסי">
+        </div>
+        <div class="why-text">
+          <div class="why-check">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h3>מובילים מתוך הבנת<br>העסק שלך, לא מספרים קרים</h3>
+          <p>אנחנו לא מסתכלים רק על גיליונות אלקטרוניים. אנחנו מבינים את העסק שלך לעומק, ומנתחים את ההחלטות שיש לקבל. כי CFO אמיתי זה שותף - לא רואה חשבון.</p>
+        </div>
+      </div>
+
+      <div class="why-item flip reveal">
+        <div class="why-img">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="ניסיון עשיר">
+        </div>
+        <div class="why-text">
+          <div class="why-check">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h3>ניסיון עם מאות עסקים<br>מכל סוג ומגוון היקפי פעילות</h3>
+          <p>עבדנו עם עסקים בתחילת הדרך ועם חברות בהיקף של מיליוני שקלים. כל אחד קיבל את הכלים שמתאימים לשלב שלו, ולא פתרון גנרי.</p>
+        </div>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="why-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="ליווי אישי">
+        </div>
+        <div class="why-text">
+          <div class="why-check">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h3>תמיד שם בשבילך,<br>בכל שאלה ובכל רגע</h3>
+          <p>לקוחות פורמה לא ממתינים שבועות לתשובה. יש לך איש קשר קבוע שמכיר את העסק שלך, עונה מהר, ומסתכל על הדברים מהזווית שלך.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- VALUES -->
   <section class="values-section">
     <div class="values-header reveal">
-      <div class="section-eyebrow section-center">הערכים שלנו</div>
-      <h2 class="section-title section-center">מה מניע אותנו</h2>
+      <div class="section-eyebrow section-center">הערכים המשותפים שלנו עם הלקוחות</div>
+      <h2 class="section-title section-center">מה מניע את פורמה</h2>
     </div>
     <div class="values-grid">
       <div class="value-card reveal">
-        <div class="value-icon">🎯</div>
-        <h3>ישירות</h3>
-        <p>אנחנו אומרים את האמת, גם כשהיא לא נעימה. הלקוחות שלנו מקבלים מידע אמיתי, לא רק מה שהם רוצים לשמוע.</p>
+        <div class="value-icon-wrap">🎯</div>
+        <h3>ישירות ואמת</h3>
+        <p>אנחנו אומרים את האמת, גם כשהיא לא נעימה. הלקוחות שלנו מקבלים מידע אמיתי - לא מה שנוח לשמוע.</p>
       </div>
       <div class="value-card reveal">
-        <div class="value-icon">🤝</div>
+        <div class="value-icon-wrap">🤝</div>
         <h3>שותפות אמיתית</h3>
         <p>אנחנו לא ספקי שירות - אנחנו שותפים. ההצלחה שלך היא ההצלחה שלנו, ואנחנו מרגישים את זה.</p>
       </div>
       <div class="value-card reveal">
-        <div class="value-icon">⚡</div>
+        <div class="value-icon-wrap">⚡</div>
         <h3>תוצאות מהירות</h3>
-        <p>רוב הלקוחות מדווחים על שיפור ממשי תוך 30 יום. כי אנחנו עובדים בשביל תוצאות, לא בשביל תהליכים.</p>
+        <p>רוב הלקוחות מדווחים על שיפור ממשי תוך 30 יום. כי אנחנו עובדים בשביל תוצאות, לא בשביל תהליכים אינסופיים.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon-wrap">📊</div>
+        <h3>מדברים בתוצאות</h3>
+        <p>כל פעולה שאנחנו ממליצים עליה מגובה בנתונים ואחראית. לא ייעוץ תיאורטי - פעולות שיוצרות שינוי אמיתי.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon-wrap">🔒</div>
+        <h3>שקיפות מלאה</h3>
+        <p>אתה תמיד יודע מה קורה עם הכסף שלך. אין הפתעות, אין מידע שנשמר "מאחורי הקלעים".</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon-wrap">🚀</div>
+        <h3>יוזמה וחדשנות</h3>
+        <p>אנחנו לא מחכים שתשאל - אנחנו מגיעים אליך עם הזדמנויות, עם חיסכונות, עם רעיונות חדשים.</p>
       </div>
     </div>
   </section>
 
-  <!-- TEAM -->
-  <section class="team-section">
-    <div class="team-header reveal">
-      <div class="section-eyebrow section-center" style="color:var(--gold);">הצוות</div>
-      <h2 class="section-title section-center light">מי עומד מאחורי פורמה</h2>
-    </div>
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <div class="team-avatar">
-          <img src="images/dor-cohen.jpg" alt="דור כהן">
-        </div>
-        <div class="team-name">דור כהן</div>
-        <div class="team-role">מייסד ומנכ"ל</div>
-        <p class="team-bio">CFO חיצוני ומומחה פיננסי עם ניסיון עשיר בליווי עשרות עסקים לצמיחה. מתמחה בניהול תזרים, תכנון אסטרטגי ובניית מערכות פיננסיות לעסקים בינוניים וקטנים.</p>
-      </div>
-      <div class="team-card reveal">
-        <div class="team-avatar">👤</div>
-        <div class="team-name">אורי</div>
-        <div class="team-role">מייסד שותף</div>
-        <p class="team-bio">אסטרטג עסקי עם הבנה פיננסית עמוקה. מתמחה בגיוס הון, תכנון מס, ותכנון לטווח ארוך.<br><br>[הביו המלא של אורי יוחלף כאן]</p>
+  <!-- SOCIAL PROOF STRIP -->
+  <div class="proof-strip">
+    <div class="proof-left reveal">
+      <div class="proof-rating-num">5.0</div>
+      <div>
+        <div class="proof-stars">⭐⭐⭐⭐⭐</div>
+        <div class="proof-label">דירוג גוגל</div>
+        <div class="proof-count">350+ לקוחות מרוצים</div>
       </div>
     </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features-section">
-    <div class="features-header reveal">
-      <div class="section-eyebrow section-center">למה פורמה</div>
-      <h2 class="section-title section-center">9 סיבות לבחור בנו</h2>
-    </div>
-    <div class="features-grid">
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">📊</div>
-        <div><h4>ניתוח פיננסי עמוק</h4><p>הסתכלות אסטרטגית על כל המספרים</p></div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">🎯</div>
-        <div><h4>אסטרטגיה עסקית</h4><p>חיבור בין מספרים להחלטות אמיתיות</p></div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">💰</div>
-        <div><h4>ניהול תזרים</h4><p>לעולם לא תיתפס בלי כסף בקופה</p></div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">📈</div>
-        <div><h4>תכנון צמיחה</h4><p>תוכניות ריאליות שמגיעות ליעד</p></div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">🏦</div>
-        <div><h4>גיוס הון</h4><p>הכנה מלאה לבנקים ומשקיעים</p></div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">🔍</div>
-        <div><h4>בקרת ביצועים</h4><p>מדידה שוטפת מול יעדים עסקיים</p></div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">📝</div>
-        <div><h4>תכנון מס</h4><p>חיסכון לגיטימי בתשלומי מס</p></div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">🤝</div>
-        <div><h4>ליווי אישי</h4><p>איש קשר קבוע שמכיר את העסק שלך</p></div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon-wrap">⚡</div>
-        <div><h4>תוצאות תוך 30 יום</h4><p>שיפור ממשי מהר - לא תהליכים אינסופיים</p></div>
+    <div class="proof-right reveal">
+      <p class="proof-quote">"סוף סוף אני מבין לאן הכסף שלי הולך ומסוגל לתכנן קדימה. כבר ב-30 הימים הראשונים ראיתי תמונה אחרת לגמרי."</p>
+      <div class="proof-author">אבי מ. - בעל עסק, תל אביב</div>
+      <div style="margin-top:20px;">
+        <a href="testimonials.html" class="btn-gold">לכל ההמלצות</a>
       </div>
     </div>
-    <div style="text-align:center;">
-      <a href="services.html" class="btn-gold reveal">גלה את שירותינו</a>
-    </div>
-  </section>
+  </div>
 
   <!-- CTA -->
   <section class="cta-bar">
-    <h2>רוצה לדעת עוד?</h2>
-    <p>קבע שיחת אבחון חינמית של 30 דקות - ותצא עם תמונה ברורה.</p>
+    <h2>מוכן לצאת לדרך?</h2>
+    <p>קבע שיחת אבחון חינמית של 30 דקות - ותצא עם תמונה פיננסית ברורה.</p>
     <a href="index.html#contact" class="btn-gold">לשיחת אבחון חינמית</a>
   </section>
 
