@@ -165,35 +165,47 @@ section { padding: 100px 60px; }
 /* ===== NAV PHONE ===== */
 .nav-phone {
   display: flex; align-items: center; gap: 7px;
-  color: rgba(255,255,255,0.7); text-decoration: none;
+  color: rgba(255,255,255,0.65); text-decoration: none;
   font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
   padding: 8px 14px; border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.1);
   transition: color 0.2s, border-color 0.2s, background 0.2s;
-  margin-left: 8px;
+  margin-left: 8px; white-space: nowrap;
 }
-.nav-phone:hover { color: var(--gold); border-color: rgba(200,169,110,0.4); background: rgba(200,169,110,0.06); }
+.nav-phone:hover { color: var(--gold); border-color: rgba(200,169,110,0.35); background: rgba(200,169,110,0.06); }
 
 /* ===== PAIN ICON (SVG) ===== */
 .pain-icon {
   width: 56px; height: 56px;
-  border: 1.5px solid rgba(200,169,110,0.35);
+  border: 1px solid rgba(200,169,110,0.3);
   border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  color: var(--gold); margin-bottom: 20px;
-  background: rgba(200,169,110,0.06);
-  transition: background 0.2s, border-color 0.2s;
+  color: var(--gold); margin-bottom: 22px;
+  background: rgba(200,169,110,0.05);
+  transition: background 0.25s, border-color 0.25s;
 }
-.pain-card:hover .pain-icon { background: rgba(200,169,110,0.12); border-color: rgba(200,169,110,0.6); }
+.pain-card:hover .pain-icon { background: rgba(200,169,110,0.1); border-color: rgba(200,169,110,0.5); }
 
 /* ===== SERVICE ICON (SVG) ===== */
 .service-icon-svg {
-  color: var(--gold); margin-bottom: 16px;
-  opacity: 0.8;
+  color: var(--gold); margin-bottom: 16px; opacity: 0.85;
 }
 
-/* ===== TESTI STARS SVG ===== */
+/* ===== VALUE ICON WRAP (SVG) ===== */
+.value-icon-wrap {
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ===== GUIDE THUMB SVG ===== */
+.guide-thumb {
+  display: flex !important; flex-direction: column;
+  align-items: center; justify-content: center; gap: 14px;
+}
+
+/* ===== TESTI STARS / PROOF STARS ===== */
 .testi-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.rating-stars-big { display: flex; gap: 5px; margin-bottom: 10px; }
+.proof-stars { display: flex; gap: 4px; margin-bottom: 6px; }
 
 /* ===== WHATSAPP FLOAT ===== */
 .whatsapp-float {

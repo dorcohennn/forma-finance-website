@@ -26,13 +26,17 @@
     .service-block-image {
       border-radius: 32px; overflow: hidden;
       aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+      background: linear-gradient(135deg, #111827 0%, #0d1520 100%);
       display: flex; align-items: center; justify-content: center;
-      font-size: 72px; flex-shrink: 0;
+      flex-shrink: 0; position: relative;
     }
-
+    .service-block-image::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, rgba(200,169,110,0.07) 0%, transparent 65%);
+    }
+    .service-block-image svg { position: relative; z-index: 1; }
     .service-block.alt .service-block-image {
-      background: linear-gradient(135deg, #d4cfc2 0%, #c8c2b0 100%);
+      background: linear-gradient(135deg, #0d1a2a 0%, #0a1118 100%);
     }
 
     .service-block-text {}
@@ -201,7 +205,7 @@
     </div>
 
     <div class="service-block reveal">
-      <div class="service-block-image">📈</div>
+      <div class="service-block-image"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.6)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
       <div class="service-block-text">
         <div class="service-block-num">01</div>
         <div class="section-eyebrow">ניהול תזרים</div>
@@ -231,11 +235,11 @@
         </ul>
         <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
       </div>
-      <div class="service-block-image alt">📊</div>
+      <div class="service-block-image alt"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.6)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
     </div>
 
     <div class="service-block reveal">
-      <div class="service-block-image">🗓️</div>
+      <div class="service-block-image"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.6)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
       <div class="service-block-text">
         <div class="service-block-num">03</div>
         <div class="section-eyebrow">תכנון ותקצוב</div>
@@ -265,7 +269,7 @@
         </ul>
         <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
       </div>
-      <div class="service-block-image alt">🎯</div>
+      <div class="service-block-image alt"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.6)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
     </div>
   </section>
 

@@ -43,43 +43,59 @@
 
     /* ===== HERO BRAND LOGO ===== */
     .hero-brand {
-      display: flex; align-items: center; gap: 22px;
-      margin-bottom: 44px; direction: ltr;
+      display: flex; align-items: center; gap: 26px;
+      margin-bottom: 48px; direction: ltr;
+      position: relative;
+    }
+    .hero-brand::before {
+      content: '';
+      position: absolute;
+      inset: -30px -60px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
     }
     .hero-brand-icon {
-      width: 74px; height: 74px; flex-shrink: 0;
-      border: 2.5px solid var(--gold);
+      width: 84px; height: 84px; flex-shrink: 0;
+      border: 2px solid var(--gold);
       display: flex; align-items: center; justify-content: center;
       font-family: 'Heebo', sans-serif;
-      font-size: 38px; font-weight: 900;
+      font-size: 42px; font-weight: 900;
       color: var(--cream); letter-spacing: -2px;
       position: relative;
+      box-shadow: 0 0 0 1px rgba(200,169,110,0.12), inset 0 0 0 1px rgba(200,169,110,0.04);
     }
     .hero-brand-icon::after {
       content: '';
-      position: absolute; inset: 6px;
-      border: 1px solid rgba(200,169,110,0.3);
+      position: absolute; inset: 7px;
+      border: 1px solid rgba(200,169,110,0.25);
       pointer-events: none;
+    }
+    .hero-brand-sep {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(200,169,110,0.5), transparent);
+      flex-shrink: 0;
     }
     .hero-brand-texts { text-align: left; }
     .hero-brand-name {
       display: block;
       font-family: 'Heebo', sans-serif;
-      font-size: clamp(38px, 5.5vw, 60px);
-      font-weight: 900; letter-spacing: 7px;
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 900; letter-spacing: 9px;
       color: var(--white); line-height: 1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
     .hero-brand-sub {
       display: block;
       font-family: 'Heebo', sans-serif;
-      font-size: clamp(13px, 1.6vw, 17px);
-      font-weight: 500; letter-spacing: 4px;
-      color: var(--gold); margin-top: 7px;
-      text-transform: uppercase;
+      font-size: clamp(12px, 1.4vw, 15px);
+      font-weight: 400; letter-spacing: 5px;
+      color: var(--gold); margin-top: 9px;
+      text-transform: uppercase; opacity: 0.9;
     }
     .hero-divider {
-      width: 48px; height: 1.5px; background: var(--gold);
-      margin: 0 auto 28px; opacity: 0.6;
+      width: 1px; height: 52px;
+      background: linear-gradient(to bottom, transparent, rgba(200,169,110,0.45), transparent);
+      margin: 0 auto 32px;
     }
 
     .hero-tagline {
@@ -463,6 +479,7 @@
     <div class="hero-content">
       <div class="hero-brand">
         <div class="hero-brand-icon">F</div>
+        <div class="hero-brand-sep"></div>
         <div class="hero-brand-texts">
           <span class="hero-brand-name">FORMA</span>
           <span class="hero-brand-sub">פיננסים</span>
