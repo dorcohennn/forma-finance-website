@@ -17,7 +17,7 @@
 }
 
 html { scroll-behavior: smooth; }
-body { font-family: 'Heebo', sans-serif; direction: rtl; background: var(--white); color: var(--navy); overflow-x: hidden; }
+body { font-family: 'Heebo', sans-serif; direction: rtl; background: var(--white); color: var(--navy); overflow-x: hidden; -webkit-overflow-scrolling: touch; }
 
 /* ===== NAVBAR ===== */
 .navbar {
@@ -26,6 +26,8 @@ body { font-family: 'Heebo', sans-serif; direction: rtl; background: var(--white
   display: flex; align-items: center; justify-content: space-between;
   transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
   background: transparent;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 .navbar.scrolled {
   background: rgba(15,17,21,0.97);
@@ -130,8 +132,8 @@ section { padding: 100px 60px; }
 .section-center .section-sub { margin: 14px auto 0; }
 
 /* ===== REVEAL ANIMATION ===== */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal { opacity: 0; transform: translate3d(0, 26px, 0); transition: opacity 0.55s ease, transform 0.55s ease; will-change: transform, opacity; }
+.reveal.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 
 /* ===== FOOTER ===== */
 .footer {

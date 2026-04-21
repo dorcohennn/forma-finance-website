@@ -871,7 +871,7 @@
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
+    }, { passive: true });
 
     const burger = document.getElementById('navBurger');
     burger.addEventListener('click', () => navbar.classList.toggle('menu-open'));
