@@ -151,23 +151,31 @@
     .value-card h3 { font-size: 18px; font-weight: 800; color: var(--navy); letter-spacing: -0.3px; margin-bottom: 8px; }
     .value-card p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
 
-    /* ===== SOCIAL PROOF STRIP ===== */
-    .proof-strip {
-      background: var(--dark2); padding: 64px 60px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 40px; flex-wrap: wrap;
+    /* ===== WRITTEN TESTIMONIALS ===== */
+    .written-testi-section { background: var(--light-bg); padding: 100px 60px; }
+    .written-testi-header { text-align: center; margin-bottom: 56px; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 22px; max-width: 1200px; margin: 0 auto 44px;
     }
-    .proof-left { display: flex; align-items: center; gap: 24px; }
-    .proof-rating-num { font-size: 72px; font-weight: 900; color: var(--white); letter-spacing: -3px; line-height: 1; }
-    .proof-stars { font-size: 26px; letter-spacing: 3px; margin-bottom: 4px; }
-    .proof-label { font-size: 14px; color: rgba(255,255,255,0.45); }
-    .proof-count { font-size: 20px; font-weight: 800; color: var(--white); margin-top: 4px; }
-    .proof-right { max-width: 460px; }
-    .proof-quote {
-      font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.75);
-      line-height: 1.7; font-style: italic; margin-bottom: 20px;
+    .testi-card {
+      background: var(--white); border-radius: var(--card-radius);
+      padding: 26px 22px; text-align: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
     }
-    .proof-author { font-size: 14px; color: var(--gold); font-weight: 700; }
+    .testi-card:hover { transform: translateY(-5px); }
+    .testi-avatar-img {
+      width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: center center;
+      margin: 0 auto 14px; display: block;
+      border: 3px solid var(--gold);
+    }
+    .testi-stars-w { font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; color: var(--gold); }
+    .testi-text-w { font-size: 14px; color: var(--navy); line-height: 1.75; margin-bottom: 16px; }
+    .testi-name-w { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .testi-role-w { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    @media (max-width: 900px) { .testi-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .testi-grid { grid-template-columns: 1fr; } }
 
     /* ===== CTA ===== */
     .cta-bar { background: var(--navy); padding: 80px 60px; text-align: center; position: relative; overflow: hidden; }
@@ -410,24 +418,83 @@
     </div>
   </section>
 
-  <!-- SOCIAL PROOF STRIP -->
-  <div class="proof-strip">
-    <div class="proof-left reveal">
-      <div class="proof-rating-num">5.0</div>
-      <div>
-        <div class="proof-stars"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="proof-label">דירוג גוגל</div>
-        <div class="proof-count">350+ לקוחות מרוצים</div>
-      </div>
+  <!-- WRITTEN TESTIMONIALS -->
+  <section class="written-testi-section">
+    <div class="written-testi-header reveal">
+      <div class="section-eyebrow section-center">לקוחות מספרים</div>
+      <h2 class="section-title section-center">מה אומרים הלקוחות</h2>
     </div>
-    <div class="proof-right reveal">
-      <p class="proof-quote">"סוף סוף אני מבין לאן הכסף שלי הולך ומסוגל לתכנן קדימה. כבר ב-30 הימים הראשונים ראיתי תמונה אחרת לגמרי."</p>
-      <div class="proof-author">אבי מ. - בעל עסק, תל אביב</div>
-      <div style="margin-top:20px;">
-        <a href="testimonials.html" class="btn-gold">לכל ההמלצות</a>
+    <div class="testi-grid">
+
+      <div class="testi-card reveal">
+        <img class="testi-avatar-img" src="images/IMG_8048.PNG" alt="חן אמבר">
+        <div class="testi-stars-w">★★★★★</div>
+        <p class="testi-text-w">פורמה עזרו לי להבין כמה כל לקוחה שווה לי ואיך לתמחר נכון. שינוי גמור בעסק.</p>
+        <div class="testi-name-w">חן אמבר</div>
+        <div class="testi-role-w">סטייליסטית אישית</div>
       </div>
+
+      <div class="testi-card reveal">
+        <img class="testi-avatar-img" src="images/IMG_8049.PNG" alt="הודיה לוי">
+        <div class="testi-stars-w">★★★★★</div>
+        <p class="testi-text-w">תמיד חשבתי שתזרים זה רק לחברות גדולות. היום אני יודעת בדיוק מה נכנס ומה יוצא כל חודש.</p>
+        <div class="testi-name-w">הודיה לוי</div>
+        <div class="testi-role-w">בעלת עסק ליווי כושר ותזונה</div>
+      </div>
+
+      <div class="testi-card reveal">
+        <img class="testi-avatar-img" src="images/IMG_8050.PNG" alt="דני בוטיק">
+        <div class="testi-stars-w">★★★★★</div>
+        <p class="testi-text-w">מהיום שהתחלתי לעבוד עם פורמה לא הופתעתי יותר בסוף החודש. סוף סוף שלווה כלכלית.</p>
+        <div class="testi-name-w">דני בוטיק</div>
+        <div class="testi-role-w">בעלת עסק לשמלות כלה</div>
+      </div>
+
+      <div class="testi-card reveal">
+        <img class="testi-avatar-img" src="images/IMG_8051.PNG" alt="ספיר בן חיון">
+        <div class="testi-stars-w">★★★★★</div>
+        <p class="testi-text-w">הדוחות שהם בנו לי שינו את הדרך שאני מנהלת את העסק. מקבלת החלטות על בסיס מספרים אמיתיים.</p>
+        <div class="testi-name-w">ספיר בן חיון</div>
+        <div class="testi-role-w">בעלת עסק</div>
+      </div>
+
+      <div class="testi-card reveal">
+        <img class="testi-avatar-img" src="images/IMG_8052.PNG" alt="אופק מולקנדוף">
+        <div class="testi-stars-w">★★★★★</div>
+        <p class="testi-text-w">כשמנהלים עסקאות נדל"ן בארה"ב צריך CFO שמבין. פורמה נותנים לי בדיוק את זה.</p>
+        <div class="testi-name-w">אופק מולקנדוף</div>
+        <div class="testi-role-w">סיירת נדל"ן - ליווי משקיעים בארה"ב</div>
+      </div>
+
+      <div class="testi-card reveal">
+        <img class="testi-avatar-img" src="images/IMG_8053.PNG" alt="יובל ביטון">
+        <div class="testi-stars-w">★★★★★</div>
+        <p class="testi-text-w">פתחתי עסק חדש ופורמה ליוו אותי מהיום הראשון. בלעדיהם הייתי עושה הרבה טעויות יקרות.</p>
+        <div class="testi-name-w">יובל ביטון</div>
+        <div class="testi-role-w">בעל עסק 'אוקינוואה'</div>
+      </div>
+
+      <div class="testi-card reveal">
+        <img class="testi-avatar-img" src="images/IMG_8054.PNG" alt="עמית קרן">
+        <div class="testi-stars-w">★★★★★</div>
+        <p class="testi-text-w">עסק בתחום הבריאות דורש ניהול פיננסי מדויק. פורמה עזרו לי לבנות מערכת שעובדת לבד.</p>
+        <div class="testi-name-w">עמית קרן</div>
+        <div class="testi-role-w">ספורטרפיסט</div>
+      </div>
+
+      <div class="testi-card reveal">
+        <img class="testi-avatar-img" src="images/IMG_8055.PNG" alt="עידן קוגל">
+        <div class="testi-stars-w">★★★★★</div>
+        <p class="testi-text-w">בדיוק כמו שאני מאמן שחקנים מנטלית, פורמה עזרו לי להתחזק פיננסית ולצמוח.</p>
+        <div class="testi-name-w">עידן קוגל</div>
+        <div class="testi-role-w">מאמן מנטלי לכדורגלנים</div>
+      </div>
+
     </div>
-  </div>
+    <div style="text-align:center;">
+      <a href="testimonials.html" class="btn-navy reveal">לכל ההמלצות</a>
+    </div>
+  </section>
 
   <!-- CTA -->
   <section class="cta-bar">
