@@ -172,13 +172,24 @@ section { padding: 100px 60px; }
 }
 .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
 
-/* ===== LOGO VISIBILITY ===== */
-.nav-logo svg, .nav-logo img {
-  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
+/* ===== LOGO ===== */
+.nav-logo-img {
+  height: 44px; width: auto;
+  border-radius: 8px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  transition: filter 0.2s;
 }
-.navbar.scrolled .nav-logo svg,
-.navbar.scrolled .nav-logo img {
+.navbar.scrolled .nav-logo-img {
   filter: none;
+}
+
+.footer-logo-img {
+  height: 52px; width: auto;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 4px;
+  opacity: 0.9;
 }
 
 /* ===== HAMBURGER BUTTON ===== */
