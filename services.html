@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ליווים | פורמה פיננסים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== NUMBERED SERVICES ===== */
+    .services-section { background: var(--white); }
+    .services-header { text-align: center; margin-bottom: 72px; }
+
+    .service-block {
+      max-width: 1100px; margin: 0 auto 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .service-block:last-child { margin-bottom: 0; }
+    .service-block.reverse { direction: ltr; }
+    .service-block.reverse > * { direction: rtl; }
+
+    .service-block-image {
+      border-radius: 32px; overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px; flex-shrink: 0;
+    }
+
+    .service-block.alt .service-block-image {
+      background: linear-gradient(135deg, #d4cfc2 0%, #c8c2b0 100%);
+    }
+
+    .service-block-text {}
+    .service-block-num {
+      font-size: 64px; font-weight: 900;
+      color: rgba(200,169,110,0.2); letter-spacing: -3px; line-height: 1;
+      margin-bottom: 8px;
+    }
+    .service-block-text .section-eyebrow { margin-bottom: 10px; }
+    .service-block-title {
+      font-size: clamp(26px, 3.5vw, 42px); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.1; color: var(--navy); margin-bottom: 16px;
+    }
+    .service-block-desc { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; }
+
+    .service-checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .service-checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 15px; color: var(--navy); font-weight: 500;
+    }
+    .service-checklist li::before {
+      content: '✓'; color: var(--gold); font-weight: 900;
+      font-size: 16px; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ===== PACKAGES ===== */
+    .packages-section { background: var(--dark2); }
+    .packages-header { text-align: center; margin-bottom: 64px; }
+
+    .packages-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 22px; max-width: 1000px; margin: 0 auto;
+    }
+
+    .package-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--card-radius); padding: 40px 32px;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      position: relative;
+    }
+
+    .package-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(200,169,110,0.2); transform: translateY(-5px); }
+    .package-card.featured {
+      background: rgba(200,169,110,0.08);
+      border-color: rgba(200,169,110,0.35);
+    }
+
+    .package-badge {
+      position: absolute; top: -12px; right: 24px;
+      background: var(--gold); color: var(--navy);
+      font-size: 11px; font-weight: 800; letter-spacing: 1px;
+      padding: 5px 14px; border-radius: var(--btn-radius);
+    }
+
+    .package-name { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+    .package-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
+    .package-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .package-features li {
+      display: flex; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.7);
+    }
+    .package-features li::before { content: '✓'; color: var(--gold); font-weight: 900; flex-shrink: 0; }
+
+    .package-cta { display: block; text-align: center; }
+    .package-cta .btn-gold { width: 100%; }
+    .package-cta .btn-outline { width: 100%; }
+
+    /* ===== FAQ ===== */
+    .faq-section { background: var(--white); }
+    .faq-header { text-align: center; margin-bottom: 64px; }
+
+    .faq-list { max-width: 740px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(26,42,74,0.1); overflow: hidden; }
+    .faq-item:first-child { border-top: 1px solid rgba(26,42,74,0.1); }
+
+    .faq-question {
+      width: 100%; background: none; border: none;
+      padding: 22px 0; text-align: right;
+      font-family: 'Heebo', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--navy); cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: rgba(26,42,74,0.7); }
+
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(26,42,74,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+      transition: background 0.2s, transform 0.3s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold); color: var(--navy); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-answer { max-height: 200px; }
+    .faq-answer-inner {
+      padding-bottom: 20px; padding-right: 20px;
+      font-size: 15px; color: var(--text-muted); line-height: 1.8;
+      border-right: 3px solid var(--gold);
+    }
+
+    /* ===== CTA ===== */
+    .cta-bar {
+      background: var(--navy); padding: 80px 60px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-bar::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.06) 0%, transparent 70%);
+    }
+    .cta-bar h2 { font-size: clamp(28px,4.5vw,52px); font-weight:900; letter-spacing:-2px; color:var(--white); margin-bottom:14px; position:relative; z-index:1; }
+    .cta-bar p { font-size:17px; color:rgba(255,255,255,0.6); margin-bottom:36px; position:relative; z-index:1; }
+    .cta-bar .btn-gold { position:relative; z-index:1; }
+
+    @media (max-width: 900px) {
+      .service-block { grid-template-columns: 1fr; gap: 40px; }
+      .service-block.reverse { direction: rtl; }
+      .packages-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body data-page="services">
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-wrap">
+        <div class="nav-logo-text">F<span>O</span>RMA</div>
+        <div class="nav-logo-sub">פיננסים</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">אודותינו</a></li>
+      <li><a href="services.html" class="active">ליווים</a></li>
+      <li><a href="guides.html">מדריכים</a></li>
+      <li><a href="testimonials.html">המלצות</a></li>
+      <li><a href="index.html#contact" class="nav-cta">קבע שיחה</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-social">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">תוכניות ליווי</div>
+    <h1 class="page-hero-title">ליווי פיננסי שמביא תוצאות</h1>
+    <p class="page-hero-sub">בחר את מסגרת הליווי שמתאימה לך — ותתחיל לנהל את העסק שלך עם ביטחון.</p>
+  </div>
+
+  <!-- SERVICES BLOCKS -->
+  <section class="services-section">
+    <div class="services-header reveal">
+      <div class="section-eyebrow section-center">מה כולל הליווי</div>
+      <h2 class="section-title section-center">4 תחומי ליבה שאנחנו מטפלים בהם</h2>
+    </div>
+
+    <div class="service-block reveal">
+      <div class="service-block-image">📈</div>
+      <div class="service-block-text">
+        <div class="service-block-num">01</div>
+        <div class="section-eyebrow">ניהול תזרים</div>
+        <h3 class="service-block-title">שליטה מלאה על הכסף שלך</h3>
+        <p class="service-block-desc">תזרים מזומנים הוא חמצן לעסק. אנחנו בונים יחד מנגנון שמאפשר לך לדעת תמיד מה יש, מה יגיע, ומה צפוי.</p>
+        <ul class="service-checklist">
+          <li>תחזיות תזרים שבועיות וחודשיות</li>
+          <li>זיהוי מוקדם של בעיות נזילות</li>
+          <li>ייעוץ לניהול חוב ואשראי</li>
+          <li>דשבורד פיננסי עדכני בזמן אמת</li>
+        </ul>
+        <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
+      </div>
+    </div>
+
+    <div class="service-block reverse reveal">
+      <div class="service-block-text">
+        <div class="service-block-num">02</div>
+        <div class="section-eyebrow">דוחות פיננסיים</div>
+        <h3 class="service-block-title">מספרים שמספרים לך סיפור</h3>
+        <p class="service-block-desc">הדוחות שלנו לא מיועדים לרואה החשבון בלבד. הם כלי עבודה יומיומי שאתה מבין, פועל לפיו, ומסתמך עליהם לכל החלטה.</p>
+        <ul class="service-checklist">
+          <li>דוח רווח והפסד חודשי ברור</li>
+          <li>ניתוח הוצאות לפי קטגוריות</li>
+          <li>זיהוי "מאיפה הכסף הולך"</li>
+          <li>השוואה לתקציב ולחודש מקביל</li>
+        </ul>
+        <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
+      </div>
+      <div class="service-block-image alt">📊</div>
+    </div>
+
+    <div class="service-block reveal">
+      <div class="service-block-image">🗓️</div>
+      <div class="service-block-text">
+        <div class="service-block-num">03</div>
+        <div class="section-eyebrow">תכנון ותקצוב</div>
+        <h3 class="service-block-title">תוכנית שנתית שמגיעה ליעד</h3>
+        <p class="service-block-desc">תקציב שנתי ריאלי עם תחזיות צמיחה שמניחות בסיס להחלטות. כי אתה לא יכול לנהל עסק בלי לדעת לאן אתה הולך.</p>
+        <ul class="service-checklist">
+          <li>בניית תקציב שנתי עם יעדים</li>
+          <li>תחזיות רבעוניות ושנתיות</li>
+          <li>תכנון כוח אדם ומשאבים</li>
+          <li>תכנון מס שנתי לחיסכון מקסימלי</li>
+        </ul>
+        <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
+      </div>
+    </div>
+
+    <div class="service-block reverse reveal">
+      <div class="service-block-text">
+        <div class="service-block-num">04</div>
+        <div class="section-eyebrow">ייעוץ אסטרטגי</div>
+        <h3 class="service-block-title">שותף פיננסי לכל החלטה גדולה</h3>
+        <p class="service-block-desc">גיוס, השקעה, הרחבה, כניסה לשוק חדש — כל החלטה אסטרטגית מגיעה עם ניתוח פיננסי שמגבה אותה.</p>
+        <ul class="service-checklist">
+          <li>ניתוח כדאיות להחלטות השקעה</li>
+          <li>הכנה לפגישות עם בנקים ומשקיעים</li>
+          <li>ליווי שוטף בפגישות הנהלה</li>
+          <li>תמחור ואסטרטגיית מחירים</li>
+        </ul>
+        <a href="index.html#contact" class="btn-navy">בוא נדבר</a>
+      </div>
+      <div class="service-block-image alt">🎯</div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages-section">
+    <div class="packages-header reveal">
+      <div class="section-eyebrow section-center" style="color:var(--gold);">מסגרות ליווי</div>
+      <h2 class="section-title section-center light">בחר את המסגרת שלך</h2>
+      <p class="section-sub section-center" style="color:rgba(255,255,255,0.5); max-width:460px; margin:14px auto 0;">כל מסגרת ניתנת להתאמה אישית לצרכי העסק שלך</p>
+    </div>
+    <div class="packages-grid">
+      <div class="package-card reveal">
+        <div class="package-name">בסיסי</div>
+        <p class="package-desc">לעסקים שרוצים להתחיל עם ניהול פיננסי נכון</p>
+        <ul class="package-features">
+          <li>דוח חודשי רווח והפסד</li>
+          <li>ניתוח תזרים חודשי</li>
+          <li>פגישה חודשית של שעה</li>
+          <li>WhatsApp זמין</li>
+        </ul>
+        <div class="package-cta">
+          <a href="index.html#contact" class="btn-outline" style="display:block;text-align:center;">קבע שיחת היכרות</a>
+        </div>
+      </div>
+      <div class="package-card featured reveal">
+        <div class="package-badge">הכי פופולרי</div>
+        <div class="package-name">מתקדם</div>
+        <p class="package-desc">לעסקים שרוצים לגדול בצורה מבוקרת</p>
+        <ul class="package-features">
+          <li>כל מה שבבסיסי</li>
+          <li>תקצוב שנתי</li>
+          <li>2 פגישות חודשיות</li>
+          <li>ניתוח עמוק לפי מוצר/שירות</li>
+          <li>ייעוץ לפני החלטות גדולות</li>
+        </ul>
+        <div class="package-cta">
+          <a href="index.html#contact" class="btn-gold" style="display:block;text-align:center;">קבע שיחת היכרות</a>
+        </div>
+      </div>
+      <div class="package-card reveal">
+        <div class="package-name">פרמיום</div>
+        <p class="package-desc">לעסקים שרוצים CFO מלא לצידם</p>
+        <ul class="package-features">
+          <li>כל מה שבמתקדם</li>
+          <li>נוכחות בפגישות הנהלה</li>
+          <li>הכנה לבנקים ומשקיעים</li>
+          <li>תכנון מס שנתי</li>
+          <li>זמינות עדיפות</li>
+        </ul>
+        <div class="package-cta">
+          <a href="index.html#contact" class="btn-outline" style="display:block;text-align:center;">קבע שיחת היכרות</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="faq-header reveal">
+      <div class="section-eyebrow section-center">שאלות נפוצות</div>
+      <h2 class="section-title section-center">שאלות על הליווי</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>כמה עולה הליווי?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">המחיר תלוי במסגרת ובצרכים הספציפיים שלך. שיחת האבחון החינמית מאפשרת לנו להבין מה אתה צריך ולהציע הצעה מותאמת — ללא עלות.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>האם אני צריך להחליף את רואה החשבון?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">לא. פורמה עובדת לצד רואה החשבון שלך, לא במקומו. אנחנו משלימים — ר"ח מסתכל לאחור, אנחנו מסתכלים קדימה.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>כמה זמן לוקח לראות תוצאות?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">רוב הלקוחות מרגישים שיפור ממשי תוך 30 הימים הראשונים — בין אם בתזרים, בהחלטות, או בתחושת שליטה.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>האם יש התחייבות לתקופה מינימלית?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">נתחיל עם התאמה ל-3 חודשים ראשונים כדי לבנות בסיס משותף. לאחר מכן הליווי גמיש ומותאם לצרכים שלך.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-bar">
+    <h2>מוכן להתחיל?</h2>
+    <p>שיחת אבחון חינמית של 30 דקות — ותצא עם תמונה ברורה.</p>
+    <a href="index.html#contact" class="btn-gold">לשיחת אבחון חינמית</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo-text" style="font-size:22px;">F<span style="color:var(--gold);">O</span>RMA</div>
+        <p class="footer-desc">CFO חיצוני לבעלי עסקים שרוצים לגדול נכון.</p>
+      </div>
+      <div>
+        <div class="footer-heading">ניווט</div>
+        <ul class="footer-links">
+          <li><a href="index.html">עמוד הבית</a></li>
+          <li><a href="about.html">אודותינו</a></li>
+          <li><a href="services.html">ליווים</a></li>
+          <li><a href="guides.html">מדריכים</a></li>
+          <li><a href="testimonials.html">המלצות</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">צור קשר</div>
+        <ul class="footer-links">
+          <li><a href="mailto:dorc@formafinance.co.il">dorc@formafinance.co.il</a></li>
+          <li><a href="https://wa.me/972500000000" target="_blank">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">פורמה פיננסים © 2025</span>
+      <a href="mailto:dorc@formafinance.co.il" class="footer-email">dorc@formafinance.co.il</a>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/972500000000?text=שלום%2C%20אני%20מעוניין%20לשמוע%20עוד%20על%20שירותי%20פורמה%20פיננסים" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>

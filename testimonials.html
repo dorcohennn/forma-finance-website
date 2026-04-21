@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>המלצות | פורמה פיננסים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== GOOGLE RATING BAR ===== */
+    .rating-bar {
+      background: var(--light-bg);
+      padding: 60px;
+      text-align: center;
+    }
+
+    .rating-big {
+      display: inline-flex; align-items: center; gap: 24px;
+      background: var(--white); border-radius: 20px;
+      padding: 28px 48px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+
+    .rating-score {
+      font-size: 72px; font-weight: 900; color: var(--navy);
+      letter-spacing: -3px; line-height: 1;
+    }
+
+    .rating-right {}
+    .rating-stars-big { font-size: 28px; letter-spacing: 3px; margin-bottom: 4px; }
+    .rating-source { font-size: 14px; color: var(--text-muted); }
+    .rating-count { font-size: 22px; font-weight: 800; color: var(--navy); margin-top: 4px; }
+
+    /* ===== TESTIMONIALS GRID ===== */
+    .testimonials-section { background: var(--white); }
+    .testimonials-header { text-align: center; margin-bottom: 64px; }
+
+    .testimonials-masonry {
+      columns: 3; column-gap: 22px;
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .testimonial-card {
+      break-inside: avoid;
+      background: var(--light-bg);
+      border-radius: var(--card-radius); padding: 30px 26px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(26,42,74,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 16px 50px rgba(0,0,0,0.08); }
+    .testimonial-card.featured {
+      background: var(--navy);
+      border-color: transparent;
+    }
+    .testimonial-card.featured .testi-text { color: rgba(255,255,255,0.85); }
+    .testimonial-card.featured .testi-name { color: var(--white); }
+    .testimonial-card.featured .testi-role { color: rgba(255,255,255,0.5); }
+    .testimonial-card.featured .testi-stars { color: var(--gold); }
+
+    .testi-quote { font-size: 36px; line-height: 0.8; color: var(--gold); margin-bottom: 12px; }
+    .testi-text { font-size: 15px; color: var(--navy); line-height: 1.8; margin-bottom: 20px; }
+    .testi-stars { font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy) 0%, #2d4a8a 100%);
+      color: var(--white); font-size: 16px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .testi-name { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .testi-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ===== VIDEO TESTIMONIALS PLACEHOLDER ===== */
+    .video-section { background: var(--dark2); }
+    .video-header { text-align: center; margin-bottom: 60px; }
+    .video-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 22px; max-width: 1000px; margin: 0 auto;
+    }
+    .video-thumb {
+      border-radius: 16px; overflow: hidden;
+      aspect-ratio: 16/9;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .video-thumb:hover { background: rgba(255,255,255,0.07); }
+    .video-play {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-size: 20px; padding-right: 3px;
+    }
+    .video-thumb-label { font-size: 13px; color: rgba(255,255,255,0.5); text-align: center; padding: 0 16px; }
+    .video-coming { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+
+    /* ===== CTA ===== */
+    .cta-bar { background: var(--navy); padding: 80px 60px; text-align: center; position: relative; overflow: hidden; }
+    .cta-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.06) 0%, transparent 70%); }
+    .cta-bar h2 { font-size: clamp(28px,4.5vw,52px); font-weight:900; letter-spacing:-2px; color:var(--white); margin-bottom:14px; position:relative; z-index:1; }
+    .cta-bar p { font-size:17px; color:rgba(255,255,255,0.6); margin-bottom:36px; position:relative; z-index:1; }
+    .cta-bar .btn-gold { position:relative; z-index:1; }
+
+    @media (max-width: 900px) {
+      .testimonials-masonry { columns: 1; max-width: 500px; margin: 0 auto; }
+      .video-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .rating-big { flex-direction: column; gap: 12px; padding: 24px 32px; }
+    }
+  </style>
+</head>
+<body data-page="testimonials">
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-wrap">
+        <div class="nav-logo-text">F<span>O</span>RMA</div>
+        <div class="nav-logo-sub">פיננסים</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">אודותינו</a></li>
+      <li><a href="services.html">ליווים</a></li>
+      <li><a href="guides.html">מדריכים</a></li>
+      <li><a href="testimonials.html" class="active">המלצות</a></li>
+      <li><a href="index.html#contact" class="nav-cta">קבע שיחה</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-social">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">המלצות לקוחות</div>
+    <h1 class="page-hero-title">הם החליטו לנהל נכון —<br>תשמע מה קרה אחר כך</h1>
+    <p class="page-hero-sub">לקוחות אמיתיים, תוצאות אמיתיות. כי המספרים האמיתיים הם אלה של הלקוחות שלנו.</p>
+  </div>
+
+  <!-- GOOGLE RATING -->
+  <div class="rating-bar reveal">
+    <div class="rating-big">
+      <div class="rating-score">5.0</div>
+      <div class="rating-right">
+        <div class="rating-stars-big">⭐⭐⭐⭐⭐</div>
+        <div class="rating-source">דירוג גוגל</div>
+        <div class="rating-count">ביקורות לקוחות מרוצים</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="testimonials-header reveal">
+      <div class="section-eyebrow section-center">מה אומרים הלקוחות</div>
+      <h2 class="section-title section-center">ביקורות אמיתיות</h2>
+    </div>
+    <div class="testimonials-masonry">
+
+      <div class="testimonial-card featured reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">עבדתי עם פורמה כבר חצי שנה. סוף סוף אני מבין לאן הכסף שלי הולך ומסוגל לתכנן קדימה. זה שינה את כל הדרך שבה אני מנהל את העסק.</p>
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#C8A96E,#8a6b30);">א</div>
+          <div><div class="testi-name" style="color:var(--white);">אבי מ.</div><div class="testi-role">בעל עסק, תל אביב</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">הדוחות שהם מכינים לי הם ממש כלי עבודה, לא מספרים שיושבים במגירה. כבר ב-30 הימים הראשונים ראיתי תמונה אחרת לגמרי.</p>
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <div class="testi-author">
+          <div class="testi-avatar">ש</div>
+          <div><div class="testi-name">שירה כ.</div><div class="testi-role">מנכ"לית, ירושלים</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">קיבלתי את אותה איכות של CFO штатный בפחות מחמישית המחיר. ממליץ בחום לכל יזם שרוצה לגדול ברצינות.</p>
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <div class="testi-author">
+          <div class="testi-avatar">י</div>
+          <div><div class="testi-name">יוסף ל.</div><div class="testi-role">יזם טכנולוגיה</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">לפני שהגעתי לפורמה לא הבנתי למה העסק שלי לא מרוויח למרות שיש לי הרבה לקוחות. אחרי חודש הם גילו שאני מפסיד על 3 מוצרים ספציפיים. היום אני יודע על מה לתמחר.</p>
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <div class="testi-author">
+          <div class="testi-avatar">ד</div>
+          <div><div class="testi-name">דני ר.</div><div class="testi-role">בעל עסק, חיפה</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card featured reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">ניגשתי לבנק לאשראי עם המסמכים שפורמה הכינה לי. לראשונה בחיים קיבלתי את מה שביקשתי — ובתנאים טובים. שינוי עצום.</p>
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#C8A96E,#8a6b30);">מ</div>
+          <div><div class="testi-name" style="color:var(--white);">מיכל ב.</div><div class="testi-role">בעלת חנות, רמת גן</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">פורמה לא רק עוזרת לי עם מספרים — הם עוזרים לי לקבל החלטות. לפני כל גיוס, לפני כל שותפות, אני מתייעץ איתם קודם.</p>
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <div class="testi-author">
+          <div class="testi-avatar">ר</div>
+          <div><div class="testi-name">רועי נ.</div><div class="testi-role">מנכ"ל סטארטאפ</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VIDEO TESTIMONIALS PLACEHOLDER -->
+  <section class="video-section">
+    <div class="video-header reveal">
+      <div class="section-eyebrow section-center" style="color:var(--gold);">עדויות וידאו</div>
+      <h2 class="section-title section-center light">שמע אותם מדברים</h2>
+      <p class="section-sub section-center" style="color:rgba(255,255,255,0.45); max-width:400px; margin:14px auto 0;">עדויות וידאו יתווספו בקרוב</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-thumb reveal">
+        <div class="video-play">▶</div>
+        <div class="video-thumb-label">אבי מ. — איך פורמה שינתה את הגישה שלו לתזרים</div>
+        <div class="video-coming">בקרוב</div>
+      </div>
+      <div class="video-thumb reveal">
+        <div class="video-play">▶</div>
+        <div class="video-thumb-label">מיכל ב. — אשראי בנקאי שלא קיבלה שנים</div>
+        <div class="video-coming">בקרוב</div>
+      </div>
+      <div class="video-thumb reveal">
+        <div class="video-play">▶</div>
+        <div class="video-thumb-label">רועי נ. — החלטות עסקיות מבוססות מספרים</div>
+        <div class="video-coming">בקרוב</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-bar">
+    <h2>רוצה להיות הסיפור הבא?</h2>
+    <p>קבע שיחת אבחון חינמית — ותצא עם תמונה ברורה.</p>
+    <a href="index.html#contact" class="btn-gold">לשיחת אבחון חינמית</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo-text" style="font-size:22px;">F<span style="color:var(--gold);">O</span>RMA</div>
+        <p class="footer-desc">CFO חיצוני לבעלי עסקים שרוצים לגדול נכון.</p>
+      </div>
+      <div>
+        <div class="footer-heading">ניווט</div>
+        <ul class="footer-links">
+          <li><a href="index.html">עמוד הבית</a></li>
+          <li><a href="about.html">אודותינו</a></li>
+          <li><a href="services.html">ליווים</a></li>
+          <li><a href="guides.html">מדריכים</a></li>
+          <li><a href="testimonials.html">המלצות</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">צור קשר</div>
+        <ul class="footer-links">
+          <li><a href="mailto:dorc@formafinance.co.il">dorc@formafinance.co.il</a></li>
+          <li><a href="https://wa.me/972500000000" target="_blank">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">פורמה פיננסים © 2025</span>
+      <a href="mailto:dorc@formafinance.co.il" class="footer-email">dorc@formafinance.co.il</a>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/972500000000?text=שלום%2C%20אני%20מעוניין%20לשמוע%20עוד%20על%20שירותי%20פורמה%20פיננסים" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
