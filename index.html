@@ -275,6 +275,111 @@
     }
     .cta-bar .btn-gold { position: relative; z-index: 1; }
 
+    /* ===== CONTACT SECTION ===== */
+    .contact-section {
+      background: var(--navy);
+      padding: 100px 60px;
+    }
+
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: start;
+    }
+
+    .contact-form-card {
+      background: var(--white);
+      border-radius: var(--card-radius);
+      padding: 44px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+    .cf-row-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .cf-field input,
+    .cf-field select,
+    .cf-field textarea {
+      width: 100%; padding: 14px 16px;
+      border: 1.5px solid #e0ddd5;
+      border-radius: 10px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px; color: var(--navy);
+      background: #fafaf8;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+
+    .cf-field input:focus,
+    .cf-field select:focus,
+    .cf-field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200,169,110,0.15);
+    }
+
+    .cf-field textarea { resize: vertical; }
+
+    .cf-submit {
+      background: var(--gold); color: var(--white);
+      border: none; border-radius: var(--btn-radius);
+      padding: 15px 32px; font-family: 'Heebo', sans-serif;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.3px;
+    }
+
+    .cf-submit:hover { background: #b8955a; transform: translateY(-1px); }
+
+    .cf-checkbox {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 12px; color: #888; line-height: 1.55; cursor: pointer;
+    }
+
+    .cf-checkbox input { margin-top: 3px; flex-shrink: 0; accent-color: var(--gold); }
+
+    /* right column */
+    .contact-info-col { padding-top: 12px; }
+
+    .contact-big-title {
+      font-size: clamp(40px, 5vw, 64px); font-weight: 900;
+      color: var(--white); letter-spacing: -2px;
+      line-height: 1.05; margin-bottom: 20px;
+    }
+
+    .contact-big-sub {
+      font-size: 17px; color: rgba(255,255,255,0.65);
+      line-height: 1.7; margin-bottom: 44px;
+    }
+
+    .contact-big-sub strong { color: var(--cream); }
+
+    .contact-items { display: flex; flex-direction: column; gap: 22px; }
+
+    .contact-item { display: flex; gap: 16px; align-items: center; }
+
+    .contact-item-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(200,169,110,0.15);
+      border: 1.5px solid rgba(200,169,110,0.35);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px;
+    }
+
+    .contact-item-value {
+      font-size: 15px; color: var(--cream);
+      text-decoration: none; font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .contact-item-value:hover { color: var(--gold); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -287,6 +392,11 @@
       .services-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto 48px; }
       .hero-btns { flex-direction: column; align-items: center; }
       .btn-gold, .btn-outline { width: 100%; max-width: 300px; text-align: center; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .contact-info-col { order: -1; padding-top: 0; }
+      .contact-form-card { padding: 32px 24px; }
+      .cf-row-two { grid-template-columns: 1fr; }
+      .contact-section { padding: 80px 24px; }
     }
   </style>
 </head>
@@ -295,10 +405,14 @@
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <a href="index.html" class="nav-logo">
-      <div class="nav-logo-wrap">
-        <div class="nav-logo-text">F<span>O</span>RMA</div>
-        <div class="nav-logo-sub">פיננסים</div>
-      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 84" width="168" height="47">
+        <rect x="2" y="2" width="76" height="80" fill="none" stroke="#E8E2D0" stroke-width="3" rx="2"/>
+        <rect x="14" y="12" width="11" height="56" fill="#E8E2D0"/>
+        <rect x="14" y="12" width="48" height="11" fill="#E8E2D0"/>
+        <rect x="14" y="37" width="32" height="11" fill="#E8E2D0"/>
+        <text x="91" y="50" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#E8E2D0" letter-spacing="4">FORMA</text>
+        <text x="294" y="68" font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#E8E2D0" text-anchor="end" letter-spacing="1.5">פיננסים</text>
+      </svg>
     </a>
     <ul class="nav-links">
       <li><a href="about.html">אודותינו</a></li>
@@ -329,7 +443,7 @@
       <div class="hero-eyebrow">CFO חיצוני לבעלי עסקים</div>
       <div class="hero-logo-main">F<span>O</span>RMA</div>
       <div class="hero-logo-sub">פיננסים</div>
-      <p class="hero-tagline">הצלחה פיננסית מתחילה כאן —<br>כי עסק שמנוהל נכון לא רק שורד, הוא מנצח.</p>
+      <p class="hero-tagline">הצלחה פיננסית מתחילה כאן -<br>כי עסק שמנוהל נכון לא רק שורד, הוא מנצח.</p>
       <div class="hero-btns">
         <a href="index.html#contact" class="btn-gold">קבע שיחת אבחון חינמית</a>
         <a href="services.html" class="btn-outline">הכר את השירותים שלנו</a>
@@ -356,7 +470,7 @@
   <div class="stats-bar">
     <div class="stats-inner">
       <div class="stat-block reveal">
-        <div class="stat-num">50+</div>
+        <div class="stat-num">350+</div>
         <div class="stat-lbl">לקוחות מרוצים</div>
       </div>
       <div class="stat-block reveal">
@@ -390,7 +504,7 @@
       <div class="pain-card reveal">
         <div class="pain-icon">🎯</div>
         <h3>החלטות מהבטן</h3>
-        <p>גיוס, השקעה, הרחבה — בלי גיבוי מספרתי.</p>
+        <p>גיוס, השקעה, הרחבה - בלי גיבוי מספרתי.</p>
       </div>
     </div>
   </section>
@@ -406,7 +520,7 @@
         <div class="service-num">01</div>
         <span class="service-icon">📈</span>
         <h3>ניהול תזרים מזומנים</h3>
-        <p>שליטה מלאה על הכסף שנכנס ויוצא — תמיד.</p>
+        <p>שליטה מלאה על הכסף שנכנס ויוצא - תמיד.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-num">02</div>
@@ -438,7 +552,7 @@
     <div class="mission-inner reveal">
       <span class="mission-mark">"</span>
       <p class="mission-text">
-        עסק ללא CFO חזק הוא כמו מטוס ללא טייס —<br>
+        עסק ללא CFO חזק הוא כמו מטוס ללא טייס -<br>
         <em>עשוי לעוף, אבל לא לאן שצריך.</em>
       </p>
       <div class="mission-cta">
@@ -484,19 +598,94 @@
     </div>
   </section>
 
-  <!-- CONTACT / CTA -->
-  <section class="cta-bar" id="contact">
-    <h2>מוכן לקחת שליטה על הכספים שלך?</h2>
-    <p>שיחת אבחון חינמית של 30 דקות · ללא התחייבות · ללא כרטיס אשראי</p>
-    <a href="mailto:dorc@formafinance.co.il?subject=בקשה לשיחת אבחון" class="btn-gold">שלח לי מייל לתיאום</a>
-    <p style="margin-top:16px; font-size:13px; color:rgba(255,255,255,0.35); position:relative; z-index:1;">או לחץ על WhatsApp ↙</p>
+  <!-- CONTACT FORM -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <!-- LEFT: FORM CARD -->
+      <div class="contact-form-card reveal">
+        <form class="contact-form" onsubmit="handleContact(event)">
+          <div class="cf-row-two">
+            <div class="cf-field">
+              <input type="text" placeholder="שם מלא" required>
+            </div>
+            <div class="cf-field">
+              <input type="tel" placeholder="טלפון" required>
+            </div>
+          </div>
+          <div class="cf-field">
+            <input type="email" placeholder='דוא"ל'>
+          </div>
+          <div class="cf-field">
+            <select>
+              <option value="" disabled selected>ליווי כלכלי - בחר סוג</option>
+              <option>ניהול תזרים מזומנים</option>
+              <option>דוחות פיננסיים</option>
+              <option>תכנון ותקצוב שנתי</option>
+              <option>ייעוץ אסטרטגי לצמיחה</option>
+              <option>אחר</option>
+            </select>
+          </div>
+          <div class="cf-field">
+            <textarea placeholder="הודעה (אופציונלי)" rows="3"></textarea>
+          </div>
+          <button type="submit" class="cf-submit">שליחת פרטים ←</button>
+          <label class="cf-checkbox">
+            <input type="checkbox" required>
+            <span>אני מאשר/ת לפורמה פיננסים ליצור איתי קשר ולשמור את הפרטים שמסרתי בהתאם למדיניות הפרטיות.</span>
+          </label>
+        </form>
+      </div>
+
+      <!-- RIGHT: CONTACT INFO -->
+      <div class="contact-info-col reveal">
+        <h2 class="contact-big-title">בואו נדבר!</h2>
+        <p class="contact-big-sub">רוצים לצאת איתנו לדרך משותפת?<br><strong>השאירו פרטים בטופס ואנו ניצור אתכם קשר בהקדם.</strong></p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">דוא"ל</div>
+              <a href="mailto:dorc@formafinance.co.il" class="contact-item-value">dorc@formafinance.co.il</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">טלפון</div>
+              <a href="tel:+972500000000" class="contact-item-value">050-000-0000</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">כתובת</div>
+              <span class="contact-item-value">תל אביב, ישראל</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="nav-logo-text" style="font-size:22px;">F<span style="color:var(--gold);">O</span>RMA</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 84" width="145" height="40">
+        <rect x="2" y="2" width="76" height="80" fill="none" stroke="#E8E2D0" stroke-width="3" rx="2"/>
+        <rect x="14" y="12" width="11" height="56" fill="#E8E2D0"/>
+        <rect x="14" y="12" width="48" height="11" fill="#E8E2D0"/>
+        <rect x="14" y="37" width="32" height="11" fill="#E8E2D0"/>
+        <text x="91" y="50" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#E8E2D0" letter-spacing="4">FORMA</text>
+        <text x="294" y="68" font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#E8E2D0" text-anchor="end" letter-spacing="1.5">פיננסים</text>
+      </svg>
         <p class="footer-desc">CFO חיצוני לבעלי עסקים שרוצים לגדול נכון, להרוויח יותר, ולנהל בביטחון.</p>
         <div class="footer-social" style="margin-top:20px;">
           <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -547,6 +736,26 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function handleContact(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('input[type="text"]').value;
+      const phone = form.querySelector('input[type="tel"]').value;
+      const email = form.querySelector('input[type="email"]').value;
+      const service = form.querySelector('select').value;
+      const message = form.querySelector('textarea').value;
+      const subject = encodeURIComponent('פנייה חדשה מהאתר - ' + name);
+      const body = encodeURIComponent(
+        'שם: ' + name + '\n' +
+        'טלפון: ' + phone + '\n' +
+        'דוא"ל: ' + email + '\n' +
+        'סוג ליווי: ' + (service || 'לא נבחר') + '\n' +
+        'הודעה: ' + (message || '-')
+      );
+      window.location.href = 'mailto:dorc@formafinance.co.il?subject=' + subject + '&body=' + body;
+      form.reset();
+    }
   </script>
 </body>
 </html>
