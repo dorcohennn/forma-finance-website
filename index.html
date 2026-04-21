@@ -283,30 +283,23 @@
     .testi-preview { background: var(--light-bg); padding: 100px 60px; }
     .testi-header { text-align: center; margin-bottom: 56px; }
 
-    .testi-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 22px; max-width: 1060px; margin: 0 auto 44px;
+    .video-testi-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 20px; max-width: 1200px; margin: 0 auto 44px;
     }
-
-    .testi-card {
-      background: var(--white); border-radius: var(--card-radius);
-      padding: 30px 26px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    .video-testi-card {
+      background: var(--white); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
       transition: transform 0.3s;
     }
+    .video-testi-card:hover { transform: translateY(-5px); }
+    .video-testi-card iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+    .video-testi-info { padding: 14px 16px; }
+    .video-testi-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .video-testi-role { font-size: 12px; color: var(--text-muted); }
 
-    .testi-card:hover { transform: translateY(-5px); }
-    .testi-stars { font-size: 16px; letter-spacing: 2px; margin-bottom: 12px; }
-    .testi-text { font-size: 15px; color: var(--navy); line-height: 1.75; margin-bottom: 18px; }
-    .testi-author { display: flex; align-items: center; gap: 10px; }
-    .testi-avatar {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy) 0%, #2d4a8a 100%);
-      color: var(--white); font-size: 14px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .testi-name { font-size: 13px; font-weight: 700; color: var(--navy); }
-    .testi-role { font-size: 11px; color: var(--text-muted); }
+    @media (max-width: 900px) { .video-testi-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .video-testi-grid { grid-template-columns: 1fr; } }
 
     /* ===== FINAL CTA ===== */
     .cta-bar {
@@ -925,34 +918,67 @@
   <!-- TESTIMONIALS PREVIEW -->
   <section class="testi-preview">
     <div class="testi-header reveal">
-      <div class="section-eyebrow section-center">ביקורות גוגל</div>
+      <div class="section-eyebrow section-center">עדויות וידאו</div>
       <h2 class="section-title section-center">מה אומרים הלקוחות</h2>
     </div>
-    <div class="testi-grid">
-      <div class="testi-card reveal">
-        <div class="testi-stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="testi-text">סוף סוף אני מבין לאן הכסף שלי הולך ומסוגל לתכנן קדימה. שינה גמורה.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">א</div>
-          <div><div class="testi-name">אבי מ.</div><div class="testi-role">בעל עסק, תל אביב</div></div>
+    <div class="video-testi-grid">
+
+      <div class="video-testi-card reveal">
+        <iframe src="https://www.youtube-nocookie.com/embed/RUmIW3o2Kk0" title="הודיה לוי" allowfullscreen loading="lazy"></iframe>
+        <div class="video-testi-info">
+          <div class="video-testi-name">הודיה לוי</div>
+          <div class="video-testi-role">בעלת עסק ליווי כושר ותזונה</div>
         </div>
       </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="testi-text">הדוחות הם ממש כלי עבודה, לא מספרים שיושבים במגירה.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">ש</div>
-          <div><div class="testi-name">שירה כ.</div><div class="testi-role">מנכ"לית, ירושלים</div></div>
+
+      <div class="video-testi-card reveal">
+        <iframe src="https://www.youtube-nocookie.com/embed/aNJUPaHhAqE" title="עידן קוגל" allowfullscreen loading="lazy"></iframe>
+        <div class="video-testi-info">
+          <div class="video-testi-name">עידן קוגל</div>
+          <div class="video-testi-role">מאמן מנטלי לכדורגלנים</div>
         </div>
       </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="testi-text">איכות של CFO штатный בפחות מחמישית המחיר. ממליץ בחום.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">י</div>
-          <div><div class="testi-name">יוסף ל.</div><div class="testi-role">יזם טכנולוגיה</div></div>
+
+      <div class="video-testi-card reveal">
+        <iframe src="https://www.youtube-nocookie.com/embed/eltEYyjsbEQ" title="דני בוטיק" allowfullscreen loading="lazy"></iframe>
+        <div class="video-testi-info">
+          <div class="video-testi-name">דני בוטיק</div>
+          <div class="video-testi-role">בעלת עסק לשמלות כלה</div>
         </div>
       </div>
+
+      <div class="video-testi-card reveal">
+        <iframe src="https://www.youtube-nocookie.com/embed/84Z6LNsTnFY" title="ספיר בן חיון" allowfullscreen loading="lazy"></iframe>
+        <div class="video-testi-info">
+          <div class="video-testi-name">ספיר בן חיון</div>
+          <div class="video-testi-role">בעלת עסק</div>
+        </div>
+      </div>
+
+      <div class="video-testi-card reveal">
+        <iframe src="https://www.youtube-nocookie.com/embed/la3IbjJWicY" title="אופק מולקנדוף" allowfullscreen loading="lazy"></iframe>
+        <div class="video-testi-info">
+          <div class="video-testi-name">אופק מולקנדוף</div>
+          <div class="video-testi-role">בעלים סיירת נדל"ן - ליווי משקיעים בארה"ב</div>
+        </div>
+      </div>
+
+      <div class="video-testi-card reveal">
+        <iframe src="https://www.youtube-nocookie.com/embed/bMW0ULyoJR0" title="יובל ביטון" allowfullscreen loading="lazy"></iframe>
+        <div class="video-testi-info">
+          <div class="video-testi-name">יובל ביטון</div>
+          <div class="video-testi-role">בעל עסק 'אוקינוואה'</div>
+        </div>
+      </div>
+
+      <div class="video-testi-card reveal">
+        <iframe src="https://www.youtube-nocookie.com/embed/FL-TDJpm_IQ" title="עמית קרן" allowfullscreen loading="lazy"></iframe>
+        <div class="video-testi-info">
+          <div class="video-testi-name">עמית קרן</div>
+          <div class="video-testi-role">ספורטרפיסט</div>
+        </div>
+      </div>
+
     </div>
     <div style="text-align:center;">
       <a href="testimonials.html" class="btn-navy reveal">לכל ההמלצות</a>
