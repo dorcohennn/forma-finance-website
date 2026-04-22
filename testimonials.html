@@ -64,12 +64,68 @@
     .cta-bar p { font-size:17px; color:rgba(255,255,255,0.6); margin-bottom:36px; position:relative; z-index:1; }
     .cta-bar .btn-gold { position:relative; z-index:1; }
 
+    /* ===== VIDEO TESTIMONIALS ===== */
+    .video-testi-section {
+      background: var(--white);
+      padding: 100px 60px;
+    }
+    .video-testi-header { text-align: center; margin-bottom: 56px; }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .video-card {
+      background: var(--light-bg);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .video-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 36px rgba(0,0,0,0.13);
+    }
+    .video-embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+    }
+    .video-embed-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-card-info {
+      padding: 16px 18px 18px;
+    }
+    .video-card-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .video-card-role {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 1100px) {
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 900px) {
       .testi-grid { grid-template-columns: repeat(2, 1fr); }
       .rating-big { flex-direction: column; gap: 12px; padding: 24px 32px; }
       .written-testi-section { padding: 72px 20px; }
+      .video-testi-section { padding: 72px 20px; }
     }
-    @media (max-width: 500px) { .testi-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 500px) {
+      .testi-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body data-page="testimonials">
@@ -116,6 +172,97 @@
       </div>
     </div>
   </div>
+
+  <!-- VIDEO TESTIMONIALS -->
+  <section class="video-testi-section">
+    <div class="video-testi-header reveal">
+      <div class="section-eyebrow section-center">עדויות וידאו</div>
+      <h2 class="section-title section-center">לקוחות מספרים בעצמם</h2>
+    </div>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/3BmVe8ql7GQ" title="חן אמבר" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-name">חן אמבר</div>
+          <div class="video-card-role">סטייליסטית אישית</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/RUmIW3o2Kk0" title="הודיה לוי" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-name">הודיה לוי</div>
+          <div class="video-card-role">בעלת עסק ליווי כושר ותזונה</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/aNJUPaHhAqE" title="עידן קוגל" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-name">עידן קוגל</div>
+          <div class="video-card-role">מאמן מנטלי לספורטאים</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/eltEYyjsbEQ" title="דני בוטיק" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-name">דני בוטיק</div>
+          <div class="video-card-role">בעל סלון כלות</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/84Z6LNsTnFY" title="ספיר בן חיון" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-name">ספיר בן חיון</div>
+          <div class="video-card-role">בעלת העסק 'ויראלה'</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/la3IbjJWicY" title="אופק מולקנדוף" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-name">אופק מולקנדוף</div>
+          <div class="video-card-role">בעלים - ליווי משקיעי נדל"ן בארה"ב</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/bMW0ULyoJR0" title="יובל ביטון" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-name">יובל ביטון</div>
+          <div class="video-card-role">בעלת עסק 'אוקינוואה'</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/FL-TDJpm_IQ" title="עמית קרן" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-name">עמית קרן</div>
+          <div class="video-card-role"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- WRITTEN TESTIMONIALS -->
   <section class="written-testi-section">
