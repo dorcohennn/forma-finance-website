@@ -479,6 +479,18 @@
   </div>
 
   <script>
+    /* Page transitions */
+    document.body.classList.add('page-entering');
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || a.target === '_blank') return;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(() => { window.location.href = href; }, 200);
+      });
+    });
+
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
     const observer = new IntersectionObserver((entries) => {
@@ -514,10 +526,7 @@
       const phone = document.getElementById('g-phone').value;
       const email = document.getElementById('g-email').value;
 
-      // Send lead via mailto
-      const subject = 'בקשה למדריך: ' + currentGuide;
-      const body = `מדריך: ${currentGuide}\nשם: ${name}\nטלפון: ${phone}\nאימייל: ${email}`;
-      window.open(`mailto:office@formafinance.co.il?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+      submitLead({ type: 'guide', name, phone, email, extra: currentGuide });
 
       document.getElementById('modalFormWrap').classList.add('hide');
       document.getElementById('modalSuccess').classList.add('show');
@@ -536,5 +545,6 @@
       });
     });
   </script>
+  <script src="form-handler.js"></script>
 </body>
 </html>

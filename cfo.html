@@ -983,6 +983,18 @@
   </a>
 
   <script>
+    /* Page transitions */
+    document.body.classList.add('page-entering');
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || a.target === '_blank') return;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(() => { window.location.href = href; }, 200);
+      });
+    });
+
     // Navbar scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -1016,12 +1028,21 @@
     // Hero form submit
     function handleHeroForm(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('.cfo-form-submit');
+      const form = e.target;
+      const name = form.querySelector('input[type="text"]').value;
+      const phone = form.querySelector('input[type="tel"]').value;
+      const email = form.querySelector('input[type="email"]').value;
+      const size = form.querySelector('select').value;
+
+      submitLead({ type: 'cfo', name, phone, email, extra: size });
+
+      const btn = form.querySelector('.cfo-form-submit');
       btn.textContent = 'נשלח! נחזור אליך בקרוב';
       btn.style.background = '#4caf50';
       btn.style.color = '#fff';
       btn.disabled = true;
     }
   </script>
+  <script src="form-handler.js"></script>
 </body>
 </html>

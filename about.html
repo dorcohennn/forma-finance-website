@@ -542,6 +542,18 @@
   </a>
 
   <script>
+    /* Page transitions */
+    document.body.classList.add('page-entering');
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || a.target === '_blank') return;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(() => { window.location.href = href; }, 200);
+      });
+    });
+
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
     const observer = new IntersectionObserver((entries) => {

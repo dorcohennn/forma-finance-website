@@ -1123,6 +1123,18 @@
   </a>
 
   <script>
+    /* Page transitions */
+    document.body.classList.add('page-entering');
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || a.target === '_blank') return;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(() => { window.location.href = href; }, 200);
+      });
+    });
+
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
 
@@ -1139,16 +1151,14 @@
       const email = form.querySelector('input[type="email"]').value;
       const service = form.querySelector('select').value;
       const message = form.querySelector('textarea').value;
-      const subject = encodeURIComponent('פנייה חדשה מהאתר - ' + name);
-      const body = encodeURIComponent(
-        'שם: ' + name + '\n' +
-        'טלפון: ' + phone + '\n' +
-        'דוא"ל: ' + email + '\n' +
-        'סוג ליווי: ' + (service || 'לא נבחר') + '\n' +
-        'הודעה: ' + (message || '-')
-      );
-      window.location.href = 'mailto:office@formafinance.co.il?subject=' + subject + '&body=' + body;
-      form.reset();
+
+      submitLead({ type: 'contact', name, phone, email, extra: service, message });
+
+      form.innerHTML = '<div style="text-align:center;padding:40px 20px">' +
+        '<div style="width:64px;height:64px;background:#e8f5e9;border-radius:50%;' +
+        'display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px">✓</div>' +
+        '<h3 style="color:var(--navy);font-size:22px;font-weight:800;margin:0 0 10px">תודה! קיבלנו את הפרטים</h3>' +
+        '<p style="color:var(--text-muted);margin:0">ניצור איתך קשר בהקדם האפשרי</p></div>';
     }
 
     // What we do accordion
@@ -1174,5 +1184,6 @@
       });
     });
   </script>
+  <script src="form-handler.js"></script>
 </body>
 </html>
