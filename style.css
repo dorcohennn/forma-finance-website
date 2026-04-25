@@ -26,18 +26,19 @@ body.page-leaving { opacity: 0; transition: opacity 0.2s ease; pointer-events: n
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed; top: 0; right: 0; left: 0; z-index: 200;
-  padding: 18px 60px;
+  padding: 14px 60px;
   display: flex; align-items: center; justify-content: space-between;
-  transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
-  background: transparent;
+  transition: box-shadow 0.35s, padding 0.35s;
+  background: rgba(10,12,18,0.97);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
 .navbar.scrolled {
-  background: rgba(15,17,21,0.97);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-  padding: 12px 60px;
+  background: rgba(10,12,18,0.99);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  padding: 10px 60px;
 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; gap: 0; }
 .nav-logo-text {
