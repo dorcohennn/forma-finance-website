@@ -25,15 +25,13 @@ body.page-leaving { opacity: 0; transition: opacity 0.2s ease; pointer-events: n
 
 /* ===== NAVBAR ===== */
 .navbar {
-  position: fixed; top: 0; right: 0; left: 0; z-index: 200;
+  position: fixed; top: 0; right: 0; left: 0; z-index: 500;
   padding: 14px 60px;
   display: flex; align-items: center; justify-content: space-between;
   transition: box-shadow 0.35s, padding 0.35s;
   background: rgba(10,12,18,0.97);
   backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
 }
 .navbar.scrolled {
   background: rgba(10,12,18,0.99);
@@ -274,9 +272,9 @@ section { padding: 100px 60px; }
   /* Mobile nav overlay */
   .nav-links {
     position: fixed; top: 0; right: 0; left: 0; bottom: 0;
-    background: #0a0c12;
+    background: #0a0c12 !important;
     flex-direction: column; align-items: center; justify-content: center;
-    gap: 0; z-index: 200;
+    gap: 0; z-index: 9999;
     display: flex;
     padding: 80px 24px 40px;
     opacity: 0;
